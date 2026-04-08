@@ -45,7 +45,15 @@
         document.getElementById("info").innerText = fakty[losowy];
     }
 
-    
+    function zmienKolor() {
+        const kolory = ["#f4f1e6", "#dff0d8", "#d9edf7", "#fcf8e3"];
+        const losowy = Math.floor(Math.random() * kolory.length);
+        document.body.style.backgroundColor = kolory[losowy];
+    }
+
+    function pokazAlert() {
+        alert("Witaj w świecie małp! 🐵");
+    }
 </script>
   </body>
 </html>
