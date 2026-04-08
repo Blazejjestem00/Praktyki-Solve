@@ -1,2 +1,2 @@
 # Praktyki-Solve
-## dzien pierwszy
+## dzien pierwszy   
