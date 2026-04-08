@@ -8,10 +8,69 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="style.css">
   </head>
   <body class="bg-light">
-    Strona testowa Bartka, bo Błażej mi zabrał uczen4
+  <script>
+			function oblicz()
+			{
+			
+				var x = Number(document.getElementById("liczba1").value);
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+				var y = Number(document.getElementById("liczba2").value);
+
+				var z = document.getElementById("wyb").value;
+				
+				if(z=="d1")
+				{
+					document.getElementById("wynik").innerHTML=x+y;
+				}
+				else if(z=="d2")
+				{
+					document.getElementById("wynik").innerHTML=x-y;
+					
+				}		
+				else if(z=="d3")
+				{
+					document.getElementById("wynik").innerHTML=x*y; 
+				}	
+				else if(z=="d4")
+				{
+					if(y!=0)
+					{
+						document.getElementById("wynik").innerHTML=x/y;
+					}
+					else
+					{
+						document.getElementById("wynik").innerHTML="blad";
+					}
+				}				
+			}
+        </script>
+    </head>
+    <body>
+		<form>
+			<table>
+				<tr>
+					
+					<td><input type="text" id="liczba1"></td>
+					<td><select id="wyb">
+						<option value="d1">+</option>
+						<option value="d2">-</option>
+						<option value="d3">*</option>
+						<option value="d4">/</option>					
+					</select></td>
+					
+					<td><input type="text" id="liczba2"></td>
+					<td>=</td>
+					<td id="wynik"></td>
+				</tr>	
+				
+				<tr><td colspan="5">
+				<input type="button" value="Oblicz" onClick="oblicz()"></td></tr>
+
+			</table>
+		</form>
+	
   </body>
 </html>
