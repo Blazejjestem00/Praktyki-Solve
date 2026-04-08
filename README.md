@@ -9,6 +9,7 @@
   - [git commit](#git-commit)
   - [git push](#git-push)
   - [git pull / git fetch](#git-pull--git-fetch)
+  - [git branch / git checkout](#git-branch--git-checkout)
 
 ---
 
@@ -82,3 +83,23 @@ git fetch --all            # tylko sprawdza co jest na serwerze, nic nie zmienia
 `git pull` – pobiera najnowsze zmiany z GitHuba i od razu wgrywa je do Twojego projektu. Używaj przed rozpoczęciem pracy, żeby mieć aktualną wersję.
 
 `git fetch` – tylko "zagląda" co jest na serwerze, ale nic nie zmienia lokalnie. Bezpieczniejsze gdy chcesz najpierw sprawdzić co się zmieniło.
+
+---
+
+### git branch / git checkout
+```
+git branch                 # lista wszystkich lokalnych branchy (* = aktualny)
+git branch nazwa-brancha   # tworzy nowy branch
+git checkout nazwa-brancha # przełącza się na wybrany branch
+git checkout -b nazwa      # tworzy nowy branch i od razu się na niego przełącza
+git branch -d nazwa        # usuwa branch (po scaleniu)
+```
+Branch to oddzielna "linia" pracy w projekcie – możesz wprowadzać zmiany nie ruszając głównego kodu na `main`. Używaj branchy do każdego nowego zadania czy funkcji, np. `P-8-test`.
+
+Typowy przepływ pracy z branchami:
+```
+git branch P-8-moja-funkcja    # utwórz branch dla zadania
+git checkout P-8-moja-funkcja  # przejdź na niego
+# ... pracuj, rób commity ...
+git checkout main              # wróć na main gdy skończysz
+``` 
