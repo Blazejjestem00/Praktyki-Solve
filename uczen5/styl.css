@@ -1,0 +1,13 @@
+img{
+    width: 600px;
+}
+h1{
+    color: red;
+    text-align: center;
+    font-weight: bold;
+    font-size: 100px;
+    font-style: italic;
+}
+*{
+    text-align: center;
+}
