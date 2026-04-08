@@ -12,7 +12,48 @@
   <body class="bg-light">
     Hej to jest test strona dla ucznia 4 - Błażej
     <div id="hej">hej</div>
+    <h1>Witaj na mojej stronie!</h1>
+    <p>To jest przykładowy tekst na mojej stronie testowej.</p>
+    <button class="btn btn-primary">Kliknij mnie</button>
+    <div class="alert alert-info mt-3" role="alert">
+      To jest informacja dla odwiedzających moją stronę.
+    </div>
+  
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<h1>🐒 Świat Małp 🐒</h1>
+
+<div class="box">
+    <p id="info">Kliknij przycisk, aby dowiedzieć się czegoś o małpach!</p>
+
+    <button onclick="pokazFakt()">Pokaż fakt</button>
+    <button onclick="zmienKolor()">Zmień kolor</button>
+    <button onclick="pokazAlert()">Powitanie</button>
+</div>
+
+<script>
+    const fakty = [
+        "Małpy potrafią używać narzędzi!",
+        "Niektóre małpy żyją w dużych grupach społecznych.",
+        "Szympansy są bardzo inteligentne.",
+        "Małpy potrafią komunikować się gestami i dźwiękami."
+    ];
+
+    function pokazFakt() {
+        const losowy = Math.floor(Math.random() * fakty.length);
+        document.getElementById("info").innerText = fakty[losowy];
+    }
+
+    function zmienKolor() {
+        const kolory = ["#f4f1e6", "#dff0d8", "#d9edf7", "#fcf8e3"];
+        const losowy = Math.floor(Math.random() * kolory.length);
+        document.body.style.backgroundColor = kolory[losowy];
+    }
+
+    function pokazAlert() {
+        alert("Witaj w świecie małp! 🐵");
+    }
+</script>
   </body>
 </html>
