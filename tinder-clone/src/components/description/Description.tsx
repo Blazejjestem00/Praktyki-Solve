@@ -1,13 +1,14 @@
 import { useState } from 'react'
-import Description from '../description/Description'
+
 
 function MainView() {
   const [count, setCount] = useState(0)
 
   return (
-  <div>
-    <Description />
-  </div>
+    <div className='description'>
+      <p>Description</p>
+      <p>This is a simple description of the user.</p>
+    </div>
   )
 }
 
