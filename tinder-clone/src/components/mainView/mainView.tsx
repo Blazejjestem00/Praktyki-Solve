@@ -132,16 +132,15 @@ export { osoby };
 
 function MainView() {
   return (
-    <div>
-      <div>
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "20px" }}>
+      <div style={{ width: "100%" }}>
         <Info osoba={osoby[0]} />
       </div>
-      <div>
-        <div>
-          <List />
-
-          <Swipe />
-        </div>
+      <div style={{ width: "100%" }}>
+        <List />
+      </div>
+      <div style={{ width: "100%" }}>
+        <Swipe />
       </div>
     </div>
   );
