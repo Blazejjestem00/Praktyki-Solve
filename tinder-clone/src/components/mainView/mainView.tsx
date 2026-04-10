@@ -143,6 +143,7 @@ function MainView() {
       </div>
     </div>
   );
+
 }
 
 export default MainView;
