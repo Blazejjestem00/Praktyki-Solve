@@ -1,23 +1,31 @@
-import { useState } from 'react'
 import '../../../public/../src/components/info/styl.css'
-
+import { osoby } from '../mainView/mainView'
 
 function Info() {
-  const [count, setCount] = useState(0)
 
   return (
   <div>
     <div id='content'>
-    <label id="imie">Anna</label><label id='inter'> </label>
-    <label id="nazwisko">Nowak</label><label id='inter'>, </label>
-    <label id="wiek">12</label><br />
+      {osoby.map((osoba) => (
+        <div key={osoba.id} className="List">
+          {/* <img src={osoba.zdjecieUrl} id="zdj"alt={osoba.imie} className="profile-picture" />
+          <p className="info">{osoba.imie} <br />{osoba.wiek} Lat</p>
+          <p className="description">{osoba.opis}</p> */}
+          <div id='info'>
+            <img src={osoba.zdjecieUrl} alt={osoba.imie} />
+    <label id="imie">{osoba.imie}</label><label id='inter'> </label>
+    <label id="nazwisko">{osoba.nazwisko}</label><label id='inter'>, </label>
+    <label id="wiek">{osoba.wiek}</label><br />
+    <label id='opis'>{osoba.opis}</label>
     <ul>
-      <li>Sport</li>
-      <li>Muzyka</li>
-      <li>Literatura</li>
+      <li>{osoba.zainteresowania.join(', ')}</li>
     </ul>
-  <label id='instagram'>@Annadzik</label>
+  <label id='instagram'>@{osoba.instagram}</label>
   </div>
+        </div>
+      ))}
+    </div>
+    
   </div>
   )
 }
