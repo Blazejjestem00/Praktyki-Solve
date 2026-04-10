@@ -1,9 +1,9 @@
-import Info from '../info/info'
-import Description from '../description/Description'
-import List from '../list/List'
-import Photo from '../Photo/Photo'
+import Info from "../info/info";
+import Description from "../description/Description";
+import List from "../list/List";
+import Photo from "../Photo/Photo";
 
-import Swipe from '../swipe/Swipe'
+import Swipe from "../swipe/Swipe";
 
 const osoby = [
   {
@@ -16,7 +16,7 @@ const osoby = [
     instagram: "jan_fit25",
     opis: "Hej, jestem Jan 🙂 Lubię sport, szczególnie siłownię i jazdę na rowerze. Szukam aktywnych osób do wspólnych treningów i wyjazdów.",
     haslo: "123456",
-    zdjecieUrl: "https://randomuser.me/api/portraits/men/1.jpg"
+    zdjecieUrl: "https://randomuser.me/api/portraits/men/1.jpg",
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ const osoby = [
     instagram: "ania.codes",
     opis: "Hej, jestem Ania 👋 Na co dzień programuję frontend, a po godzinach lubię podróżować i poznawać nowe miejsca. Szukam kreatywnych ludzi z pasją.",
     haslo: "123456",
-    zdjecieUrl: "https://randomuser.me/api/portraits/women/2.jpg"
+    zdjecieUrl: "https://randomuser.me/api/portraits/women/2.jpg",
   },
   {
     id: 3,
@@ -40,7 +40,7 @@ const osoby = [
     instagram: "piotr_travels",
     opis: "Cześć, jestem Piotr 🌍 Uwielbiam podróże i odkrywanie nowych kultur. Często chodzę po górach. Szukam osób do wspólnych wypraw.",
     haslo: "123456",
-    zdjecieUrl: "https://randomuser.me/api/portraits/men/3.jpg"
+    zdjecieUrl: "https://randomuser.me/api/portraits/men/3.jpg",
   },
   {
     id: 4,
@@ -52,7 +52,7 @@ const osoby = [
     instagram: "kasia_shots",
     opis: "Hej, jestem Kasia 📸 Studiuję i zajmuję się fotografią. Lubię łapać chwile i tworzyć coś kreatywnego. Szukam inspirujących osób.",
     haslo: "123456",
-    zdjecieUrl: "https://randomuser.me/api/portraits/women/4.jpg"
+    zdjecieUrl: "https://randomuser.me/api/portraits/women/4.jpg",
   },
   {
     id: 5,
@@ -64,7 +64,7 @@ const osoby = [
     instagram: "tomek_cooks",
     opis: "Cześć, jestem Tomek 🍝 Uwielbiam gotować i odkrywać nowe smaki. Chętnie poznam osoby, które też kochają kuchnię i wspólne gotowanie.",
     haslo: "123456",
-    zdjecieUrl: "https://randomuser.me/api/portraits/men/5.jpg"
+    zdjecieUrl: "https://randomuser.me/api/portraits/men/5.jpg",
   },
   {
     id: 6,
@@ -76,7 +76,7 @@ const osoby = [
     instagram: "magda_reads",
     opis: "Hej, jestem Magda 📚 Kocham książki i spokojne wieczory przy kawie. Interesuję się psychologią. Szukam osób do ciekawych rozmów.",
     haslo: "123456",
-    zdjecieUrl: "https://randomuser.me/api/portraits/women/6.jpg"
+    zdjecieUrl: "https://randomuser.me/api/portraits/women/6.jpg",
   },
   {
     id: 7,
@@ -88,7 +88,7 @@ const osoby = [
     instagram: "pawel_gamer29",
     opis: "Siema, jestem Paweł 🎮 Gram, streamuję i interesuję się technologią. Szukam ludzi do wspólnego grania i luźnych rozmów.",
     haslo: "123456",
-    zdjecieUrl: "https://randomuser.me/api/portraits/men/7.jpg"
+    zdjecieUrl: "https://randomuser.me/api/portraits/men/7.jpg",
   },
   {
     id: 8,
@@ -100,7 +100,7 @@ const osoby = [
     instagram: "ola_paws",
     opis: "Hej, jestem Ola 🐶 Uwielbiam zwierzęta i długie spacery. Działam też w wolontariacie. Szukam empatycznych i pozytywnych osób.",
     haslo: "123456",
-    zdjecieUrl: "https://randomuser.me/api/portraits/women/8.jpg"
+    zdjecieUrl: "https://randomuser.me/api/portraits/women/8.jpg",
   },
   {
     id: 9,
@@ -112,7 +112,7 @@ const osoby = [
     instagram: "michal_runs",
     opis: "Cześć, jestem Michał 🏃‍♂️ Biegam maratony i dbam o formę. Szukam osób do wspólnych treningów i motywacji.",
     haslo: "123456",
-    zdjecieUrl: "https://randomuser.me/api/portraits/men/9.jpg"
+    zdjecieUrl: "https://randomuser.me/api/portraits/men/9.jpg",
   },
   {
     id: 10,
@@ -124,27 +124,30 @@ const osoby = [
     instagram: "natalia.designs",
     opis: "Hej, jestem Natalia 🎨 Projektuję UI/UX i interesuję się sztuką. Szukam kreatywnych osób do wymiany pomysłów.",
     haslo: "123456",
-    zdjecieUrl: "https://randomuser.me/api/portraits/women/10.jpg"
-  }
+    zdjecieUrl: "https://randomuser.me/api/portraits/women/10.jpg",
+  },
 ];
 
-export { osoby }
+export { osoby };
 
 function MainView() {
   return (
     <div>
-      <div><Photo /></div>
-      <div><Info /></div>
+      <div>
+        <Photo />
+      </div>
+      <div>
+        <Info osoba={osoby[0]} />
+      </div>
       <div>
         <div>
           <List />
 
           <Swipe />
-          
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default MainView
+export default MainView;
