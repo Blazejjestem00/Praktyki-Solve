@@ -1,5 +1,5 @@
 import { useState } from 'react'
-
+// import { GoHeartFill } from "react-icons/go";
 import './swipe.css'
 
 function Swipe() {
@@ -7,9 +7,7 @@ function Swipe() {
 
   return (
     <div className='swap'>
-        <p className='arrow_left'><img src={LeftArrow} alt="arrow"/></p>
-        <p className='heart'><img src={Heart} alt="arrow"/></p>
-        <p className='arrow_right'><img src={RightArrow} alt="arrow2"/></p>
+      
     </div>
   )
 }
