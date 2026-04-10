@@ -3,6 +3,11 @@ import Description from '../description/Description'
 import List from '../list/List'
 import Photo from '../Photo/Photo'
 
+import Swipe from '../swipe/Swipe'
+
+function MainView() {
+  const [count, setCount] = useState(0)
+
 const osoby = [
   {
     "id": 1,
@@ -114,6 +119,7 @@ function MainView() {
       <div>
         <div>
           <List />
+          <Swipe />
           <Description />
         </div>
       </div>

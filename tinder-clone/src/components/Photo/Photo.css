@@ -11,10 +11,7 @@ object-position: center;
 } 
 }
 #photo{
-    width:75%;
-    height:720px;
+    height:400px;
 overflow:hidden;
-margin:0 auto;
-padding-top: 10px;
-padding-bottom: 10px;
+
 }
