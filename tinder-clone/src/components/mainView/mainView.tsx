@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Description from '../description/Description'
+import Swipe from '../swipe/Swipe'
 
 function MainView() {
   const [count, setCount] = useState(0)
@@ -7,6 +8,7 @@ function MainView() {
   return (
   <div>
     <Description />
+    <Swipe />
   </div>
   )
 }

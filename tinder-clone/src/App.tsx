@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import './App.css'
 import MainView from './components/mainView/mainView'
-import Swipe from './components/swipe/Swipe'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -9,7 +8,6 @@ function App() {
   return (
   <div>    
     <MainView />
-    <Swipe />
   </div>
   )
 }
