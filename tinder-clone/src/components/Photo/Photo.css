@@ -1,0 +1,20 @@
+img{
+width: 100%;
+height: auto;
+object-fit: cover; 
+object-position: center; 
+
+@media (max-width: 768px) {
+    img{
+        content: url('dzik.jpg');
+    }
+} 
+}
+#photo{
+    width:75%;
+    height:720px;
+overflow:hidden;
+margin:0 auto;
+padding-top: 10px;
+padding-bottom: 10px;
+}

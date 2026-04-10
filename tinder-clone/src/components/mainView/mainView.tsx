@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import dzik from '../../../public/dzik.jpg'
 import Info from '../info/info'
 
 import Description from '../description/Description'
