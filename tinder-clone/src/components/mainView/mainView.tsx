@@ -7,14 +7,15 @@ function MainView() {
   const [count, setCount] = useState(0)
 
   return (
-  <div><Info /></div>
-  <div>
-    
-        <List />
-    <Description />
-    
-  </div>
-  
+    <div>
+      <div><Info /></div>
+      <div>
+        <div>
+          <List />
+          <Description />
+        </div>
+      </div>
+    </div>
   )
 }
 
