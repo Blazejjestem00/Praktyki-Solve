@@ -7,6 +7,8 @@ function App() {
 
   return (
   <div>    <MainView /><Photo />
+  <div>    
+    <MainView />
   </div>
   )
 }
