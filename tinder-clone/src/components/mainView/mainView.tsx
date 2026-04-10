@@ -1,7 +1,7 @@
 import Info from "../info/info";
 import Description from "../description/Description";
 import List from "../list/List";
-import Photo from "../Photo/Photo";
+
 
 import Swipe from "../swipe/Swipe";
 
@@ -133,9 +133,6 @@ export { osoby };
 function MainView() {
   return (
     <div>
-      <div>
-        <Photo />
-      </div>
       <div>
         <Info osoba={osoby[0]} />
       </div>
