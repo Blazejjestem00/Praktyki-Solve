@@ -1,0 +1,48 @@
+
+#imie,#nazwisko,#inter,#wiek{
+font-size: 50px;
+letter-spacing: -2px;
+font-weight: bold;
+color: rgb(40, 40, 40);
+}
+#wiek{
+    background: linear-gradient(141deg, rgb(192, 21, 21), rgb(70, 52, 201));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color:transparent;
+}
+div{
+   width: 75%;
+    margin: 0 auto;
+    margin-top: 100px;
+    
+} 
+#content{
+    background-color: rgb(205, 205, 205);
+    width: 100%;
+    height: 250px;
+    padding-top: 50px;
+    
+}
+img[src='ig.jpeg']{
+    width: 25px;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+#instagram{
+    background-color: rgba(128, 128, 128, 0.3);
+}
+li{
+    text-align: left;
+    color:rgb(53, 49, 49)
+}
+ul{
+    background: linear-gradient(141deg, rgb(109, 134, 209), rgb(70, 52, 201));
+    /* background-color: rgb(109, 134, 209); */
+    width: 80%;
+    margin:20px auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 2.5px solid rgb(61, 79, 134,0.5);
+    border-radius: 10px;
+}
