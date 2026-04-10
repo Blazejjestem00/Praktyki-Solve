@@ -1,4 +1,5 @@
 import "../../../public/../src/components/info/styl.css";
+import { FaInstagram } from "react-icons/fa";
 
 function Info({ osoba }: any) {
   return (
@@ -20,7 +21,7 @@ function Info({ osoba }: any) {
             <ul>
               <li>{osoba.zainteresowania.join(" ")}</li>
             </ul>
-            <label id="instagram">@{osoba.instagram}</label>
+            <label id="instagram"> <FaInstagram /> Instagram: @{osoba.instagram}</label>
           </div>
         </div>
       </div>

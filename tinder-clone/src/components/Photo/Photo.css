@@ -1,17 +1,16 @@
 img{
-width: 100%;
-height: auto;
-object-fit: cover; 
-object-position: center; 
+    width: 100%;
+    height: auto;
+    object-fit: cover; 
+    object-position: center; 
 
-@media (max-width: 768px) {
-    img{
-        content: url('dzik.jpg');
-    }
-} 
+    @media (max-width: 768px) {
+        img{
+            content: url('dzik.jpg');
+        }
+    } 
 }
 #photo{
     height:400px;
-overflow:hidden;
-
+    overflow:hidden;
 }

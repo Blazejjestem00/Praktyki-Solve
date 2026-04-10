@@ -1,9 +1,7 @@
 import Info from "../info/info";
-import Description from "../description/Description";
 import List from "../list/List";
-
-
 import Swipe from "../swipe/Swipe";
+import TinderLogo from "../../assets/Tinder_full_logo.png";
 
 const osoby = [
   {
@@ -133,6 +131,7 @@ export { osoby };
 function MainView() {
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "20px" }}>
+      <div><img src={TinderLogo} alt="Tinder Logo" /></div>
       <div style={{ width: "100%" }}>
         <Info osoba={osoby[0]} />
       </div>

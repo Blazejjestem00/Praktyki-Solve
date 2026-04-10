@@ -22,12 +22,9 @@ div {
   padding-top: 10px;
 }
 img {
-  width: 200px;
+  width: 100%;
   border-radius: 5px;
   margin-top: 5px;
-}
-#instagram {
-  background-color: rgba(128, 128, 128, 0.3);
 }
 li {
   text-align: left;
