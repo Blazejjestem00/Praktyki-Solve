@@ -1,0 +1,9 @@
+img{
+    height: 50px;
+    width: 50px;
+    padding: 5px;
+}
+.swap{
+    display: flex;
+    justify-content: center;
+}
