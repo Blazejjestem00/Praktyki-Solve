@@ -7,10 +7,12 @@ function MainView() {
   const [count, setCount] = useState(0)
 
   return (
-  <div><Info /></div>
-  <div>
-    <Description />
-  </div>
+    <>
+      <div><Info /></div>
+      <div>
+        <Description />
+      </div>
+    </>
   )
 }
 
