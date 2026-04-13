@@ -2,6 +2,7 @@ import Info from "../info/info";
 import List from "../list/List";
 import Swipe from "../swipe/Swipe";
 import TinderLogo from "../../assets/Tinder_full_logo.png";
+import { useState } from "react";
 
 const osoby = [
   {
@@ -129,17 +130,25 @@ const osoby = [
 export { osoby };
 
 function MainView() {
-  return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "20px" }}>
-      <div><img src={TinderLogo} alt="Tinder Logo" /></div>
-      <div style={{ width: "100%" }}>
-        <Info osoba={osoby[0]} />
-      </div>
-      <div style={{ width: "100%" }}>
-        </div>
-        </div>
+    const [person, setPerson] = useState(0)
 
-  )
-    }
+    const increment = () => setPerson(prev => prev < osoby.length - 1 ? prev + 1 : 0);
+    const decrement = () => setPerson(prev => prev > 0 ? prev - 1 : osoby.length-1);
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+      <div><img src={TinderLogo} alt="Tinder Logo" /></div>
+      <div style={{ width: "100%"}}>
+        <Info osoba={osoby[person]} />
+      </div>
+      <div style={{ width: "100%"}}>
+        <List />
+      </div>
+      <div style={{ width: "100%"}}>
+        <Swipe onIncrement={increment} onDecrement={decrement} />
+      </div>
+    </div>
+  );
+}
 
 export default MainView;

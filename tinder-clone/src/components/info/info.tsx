@@ -10,7 +10,10 @@ function Info({ osoba }: any) {
           <p className="info">{osoba.imie} <br />{osoba.wiek} Lat</p>
           <p className="description">{osoba.opis}</p> */}
           <div id="info">
-            <img src={osoba.zdjecieUrl} alt={osoba.imie} />
+            <div id="photo2">
+              <img src={osoba.zdjecieUrl} alt={osoba.imie} />
+              </div>
+              <div id="text">
             <label id="imie">{osoba.imie}</label>
             <label id="inter"> </label>
             <label id="nazwisko">{osoba.nazwisko}</label>
@@ -22,6 +25,7 @@ function Info({ osoba }: any) {
               <li>{osoba.zainteresowania.join(" ")}</li>
             </ul>
             <label id="instagram"> <FaInstagram /> Instagram: @{osoba.instagram}</label>
+            </div>
           </div>
         </div>
       </div>
