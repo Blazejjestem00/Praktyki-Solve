@@ -1,4 +1,4 @@
-img{
+/* img{
     width: 100%;
     height: auto;
     object-fit: cover; 
@@ -9,7 +9,7 @@ img{
             content: url('dzik.jpg');
         }
     } 
-}
+} */
 #photo{
     height:400px;
     overflow:hidden;
