@@ -10,12 +10,13 @@ function Registration() {
     e.preventDefault();
     /* obsługa wysłania formularza i  blokada odświeżenia strony, e to event, czyli zdarzenie, a w React funkcje podobnież często nazywają
     się handle + coś*/
+    //console.log("Kliknięto submit") 
     if (password !== confirmPassword) { //sprawdza, czy oba hasła są identyczne
       alert("Hasła nie są takie same!");
-      return; //Przerywa to działanie kodu
+      return; // to przerywa działanie kodu
     }
 
-    console.log({ email, password });
+    console.log({ email, password }); //nie wiem, co dalej robić z tymi danymi, więc niech będą chociaż tutaj wypisane
   };
 
   return (
