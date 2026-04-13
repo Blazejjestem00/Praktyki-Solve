@@ -1,0 +1,24 @@
+form{
+    background-color: grey;
+    
+}
+form h3{
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+    color: black;
+}
+button{
+    background-color: blue;
+    border-radius: 2px;
+    width:20%;
+    height:15%;
+}
+input{
+    background-color: lightgrey;
+    margin:1%;
+}
+label{
+    color: black
+}
+

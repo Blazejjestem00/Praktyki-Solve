@@ -136,13 +136,10 @@ function MainView() {
         <Info osoba={osoby[0]} />
       </div>
       <div style={{ width: "100%" }}>
-        <List />
-      </div>
-      <div style={{ width: "100%" }}>
-        <Swipe />
-      </div>
-    </div>
-  );
-}
+        </div>
+        </div>
+
+  )
+    }
 
 export default MainView;
