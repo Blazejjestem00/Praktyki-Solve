@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import Info from "../info/info";
 import List from "../list/List";
 import Swipe from "../swipe/Swipe";
@@ -137,36 +136,9 @@ function MainView() {
         <Info osoba={osoby[0]} />
       </div>
       <div style={{ width: "100%" }}>
-=======
-import { useState } from 'react'
-import dzik from '../../../public/dzik.jpg'
-
-import Info from '../info/info.tsx'
-import Description from '../description/Description.tsx'
-import List from '../list/List.tsx'
-import Login from '../login/Login.tsx'
-import Registration from '../registration/Registration.tsx'
-
-function MainView() {
-  const [count, setCount] = useState(0)
-
-  return (<>
-  <div></div>
-
-  <div><Info /></div>
-  <div><Login /></div>
-  <div><Registration /></div>
-  <div>
-    
->>>>>>> 2a325c5 (Dodanie logowania i rejestracji)
-        <List />
-      </div>
-      <div style={{ width: "100%" }}>
-        <Swipe />
-      </div>
-    </div>
-  );
-
-}
+        </div>
+        </div>
+  )
+    }
 
 export default MainView;
