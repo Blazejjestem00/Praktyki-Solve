@@ -7,7 +7,6 @@
   border: 2px solid transparent;
   transition: border-color 0.3s;
   margin-bottom: 24px;
-
   &:hover {
     border-color: var(--accent-border);
   }
@@ -16,6 +15,10 @@
     outline-offset: 2px;
   }
 }
+
+
+
+
 
 .hero {
   position: relative;
@@ -167,7 +170,7 @@
 
   &::before,
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: -4.5px;
     border: 5px solid transparent;
