@@ -22,7 +22,9 @@ function Info({ osoba }: any) {
             <br />
             <label id="opis">{osoba.opis}</label>
             <ul>
-              <li>{osoba.zainteresowania.join(" ")}</li>
+              <li>{osoba.zainteresowania[0]}</li>
+              <li>{osoba.zainteresowania[1]}</li>
+              <li>{osoba.zainteresowania[2]}</li>
             </ul>
             <label id="instagram"> <FaInstagram /> Instagram: @{osoba.instagram}</label>
             </div>
