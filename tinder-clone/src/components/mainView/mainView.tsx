@@ -1,5 +1,4 @@
 import Info from "../info/info";
-import List from "../list/List";
 import Swipe from "../swipe/Swipe";
 import TinderLogo from "../../assets/Tinder_full_logo.png";
 import { useState } from "react";
@@ -145,9 +144,7 @@ function MainView() {
       <div style={{ width: "100%" }}>
         <Info osoba={osoby[person]} />
       </div>
-      <div style={{ width: "100%" }}>
-        <List />
-      </div>
+      <div style={{ width: "100%" }}></div>
       <div style={{ width: "100%" }}>
         <Swipe onIncrement={increment} onDecrement={decrement} />
       </div>

@@ -1,5 +1,3 @@
-import "./Bio.css";
-
 function Bio({ osoba }: any) {
   return (
     <div className="bio">

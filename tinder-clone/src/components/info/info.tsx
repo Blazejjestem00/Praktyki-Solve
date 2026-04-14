@@ -1,4 +1,4 @@
-import "../../../public/../src/components/info/styl.css";
+import "./styl.css";
 import { FaInstagram } from "react-icons/fa";
 
 function Info({ osoba }: any) {
@@ -35,7 +35,7 @@ function Info({ osoba }: any) {
         </div>
       </div>
     
-  );
+  )
 }
 
 export default Info;
