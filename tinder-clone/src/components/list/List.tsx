@@ -1,9 +1,6 @@
-import './List.css'
+import "./List.css";
 function ListaOsob() {
-  return (
-    <div>
-    </div>
-  );
+  return <div></div>;
 }
 
-export default ListaOsob
+export default ListaOsob;
