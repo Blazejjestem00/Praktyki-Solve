@@ -3,7 +3,7 @@ import ProfileName from '../profileName/profileName'
 import ProfilePhoto from '../profilePhoto/profilePhoto'
 
 
-function App() {
+function profileView() {
   const [count, setCount] = useState(0)
 
   return (
@@ -14,4 +14,4 @@ function App() {
   )
 }
 
-export default App
+export default profileView
