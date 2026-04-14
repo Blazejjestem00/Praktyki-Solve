@@ -28,6 +28,21 @@ function Info({ osoba }: any) {
                 {" "}
                 <FaInstagram /> Instagram: @{osoba.instagram}
               </label>
+              </div>
+              <div id="text">
+            <label id="imie">{osoba.imie}</label>
+            <label id="inter"> </label>
+            <label id="nazwisko">{osoba.nazwisko}</label>
+            <label id="inter">, </label>
+            <label id="wiek">{osoba.wiek}</label>
+            <br />
+            <label id="opis">{osoba.opis}</label>
+            <ul>
+              <li>{osoba.zainteresowania[0]}</li>
+              <li>{osoba.zainteresowania[1]}</li>
+              <li>{osoba.zainteresowania[2]}</li>
+            </ul>
+            <label id="instagram"> <FaInstagram /> Instagram: @{osoba.instagram}</label>
             </div>
           </div>
         </div>
