@@ -1,7 +1,7 @@
 Table users {
   id                  serial        [primary key]
   first_name          varchar(50)   [not null]
-  last_name           varchar(50)   [not null]
+  surname             varchar(50)   [not null]
   email               varchar(255)  [unique, not null]
   gender              varchar(20)   [not null]       // 'male', 'female'
   created_at          timestamptz   [default: `now()`]
@@ -30,3 +30,5 @@ Table matches {
     (user1_id, user2_id) [unique]
   }
 }
+
+--https://dbdiagram.io/d
