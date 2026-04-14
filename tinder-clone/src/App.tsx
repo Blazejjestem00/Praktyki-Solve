@@ -1,12 +1,9 @@
-import { useState } from "react";
 import "./App.css";
-import MainView from "./components/mainView/mainView";
-import { BrowserRouter, Route, Routes } from "react-router";
-import ProfileView from "./components/profileView/profileView";
+import MainView from "./components/MainView/MainView";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ProfileView from "./components/ProfileView/ProfileView";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <BrowserRouter>
       <Routes>
