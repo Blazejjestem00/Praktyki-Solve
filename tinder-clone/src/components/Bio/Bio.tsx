@@ -1,8 +1,8 @@
-function Bio({ osoba }: any) {
+function Bio({ person }: any) {
   return (
     <div className="bio">
       <p>Bio</p>
-      <p>{osoba.opis}</p>
+      <p>{person.caption}</p>
     </div>
   );
 }

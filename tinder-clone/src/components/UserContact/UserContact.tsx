@@ -1,18 +1,18 @@
 import "./UserContact.css";
 import { FaInstagram, FaEnvelope } from "react-icons/fa";
 
-function UserContact({ osoba }: any) {
+function UserContact({ person }: any) {
   return (
-    <div key={osoba.id}>
+    <div key={person.id}>
       <div className="user-contact">
         <h3>Kontakt</h3>
         <div className="contact-item">
           <FaEnvelope className="contact-icon" />
-          <span>{osoba.email}</span>
+          <span>{person.email}</span>
         </div>
         <div className="contact-item">
           <FaInstagram className="contact-icon" />
-          <span>@{osoba.instagram}</span>
+          <span>@{person.instagram}</span>
         </div>
       </div>
     </div>

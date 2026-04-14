@@ -1,13 +1,13 @@
-#imie,
-#nazwisko,
+#name,
+#surname,
 #inter,
-#wiek {
+#age {
   font-size: 50px;
   letter-spacing: -2px;
   font-weight: bold;
   color: rgb(40, 40, 40);
 }
-#wiek {
+#age {
   background: linear-gradient(141deg, rgb(192, 21, 21), rgb(70, 52, 201));
   background-clip: text;
   -webkit-background-clip: text;
