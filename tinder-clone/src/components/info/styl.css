@@ -18,12 +18,12 @@ div {
   margin: 0 auto;
   display: block;
 }
-#photo2 img{
+#photo2 img {
   width: 50%;
   display: block;
   margin: 10px auto;
 }
-#text{
+#text {
   width: 50%;
 }
 #info {
@@ -34,9 +34,6 @@ img {
   width: 100%;
   border-radius: 5px;
   margin-top: 5px;
-
-
-  
 }
 li {
   text-align: left;

@@ -1,0 +1,60 @@
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  padding: 20px;
+  background-color: #fff;
+  border-top: 1px solid #eee;
+}
+
+.btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex: 1;
+  max-width: 100px;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-like {
+  background-color: #ff4a79;
+  color: white;
+}
+
+.btn-like:hover {
+  background-color: #ff2657;
+}
+
+.btn-message {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-message:hover {
+  background-color: #0056b3;
+}
+
+.btn-block {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-block:hover {
+  background-color: #c82333;
+}
+
+.btn svg {
+  font-size: 18px;
+}
