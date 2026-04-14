@@ -1,17 +1,16 @@
-import { useState } from 'react'
-import ProfileName from '../profileName/profileName'
-import ProfilePhoto from '../profilePhoto/profilePhoto'
+import { useState } from "react";
+import ProfileName from "../profileName/profileName";
+import ProfilePhoto from "../profilePhoto/profilePhoto";
 
-
-function profileView() {
-  const [count, setCount] = useState(0)
+function ProfileView() {
+  const [count, setCount] = useState(0);
 
   return (
     <div>
       <ProfileName osoba={count} />
       <ProfilePhoto osoba={count} />
     </div>
-  )
+  );
 }
 
-export default profileView
+export default ProfileView;
