@@ -1,0 +1,11 @@
+.home-button {
+  position: absolute; /* przyklejony do ekranu */
+  top: 40%;
+  right: 30%;
+  z-index: 1000; /* żeby był nad wszystkim */
+}
+
+.home-button img {
+  width: 50px;
+  cursor: pointer;
+}

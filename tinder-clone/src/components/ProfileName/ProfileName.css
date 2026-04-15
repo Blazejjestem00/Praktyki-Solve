@@ -1,0 +1,9 @@
+.profile-title {
+  position: absolute;
+  top: 74.5%;
+  right: 56%;
+  display: flex;
+  gap: 5px;
+  font-size: 50px;
+  z-index: 1000;
+}
