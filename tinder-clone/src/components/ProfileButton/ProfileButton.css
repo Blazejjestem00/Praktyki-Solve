@@ -1,0 +1,11 @@
+.profile-button {
+  position: absolute;
+  top: 45%;
+  right: 30%;
+  z-index: 1000;
+}
+
+.profile-button img {
+  width: 50px;
+  cursor: pointer;
+}
