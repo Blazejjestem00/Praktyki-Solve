@@ -13,13 +13,12 @@ function ProfilePhoto({ person }: any) {
       <div className="photo-progress">
         <div className="photo-container">
           <div className="photo-progress">
-            {person.photoUrl.map((_: any, i: number) =>
-              i === index ? (
-                <div key={i} className="active-photo" />
-              ) : (
-                <div key={i} className="inactive-photo" />
-              ),
-            )}
+            {person.photoUrl.map((_: any, i: number) => (
+              <div
+                key={i}
+                className={i === index ? "active-photo" : "inactive-photo"}
+              />
+            ))}
           </div>
         </div>
       </div>
