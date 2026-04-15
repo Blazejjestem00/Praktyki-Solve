@@ -8,7 +8,7 @@ function Info({ person }: any) {
         <div key={person.id} className="List">
           <div id="info">
             <div id="photo2">
-              <img src={person.photoUrl} alt={person.name} />
+              <img src={person.photoUrl[0]} alt={person.name} />
             </div>
             
               
