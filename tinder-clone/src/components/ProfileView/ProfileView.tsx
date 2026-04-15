@@ -1,4 +1,3 @@
-import { useState } from "react";
 import ProfileName from "../ProfileName/ProfileName";
 import ProfilePhoto from "../ProfilePhoto/ProfilePhoto";
 import UserContact from "../UserContact/UserContact";
@@ -9,20 +8,23 @@ import TinderLogo from "../../assets/Tinder_full_logo.png";
 import { persons } from "../MainView/MainView";
 
 function ProfileView() {
-  const [person] = useState(0);
+  const personIndex = 0;
+
+  const person = persons[personIndex];
 
   return (
     <div>
       <div>
-        <img src={TinderLogo} alt="Tinder Logo" style={{ padding: "" }} />
+        <img src={TinderLogo} alt="Tinder Logo" />
       </div>
-      <ProfileName person={persons[person]} />
-      <ProfilePhoto person={persons[person]} />
+
+      <ProfileName person={person} />
+      <ProfilePhoto person={person} />
       <ActionButtons />
       <HomeButton />
       <br />
-      <Bio person={persons[person]} />
-      <UserContact person={persons[person]} />
+      <Bio person={person} />
+      <UserContact person={person} />
     </div>
   );
 }

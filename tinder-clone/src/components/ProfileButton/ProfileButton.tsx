@@ -1,10 +1,8 @@
-import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import ProfileButton from "../../assets/ProfileButton.jpeg";
 import "./ProfileButton.css";
-function ProfileView() {
-  const [person] = useState(0);
 
+function ProfileView() {
   return (
     <div>
       <NavLink to="/profile" className="profile-button">

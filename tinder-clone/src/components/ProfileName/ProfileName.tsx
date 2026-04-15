@@ -1,6 +1,15 @@
 import "./ProfileName.css";
 
-function profileName({ person }: any) {
+interface Person {
+  id: number;
+  name: string;
+  age: number;
+}
+
+interface ProfileNameProps {
+  person: Person;
+}
+function ProfileName({ person }: ProfileNameProps) {
   return (
     <div key={person.id}>
       <div className="profile-title">
@@ -12,4 +21,4 @@ function profileName({ person }: any) {
   );
 }
 
-export default profileName;
+export default ProfileName;
