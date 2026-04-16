@@ -2,6 +2,7 @@ import "./App.css";
 import MainView from "./components/MainView/MainView";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProfileView from "./components/ProfileView/ProfileView";
+import MatchView from "./components/MatchView/MatchView";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainView />} />
         <Route path="/profile" element={<ProfileView />} />
+        <Route path='/match' element={<MatchView />} />
       </Routes>
     </BrowserRouter>
   );

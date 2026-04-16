@@ -1,0 +1,35 @@
+.Pairs, .Chat{
+    width: 20%;
+    float: left;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    font-weight: bold;
+    font-size: 30px;
+    margin: 20px 0;
+    position: relative;
+    color: white;
+}
+.Chat{
+    width: 25%;
+}
+button:hover{
+    font-size: 30px;
+    cursor: pointer;
+}
+.Pairs::after, .Chat::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 15%;
+    width: 70%;
+    height: 5px;
+    background: rgb(177, 0, 0);
+
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+.Pairs[data-active="true"]::after,
+.Chat[data-active="true"]::after {
+    transform: scaleX(1);
+}
