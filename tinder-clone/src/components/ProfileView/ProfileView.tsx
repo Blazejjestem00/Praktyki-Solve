@@ -6,23 +6,25 @@ import HomeButton from "../HomeButton/HomeButton";
 import ActionButtons from "../ActionButtons/ActionButtons";
 import TinderLogo from "../../assets/Tinder_full_logo.png";
 import { persons } from "../MainView/MainView";
-
+import Animation from "../AnimationTest/Animation";
+import { useParams } from "react-router-dom";
 function ProfileView() {
-  const personIndex = 0;
+  const { id } = useParams();
 
-  const person = persons[personIndex];
+  const person = persons.find((p) => p.id === Number(id));
+
+  if (!person) return <div>Nie znaleziono profilu</div>;
 
   return (
     <div>
-      <div>
-        <img src={TinderLogo} alt="Tinder Logo" />
-      </div>
+      <img src={TinderLogo} alt="Tinder Logo" />
 
       <ProfileName person={person} />
       <ProfilePhoto person={person} />
       <ActionButtons />
       <HomeButton />
       <br />
+      <Animation />
       <Bio person={person} />
       <UserContact person={person} />
     </div>
