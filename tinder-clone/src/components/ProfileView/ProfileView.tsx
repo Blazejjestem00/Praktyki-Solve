@@ -6,7 +6,6 @@ import HomeButton from "../HomeButton/HomeButton";
 import ActionButtons from "../ActionButtons/ActionButtons";
 import TinderLogo from "../../assets/Tinder_full_logo.png";
 import { persons } from "../MainView/MainView";
-import Animation from "../AnimationTest/Animation";
 import { useParams } from "react-router-dom";
 function ProfileView() {
   const { id } = useParams();
@@ -24,7 +23,6 @@ function ProfileView() {
       <ActionButtons />
       <HomeButton />
       <br />
-      <Animation />
       <Bio person={person} />
       <UserContact person={person} />
     </div>
