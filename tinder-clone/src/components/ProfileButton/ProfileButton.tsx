@@ -1,15 +1,16 @@
 import { NavLink } from "react-router-dom";
-import ProfileButton from "../../assets/ProfileButton.jpeg";
+import ProfileButtonImg from "../../assets/ProfileButton.jpeg";
 import "./ProfileButton.css";
-
-function ProfileView() {
+function ProfileButton({ person }: any) {
   return (
-    <div>
-      <NavLink to="/profile" className="profile-button">
-        <img src={ProfileButton} alt="profile" style={{ width: "50px" }} />
-      </NavLink>
-    </div>
+    <NavLink to={`/profile/${person.id}`} className="profile-button">
+      <img
+        src={ProfileButtonImg}
+        alt="profile"
+        className="profile-button img"
+      />
+    </NavLink>
   );
 }
 
-export default ProfileView;
+export default ProfileButton;

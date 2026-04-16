@@ -1,11 +1,8 @@
 import Info from "../Info/Info";
 import Swipe from "../Swipe/Swipe";
 import TinderLogo from "../../assets/Tinder_full_logo.png";
-import ProfilePhoto from "../ProfilePhoto/ProfilePhoto";
 import ProfileButton from "../ProfileButton/ProfileButton";
 import { useState } from "react";
-import bozena from "../../assets/bozena.png";
-
 const persons = [
   {
     id: 1,
@@ -177,23 +174,6 @@ const persons = [
       "https://randomuser.me/api/portraits/women/68.jpg",
     ],
   },
-  {
-    id: 11,
-    name: "Bożena",
-    surname: "Dąbrowska",
-    age: 59,
-    email: "bozena.d@test.pl",
-    interests: ["spacery", "ogrodnictwo", "kuchnia domowa"],
-    instagram: "bozena_zycie",
-    caption:
-      "Cześć, jestem Bożena 🙂 Lubię spokojne życie, spacery i dbanie o ogród. Chętnie poznam osoby do rozmów i wspólnego spędzania czasu.",
-    password: "123456",
-    photoUrl: [
-      bozena,
-      "https://randomuser.me/api/portraits/women/65.jpg",
-      "https://randomuser.me/api/portraits/women/72.jpg",
-    ],
-  },
 ];
 
 export { persons };
@@ -218,7 +198,7 @@ function MainView() {
         <Info person={persons[personn]} />
       </div>
       <div>
-        <ProfileButton />
+        <ProfileButton person={persons[personn]} />
       </div>
     </div>
   );
