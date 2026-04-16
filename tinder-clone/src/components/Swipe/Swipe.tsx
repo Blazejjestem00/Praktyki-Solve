@@ -15,7 +15,7 @@ export function Swipe({
     <div className="swipe">
       <motion.button
         whileTap={{
-          scale: 3,
+          scale: 2,
           transition: { duration: 0.2 },
         }}
         onClick={onDecrement}
@@ -27,7 +27,7 @@ export function Swipe({
       </motion.button>
       <motion.button
         whileTap={{
-          scale: 3,
+          scale: 2,
           transition: { duration: 0.2 },
         }}
         onClick={onIncrement}
@@ -38,7 +38,7 @@ export function Swipe({
       </motion.button>
       <motion.button
         whileTap={{
-          scale: 3,
+          scale: 2,
           transition: { duration: 0.2 },
         }}
         onClick={onIncrement}

@@ -1,7 +1,5 @@
 import Info from "../Info/Info";
 import Swipe from "../Swipe/Swipe";
-import TinderLogo from "../../assets/Tinder_full_logo.png";
-import ProfileButton from "../ProfileButton/ProfileButton";
 import { useState } from "react";
 const persons = [
   {
@@ -187,18 +185,11 @@ function MainView() {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-      <div>
-        <img src={TinderLogo} alt="Tinder Logo" style={{ padding: "" }} />
-      </div>
-      <div style={{ width: "100%" }}></div>
-      <div style={{ width: "100%" }}>
-        <Swipe onIncrement={increment} onDecrement={decrement} />
-      </div>
       <div style={{ width: "100%" }}>
         <Info person={persons[personn]} />
       </div>
       <div>
-        <ProfileButton person={persons[personn]} />
+        <Swipe onIncrement={increment} onDecrement={decrement} />
       </div>
     </div>
   );
