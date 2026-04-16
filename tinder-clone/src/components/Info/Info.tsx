@@ -10,10 +10,8 @@ function Info({ person }: any) {
             <div id="photo2">
               <img src={person.photoUrl[0]} alt={person.name} />
             </div>
-            
-              
-              </div>
-              <div id="text">
+          </div>
+          <div id="text">
             <label id="name">{person.name}</label>
             <label id="inter"> </label>
             <label id="surname">{person.surname}</label>
@@ -26,13 +24,15 @@ function Info({ person }: any) {
               <li>{person.interests[1]}</li>
               <li>{person.interests[2]}</li>
             </ul>
-            <label id="instagram"> <FaInstagram /> Instagram: @{person.instagram}</label>
-            </div>
+            <label id="instagram">
+              {" "}
+              <FaInstagram /> Instagram: @{person.instagram}
+            </label>
           </div>
         </div>
       </div>
-    
-  )
+    </div>
+  );
 }
 
 export default Info;

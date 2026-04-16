@@ -1,24 +1,23 @@
-#container{
-width: 95%;
-background: linear-gradient(10deg, rgb(222, 29, 81), rgb(237, 88, 61));
-text-align: left;
-padding-top: 50px;
-padding-bottom: 50px;
-padding-left: 5%;
-display: flex;
-align-items: center;
-
+#container {
+  width: 95%;
+  background: linear-gradient(10deg, rgb(222, 29, 81), rgb(237, 88, 61));
+  text-align: left;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-left: 5%;
+  display: flex;
+  align-items: center;
 }
-#banerphoto{
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 2px solid blue;
-    object-fit: cover;
+#baner-photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid blue;
+  object-fit: cover;
 }
-#banertext{
-    color: white;
-    padding-left: 10px;
-    font-weight: bold;
-    font-size: 30px;
+#baner-text {
+  color: white;
+  padding-left: 10px;
+  font-weight: bold;
+  font-size: 30px;
 }

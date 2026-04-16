@@ -1,6 +1,6 @@
 import "./Matches.css";
 
-function Matches({ name, photoUrl}: { name: string; photoUrl: string;}) {
+function Matches({ name, photoUrl }: { name: string; photoUrl: string }) {
   return (
     <div className="card">
       <img src={photoUrl} alt={name} className="card-img" />

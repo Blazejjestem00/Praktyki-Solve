@@ -3,7 +3,8 @@ import "./Baner.css";
 function Baner() {
   return (
     <div id="container">
-      <img id="banerphoto" src={bozena} alt="Bozena"/><span id="banertext">Ty</span>
+      <img id="baner-photo" src={bozena} alt="Bozena" />
+      <span id="baner-text">Ty</span>
     </div>
   );
 }
