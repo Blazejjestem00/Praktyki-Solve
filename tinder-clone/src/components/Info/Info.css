@@ -10,7 +10,7 @@ body {
   z-index: 0;
   margin-top: 50px;
 }
-.tinderCard {
+.tinder-card {
   width: 450px;
   height: 700px;
   position: relative;
@@ -47,7 +47,7 @@ body {
     transparent 100%
   );
 }
-.nameRow {
+.name-row {
   display: flex;
   align-items: baseline;
   gap: 6px;

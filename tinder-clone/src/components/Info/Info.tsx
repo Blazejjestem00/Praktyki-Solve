@@ -4,12 +4,12 @@ import { FaInstagram } from "react-icons/fa";
 function Info({ person }: any) {
   return (
     <div id="content">
-      <div className="tinderCard">
+      <div className="tinder-card">
         <div id="photo2">
           <img src={person.photoUrl[0]} alt={person.name} />
         </div>
         <div id="text">
-          <div className="nameRow">
+          <div className="name-row">
             <span id="name">{person.name}</span>
             <span id="surname"> {person.surname} </span>
             <span id="age"> {person.age}</span>
