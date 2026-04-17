@@ -13,7 +13,6 @@ async def lifespan(app: FastAPI):
     print("Backend wystartował – baza PostgreSQL połączona")
     yield
 
-
 app = FastAPI(
     title="Solve / Tinder Clone - Backend",
     description="API dla aplikacji typu Tinder",
@@ -34,8 +33,7 @@ app.include_router(swipes.router, tags=["swipes"])
 
 @app.get("/")
 def read_root():
-    return {"message": "Solve Backend is running! 🚀", "docs": "/docs"}
-
+    return {"message": "Solve Backend is running!", "docs": "/docs"}
 
 @app.get("/health")
 def health_check():

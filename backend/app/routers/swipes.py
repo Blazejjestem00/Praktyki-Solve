@@ -8,12 +8,10 @@ from ..models import Swipe, Match, User
 
 router = APIRouter()
 
-
 class SwipeCreate(BaseModel):
     swiper_id: int
     swiped_id: int
     action: Literal["like", "pass"]
-
 
 @router.post("/", response_model=Swipe)
 def create_swipe(swipe_data: SwipeCreate, session: Session = Depends(get_session)):
@@ -52,7 +50,6 @@ def create_swipe(swipe_data: SwipeCreate, session: Session = Depends(get_session
             return swipe  # możesz zwrócić też informację o matchu później
 
     return swipe
-
 
 @router.get("/matches/{user_id}", response_model=list[User])
 def get_matches(user_id: int, session: Session = Depends(get_session)):

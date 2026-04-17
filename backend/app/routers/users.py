@@ -7,7 +7,6 @@ from ..schemas import UserCreate, UserResponse
 
 router = APIRouter(prefix="/users", tags=["users"])
 
-
 @router.post("/register", response_model=UserResponse, status_code=201)
 def register_user(user_in: UserCreate, session: Session = Depends(get_session)):
     try:
@@ -34,7 +33,6 @@ def register_user(user_in: UserCreate, session: Session = Depends(get_session)):
         import traceback
         traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(e))
-
 
 @router.get("/all", response_model=list[UserResponse])
 def get_all_users(session: Session = Depends(get_session)):

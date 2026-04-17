@@ -4,7 +4,6 @@ from datetime import datetime
 from sqlmodel import SQLModel, Field, Relationship
 from sqlalchemy import Column, ARRAY, String
 
-
 class UserBase(SQLModel):
     name: str
     surname: Optional[str] = None
@@ -13,7 +12,6 @@ class UserBase(SQLModel):
     interests: Optional[List[str]] = Field(default=None, sa_column=Column(ARRAY(String())))
     instagram: Optional[str] = None
     caption: Optional[str] = None
-
 
 class User(UserBase, table=True):
     __tablename__ = "users"
@@ -33,7 +31,6 @@ class User(UserBase, table=True):
     matches_as_user1: List["Match"] = Relationship(back_populates="user1", sa_relationship_kwargs={"foreign_keys": "[Match.user1_id]"})
     matches_as_user2: List["Match"] = Relationship(back_populates="user2", sa_relationship_kwargs={"foreign_keys": "[Match.user2_id]"})
 
-
 class Photo(SQLModel, table=True):
     __tablename__ = "photos"
 
@@ -46,7 +43,6 @@ class Photo(SQLModel, table=True):
 
     user: Optional["User"] = Relationship(back_populates="photos")
 
-
 class Swipe(SQLModel, table=True):
     __tablename__ = "swipes"
 
@@ -58,7 +54,6 @@ class Swipe(SQLModel, table=True):
 
     swiper: Optional["User"] = Relationship(back_populates="swipes_made", sa_relationship_kwargs={"foreign_keys": "[Swipe.swiper_id]"})
     swiped: Optional["User"] = Relationship(back_populates="swipes_received", sa_relationship_kwargs={"foreign_keys": "[Swipe.swiped_id]"})
-
 
 class Match(SQLModel, table=True):
     __tablename__ = "matches"

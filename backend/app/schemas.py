@@ -2,7 +2,6 @@ from typing import Optional, List
 from datetime import datetime
 from sqlmodel import SQLModel
 
-
 class UserCreate(SQLModel):
     name: str
     surname: Optional[str] = None
