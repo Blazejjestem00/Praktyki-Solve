@@ -1,6 +1,7 @@
 import Info from "../Info/Info";
 import Swipe from "../Swipe/Swipe";
 import { useState } from "react";
+
 const persons = [
   {
     id: 1,
@@ -17,6 +18,9 @@ const persons = [
       "https://randomuser.me/api/portraits/men/1.jpg",
       "https://randomuser.me/api/portraits/men/32.jpg",
       "https://randomuser.me/api/portraits/men/76.jpg",
+      "https://randomuser.me/api/portraits/men/10.jpg",
+      "https://randomuser.me/api/portraits/men/45.jpg",
+      "https://randomuser.me/api/portraits/men/88.jpg",
     ],
   },
   {
@@ -34,6 +38,9 @@ const persons = [
       "https://randomuser.me/api/portraits/women/2.jpg",
       "https://randomuser.me/api/portraits/women/21.jpg",
       "https://randomuser.me/api/portraits/women/45.jpg",
+      "https://randomuser.me/api/portraits/women/10.jpg",
+      "https://randomuser.me/api/portraits/women/33.jpg",
+      "https://randomuser.me/api/portraits/women/77.jpg",
     ],
   },
   {
@@ -51,6 +58,9 @@ const persons = [
       "https://randomuser.me/api/portraits/men/3.jpg",
       "https://randomuser.me/api/portraits/men/33.jpg",
       "https://randomuser.me/api/portraits/men/58.jpg",
+      "https://randomuser.me/api/portraits/men/12.jpg",
+      "https://randomuser.me/api/portraits/men/44.jpg",
+      "https://randomuser.me/api/portraits/men/90.jpg",
     ],
   },
   {
@@ -68,6 +78,9 @@ const persons = [
       "https://randomuser.me/api/portraits/women/4.jpg",
       "https://randomuser.me/api/portraits/women/28.jpg",
       "https://randomuser.me/api/portraits/women/62.jpg",
+      "https://randomuser.me/api/portraits/women/11.jpg",
+      "https://randomuser.me/api/portraits/women/36.jpg",
+      "https://randomuser.me/api/portraits/women/80.jpg",
     ],
   },
   {
@@ -85,6 +98,9 @@ const persons = [
       "https://randomuser.me/api/portraits/men/5.jpg",
       "https://randomuser.me/api/portraits/men/40.jpg",
       "https://randomuser.me/api/portraits/men/71.jpg",
+      "https://randomuser.me/api/portraits/men/14.jpg",
+      "https://randomuser.me/api/portraits/men/52.jpg",
+      "https://randomuser.me/api/portraits/men/83.jpg",
     ],
   },
   {
@@ -102,6 +118,9 @@ const persons = [
       "https://randomuser.me/api/portraits/women/6.jpg",
       "https://randomuser.me/api/portraits/women/19.jpg",
       "https://randomuser.me/api/portraits/women/73.jpg",
+      "https://randomuser.me/api/portraits/women/15.jpg",
+      "https://randomuser.me/api/portraits/women/41.jpg",
+      "https://randomuser.me/api/portraits/women/92.jpg",
     ],
   },
   {
@@ -119,6 +138,9 @@ const persons = [
       "https://randomuser.me/api/portraits/men/7.jpg",
       "https://randomuser.me/api/portraits/men/22.jpg",
       "https://randomuser.me/api/portraits/men/64.jpg",
+      "https://randomuser.me/api/portraits/men/18.jpg",
+      "https://randomuser.me/api/portraits/men/50.jpg",
+      "https://randomuser.me/api/portraits/men/95.jpg",
     ],
   },
   {
@@ -136,6 +158,9 @@ const persons = [
       "https://randomuser.me/api/portraits/women/8.jpg",
       "https://randomuser.me/api/portraits/women/30.jpg",
       "https://randomuser.me/api/portraits/women/55.jpg",
+      "https://randomuser.me/api/portraits/women/13.jpg",
+      "https://randomuser.me/api/portraits/women/47.jpg",
+      "https://randomuser.me/api/portraits/women/86.jpg",
     ],
   },
   {
@@ -153,23 +178,9 @@ const persons = [
       "https://randomuser.me/api/portraits/men/9.jpg",
       "https://randomuser.me/api/portraits/men/26.jpg",
       "https://randomuser.me/api/portraits/men/81.jpg",
-    ],
-  },
-  {
-    id: 10,
-    name: "Natalia",
-    surname: "Zielińska",
-    age: 26,
-    email: "natalia.z@test.pl",
-    interests: ["design", "UX", "sztuka"],
-    instagram: "natalia.designs",
-    caption:
-      "Hej, jestem Natalia 🎨 Projektuję UI/UX i interesuję się sztuką. Szukam kreatywnych osób do wymiany pomysłów.",
-    password: "123456",
-    photoUrl: [
-      "https://randomuser.me/api/portraits/women/10.jpg",
-      "https://randomuser.me/api/portraits/women/36.jpg",
-      "https://randomuser.me/api/portraits/women/68.jpg",
+      "https://randomuser.me/api/portraits/men/16.jpg",
+      "https://randomuser.me/api/portraits/men/60.jpg",
+      "https://randomuser.me/api/portraits/men/97.jpg",
     ],
   },
 ];
@@ -177,20 +188,43 @@ const persons = [
 export { persons };
 
 function MainView() {
-  const [personn, setPerson] = useState(0);
+  const [index, setIndex] = useState(0);
 
-  const increment = () =>
-    setPerson((prev) => (prev < persons.length - 1 ? prev + 1 : 0));
-  const decrement = () => setPerson((prev) => (prev > 0 ? prev - 1 : prev));
+  const nextPerson = () => {
+    setIndex((prev) => {
+      if (prev + 1 >= persons.length) return 0;
+      return prev + 1;
+    });
+  };
+
+  const prevPerson = () => {
+    setIndex((prev) => {
+      if (prev - 1 < 0) return persons.length - 1;
+      return prev - 1;
+    });
+  };
+
+  const handleSwipe = (direction: "left" | "right") => {
+    console.log(direction);
+    nextPerson();
+  };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-      <div style={{ width: "100%" }}>
-        <Info person={persons[personn]} />
-      </div>
-      <div>
-        <Swipe onIncrement={increment} onDecrement={decrement} />
-      </div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "20px",
+        alignItems: "center",
+      }}
+    >
+      <Info
+        person={persons[index]}
+        nextPerson={persons[index + 1]}
+        onSwipe={handleSwipe}
+      />
+
+      <Swipe onIncrement={nextPerson} onDecrement={prevPerson} />
     </div>
   );
 }

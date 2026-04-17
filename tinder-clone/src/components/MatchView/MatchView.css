@@ -1,3 +1,6 @@
 #matchview-container {
   background-color: black;
 }
+div {
+  width: 100%;
+}
