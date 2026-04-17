@@ -1,8 +1,9 @@
+import "./Bio.css";
 function Bio({ person }: any) {
   return (
     <div className="bio">
-      <p>Bio</p>
-      <p>{person.caption}</p>
+      <p className="bio-title">Bio:</p>
+      <p className="bio-text">{person.caption}</p>
     </div>
   );
 }

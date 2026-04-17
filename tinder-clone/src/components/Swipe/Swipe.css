@@ -1,38 +1,77 @@
 .swipe {
   display: flex;
   justify-content: center;
+  gap: 50px;
+  margin-top: -50px;
+  padding: 20px 0;
 }
 .swipe .rewind,
 .swipe .nope,
-.swipe .star,
-.swipe .heart,
-.swipe .bolt {
-  width: 44px;
-  height: 44px;
+.swipe .heart {
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 10px;
   cursor: pointer;
+  font-size: 42px;
+  border: none;
+  background: #2a2a2a;
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.5),
+    inset 0 2px 4px rgba(255, 255, 255, 0.05);
+  transition: all 0.2s ease;
+  z-index: 10;
 }
+
+.swipe .rewind:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.35),
+    inset 0 2px 4px rgba(255, 255, 255, 0.03);
+}
+
+.swipe .rewind:hover,
+.swipe .nope:hover,
+.swipe .heart:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.6),
+    inset 0 2px 6px rgba(255, 255, 255, 0.08);
+}
+
+.swipe .rewind:active,
+.swipe .nope:active,
+.swipe .heart:active {
+  transform: scale(0.92);
+}
+
 .swipe .rewind {
-  background-color: #f5f5f5;
-  color: yellow;
+  color: #ffd43b;
 }
+.swipe .rewind:hover {
+  box-shadow:
+    0 0 25px rgba(255, 212, 59, 0.6),
+    0 18px 40px rgba(0, 0, 0, 0.6);
+}
+
 .swipe .nope {
-  background-color: #f5f5f5;
-  color: red;
+  color: #ff4d4f;
 }
-.swipe .star {
-  background-color: #f5f5f5;
-  color: blue;
+.swipe .nope:hover {
+  box-shadow:
+    0 0 25px rgba(255, 77, 79, 0.6),
+    0 18px 40px rgba(0, 0, 0, 0.6);
 }
+
 .swipe .heart {
-  background-color: #f5f5f5;
-  color: green;
+  color: #2ecc71;
 }
-.swipe .bolt {
-  background-color: #f5f5f5;
-  color: purple;
+.swipe .heart:hover {
+  box-shadow:
+    0 0 25px rgba(46, 204, 113, 0.6),
+    0 18px 40px rgba(0, 0, 0, 0.6);
 }

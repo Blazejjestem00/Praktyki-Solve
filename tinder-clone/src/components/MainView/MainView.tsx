@@ -1,169 +1,150 @@
 import Info from "../Info/Info";
 import Swipe from "../Swipe/Swipe";
-import TinderLogo from "../../assets/Tinder_full_logo.png";
-import { useState } from "react";
-import bozena from "../../assets/bozena.png";
-
-const persons = [
-  {
-    id: 1,
-    name: "Jan",
-    surname: "Kowalski",
-    age: 25,
-    email: "jan.kowalski@test.pl",
-    interests: ["siłownia", "kolarstwo", "bieganie"],
-    instagram: "jan_fit25",
-    caption: "Hej, jestem Jan 🙂 Lubię sport, szczególnie siłownię i jazdę na rowerze. Szukam aktywnych osób do wspólnych treningów i wyjazdów.",
-    password: "123456",
-    photoUrl: ["https://randomuser.me/api/portraits/men/1.jpg","https://randomuser.me/api/portraits/men/32.jpg","https://randomuser.me/api/portraits/men/76.jpg"]
-  },
-  {
-    id: 2,
-    name: "Anna",
-    surname: "Nowak",
-    age: 28,
-    email: "anna.nowak@test.pl",
-    interests: ["frontend", "design", "podróże"],
-    instagram: "ania.codes",
-    caption: "Hej, jestem Ania 👋 Na co dzień programuję frontend, a po godzinach lubię podróżować i poznawać nowe miejsca. Szukam kreatywnych ludzi z pasją.",
-    password: "123456",
-    photoUrl: ["https://randomuser.me/api/portraits/women/2.jpg","https://randomuser.me/api/portraits/women/21.jpg","https://randomuser.me/api/portraits/women/45.jpg"]
-  },
-  {
-    id: 3,
-    name: "Piotr",
-    surname: "Wiśniewski",
-    age: 30,
-    email: "piotr.w@test.pl",
-    interests: ["podróże", "fotografia", "trekking"],
-    instagram: "piotr_travels",
-    caption: "Cześć, jestem Piotr 🌍 Uwielbiam podróże i odkrywanie nowych kultur. Często chodzę po górach. Szukam osób do wspólnych wypraw.",
-    password: "123456",
-    photoUrl: ["https://randomuser.me/api/portraits/men/3.jpg","https://randomuser.me/api/portraits/men/33.jpg","https://randomuser.me/api/portraits/men/58.jpg"]
-  },
-  {
-    id: 4,
-    name: "Kasia",
-    surname: "Wójcik",
-    age: 22,
-    email: "kasia.w@test.pl",
-    interests: ["fotografia", "instagram", "moda"],
-    instagram: "kasia_shots",
-    caption: "Hej, jestem Kasia 📸 Studiuję i zajmuję się fotografią. Lubię łapać chwile i tworzyć coś kreatywnego. Szukam inspirujących osób.",
-    password: "123456",
-    photoUrl: ["https://randomuser.me/api/portraits/women/4.jpg","https://randomuser.me/api/portraits/women/28.jpg","https://randomuser.me/api/portraits/women/62.jpg"]
-  },
-  {
-    id: 5,
-    name: "Tomasz",
-    surname: "Kaczmarek",
-    age: 35,
-    email: "tomasz.k@test.pl",
-    interests: ["gotowanie", "wino", "podróże kulinarne"],
-    instagram: "tomek_cooks",
-    caption: "Cześć, jestem Tomek 🍝 Uwielbiam gotować i odkrywać nowe smaki. Chętnie poznam osoby, które też kochają kuchnię i wspólne gotowanie.",
-    password: "123456",
-    photoUrl: ["https://randomuser.me/api/portraits/men/5.jpg","https://randomuser.me/api/portraits/men/40.jpg","https://randomuser.me/api/portraits/men/71.jpg"]
-  },
-  {
-    id: 6,
-    name: "Magda",
-    surname: "Mazur",
-    age: 27,
-    email: "magda.m@test.pl",
-    interests: ["książki", "kawiarnie", "psychologia"],
-    instagram: "magda_reads",
-    caption: "Hej, jestem Magda 📚 Kocham książki i spokojne wieczory przy kawie. Interesuję się psychologią. Szukam osób do ciekawych rozmów.",
-    password: "123456",
-    photoUrl: ["https://randomuser.me/api/portraits/women/6.jpg","https://randomuser.me/api/portraits/women/19.jpg","https://randomuser.me/api/portraits/women/73.jpg"]
-  },
-  {
-    id: 7,
-    name: "Paweł",
-    surname: "Krawczyk",
-    age: 29,
-    email: "pawel.k@test.pl",
-    interests: ["gry", "streaming", "technologia"],
-    instagram: "pawel_gamer29",
-    caption: "Siema, jestem Paweł 🎮 Gram, streamuję i interesuję się technologią. Szukam ludzi do wspólnego grania i luźnych rozmów.",
-    password: "123456",
-    photoUrl: ["https://randomuser.me/api/portraits/men/7.jpg","https://randomuser.me/api/portraits/men/22.jpg","https://randomuser.me/api/portraits/men/64.jpg"]
-  },
-  {
-    id: 8,
-    name: "Ola",
-    surname: "Piotrowska",
-    age: 24,
-    email: "ola.p@test.pl",
-    interests: ["zwierzęta", "spacery", "wolontariat"],
-    instagram: "ola_paws",
-    caption: "Hej, jestem Ola 🐶 Uwielbiam zwierzęta i długie spacery. Działam też w wolontariacie. Szukam empatycznych i pozytywnych osób.",
-    password: "123456",
-    photoUrl: ["https://randomuser.me/api/portraits/women/8.jpg","https://randomuser.me/api/portraits/women/30.jpg","https://randomuser.me/api/portraits/women/55.jpg"]
-  },
-  {
-    id: 9,
-    name: "Michał",
-    surname: "Grabowski",
-    age: 31,
-    email: "michal.g@test.pl",
-    interests: ["bieganie", "maratony", "fitness"],
-    instagram: "michal_runs",
-    caption: "Cześć, jestem Michał 🏃‍♂️ Biegam maratony i dbam o formę. Szukam osób do wspólnych treningów i motywacji.",
-    password: "123456",
-    photoUrl: ["https://randomuser.me/api/portraits/men/9.jpg","https://randomuser.me/api/portraits/men/26.jpg","https://randomuser.me/api/portraits/men/81.jpg"]
-  },
-  {
-    id: 10,
-    name: "Natalia",
-    surname: "Zielińska",
-    age: 26,
-    email: "natalia.z@test.pl",
-    interests: ["design", "UX", "sztuka"],
-    instagram: "natalia.designs",
-    caption: "Hej, jestem Natalia 🎨 Projektuję UI/UX i interesuję się sztuką. Szukam kreatywnych osób do wymiany pomysłów.",
-    password: "123456",
-    photoUrl: ["https://randomuser.me/api/portraits/women/10.jpg","https://randomuser.me/api/portraits/women/36.jpg","https://randomuser.me/api/portraits/women/68.jpg"]
-  },
-  {
-  "id": 11,
-  "name": "Bożena",
-  "surname": "Dąbrowska",
-  "age": 59,
-  "email": "bozena.d@test.pl",
-  "interests": ["spacery", "ogrodnictwo", "kuchnia domowa"],
-  "instagram": "bozena_zycie",
-  "caption": "Cześć, jestem Bożena 🙂 Lubię spokojne życie, spacery i dbanie o ogród. Chętnie poznam osoby do rozmów i wspólnego spędzania czasu.",
-  "password": "123456",
-  "photoUrl": [
-    bozena,
-    "https://randomuser.me/api/portraits/women/65.jpg",
-    "https://randomuser.me/api/portraits/women/72.jpg"
-  ]
-}
-];
-
-export { persons };
+import { useState, useEffect } from "react";
+import { api } from "../../services/api";
+import type { User } from "../../services/api";
 
 function MainView() {
-  const [personn, setPerson] = useState(0);
+  const [users, setUsers] = useState<User[]>([]);
+  const [history, setHistory] = useState<User[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const increment = () =>
-    setPerson((prev) => (prev < persons.length - 1 ? prev + 1 : 0));
-  const decrement = () =>
-    setPerson((prev) => (prev > 0 ? prev - 1 : persons.length - 1));
+  useEffect(() => {
+    async function loadUsers() {
+      try {
+        const data = await api.fetchUsers();
+        setUsers(data);
+      } catch (error) {
+        console.error("Failed to load users:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadUsers();
+  }, []);
+
+  const handleSwipe = async (direction: "left" | "right") => {
+    if (users.length === 0) return;
+
+    const currentUser = users[0];
+
+    // Save to history for rewind
+    setHistory((prev) => [...prev, currentUser]);
+    // Remove from current stack
+    setUsers((prev) => prev.slice(1));
+
+    try {
+      await api.sendSwipe({
+        swiper_id: 1,
+        swiped_id: currentUser.id,
+        action: direction === "right" ? "like" : "pass",
+      });
+    } catch (error) {
+      console.error("Failed to send swipe:", error);
+    }
+  };
+
+  const rewind = () => {
+    if (history.length === 0) return;
+    const lastUser = history[history.length - 1];
+    setUsers((prev) => [lastUser, ...prev]);
+    setHistory((prev) => prev.slice(0, -1));
+  };
+
+  const increment = () => handleSwipe("right");
+  const decrement = () => handleSwipe("left");
+
+  if (loading) {
+    return (
+      <div
+        style={{
+          color: "white",
+          fontSize: "24px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        Loading users...
+      </div>
+    );
+  }
+
+  if (users.length === 0) {
+    return (
+      <div
+        style={{
+          color: "white",
+          fontSize: "24px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        No more people in your area! 💔
+      </div>
+    );
+  }
+
+  const stackUsers = users.slice(0, 3);
+  const topIndex = stackUsers.length - 1;
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-      <div>
-        <img src={TinderLogo} alt="Tinder Logo" />
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100vh",
+        gap: "20px",
+        position: "relative",
+        backgroundColor: "#0b0c10",
+        backgroundImage:
+          "radial-gradient(900px 600px at 50% 20%, rgba(255, 0, 128, 0.12), transparent 60%), radial-gradient(700px 500px at 20% 80%, rgba(46, 204, 113, 0.10), transparent 60%)",
+      }}
+    >
+      <div
+        style={{
+          position: "relative",
+          width: "450px",
+          height: "700px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        {stackUsers.map((user, index) => {
+          const isTop = index === topIndex;
+          const depthFromTop = topIndex - index;
+
+          return (
+            <div
+              key={user.id}
+              style={{
+                position: "absolute",
+                zIndex: index,
+                transform: `translateY(${depthFromTop * 10}px) scale(${1 - depthFromTop * 0.05})`,
+                opacity: depthFromTop === 0 ? 1 : 0.75,
+                pointerEvents: isTop ? "auto" : "none",
+                filter: depthFromTop === 0 ? "none" : "saturate(0.9)",
+              }}
+            >
+              <Info person={user} onSwipe={handleSwipe} />
+            </div>
+          );
+        })}
       </div>
-      <div style={{ width: "100%" }}>
-        <Info person={persons[personn]} />
-      </div>
-      <div style={{ width: "100%" }}></div>
-      <div style={{ width: "100%" }}>
-        <Swipe onIncrement={increment} onDecrement={decrement} />
+
+      <div style={{ zIndex: 20 }}>
+        <Swipe
+          onIncrement={increment}
+          onDecrement={decrement}
+          onRewind={rewind}
+          canRewind={history.length > 0}
+        />
       </div>
     </div>
   );
