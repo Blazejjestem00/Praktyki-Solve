@@ -25,6 +25,15 @@
   z-index: 10;
 }
 
+.swipe .rewind:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.35),
+    inset 0 2px 4px rgba(255, 255, 255, 0.03);
+}
+
 .swipe .rewind:hover,
 .swipe .nope:hover,
 .swipe .heart:hover {

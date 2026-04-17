@@ -1,34 +1,41 @@
-Table users {
-  id                  serial        [primary key]
-  first_name          varchar(50)   [not null]
-  surname             varchar(50)   [not null]
-  email               varchar(255)  [unique, not null]
-  gender              varchar(20)   [not null]       // 'male', 'female'
-  created_at          timestamptz   [default: `now()`]
-  updated_at          timestamptz   [default: `now()`]
-}
+CREATE TABLE users (
+    id          SERIAL PRIMARY KEY,
+    first_name  VARCHAR(50) NOT NULL,
+    surname     VARCHAR(50) NOT NULL,
+    email       VARCHAR(255) UNIQUE NOT NULL,
+    gender      VARCHAR(20) NOT NULL CHECK (gender IN ('male', 'female')),
+    created_at  TIMESTAMPTZ DEFAULT NOW(),
+    updated_at  TIMESTAMPTZ DEFAULT NOW()
+);
 
-Table swipes {
-  id          serial      [primary key]
-  swiper_id   integer     [not null, ref: > users.id]
-  swiped_id   integer     [not null, ref: > users.id]
-  direction   varchar(10) [not null]   // 'like', 'pass', 'super_like'
-  created_at  timestamptz [default: `now()`]
+CREATE TABLE swipes (
+    id          SERIAL PRIMARY KEY,
+    swiper_id   INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    swiped_id   INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    direction   VARCHAR(10) NOT NULL CHECK (direction IN ('like', 'pass')),
+    created_at  TIMESTAMPTZ DEFAULT NOW(),
 
-  indexes {
-    (swiper_id, swiped_id) [unique]
-  }
-}
+    CONSTRAINT unique_swipe UNIQUE (swiper_id, swiped_id)
+);
 
-Table matches {
-  id          serial      [primary key]
-  user1_id    integer     [not null, ref: > users.id]
-  user2_id    integer     [not null, ref: > users.id]
-  matched_at  timestamptz [default: `now()`]
+CREATE TABLE matches (
+    id          SERIAL PRIMARY KEY,
+    user1_id    INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    user2_id    INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    matched_at  TIMESTAMPTZ DEFAULT NOW(),
 
-  indexes {
-    (user1_id, user2_id) [unique]
-  }
-}
+    CONSTRAINT unique_match UNIQUE (user1_id, user2_id)
+);
 
---https://dbdiagram.io/d
+CREATE OR REPLACE FUNCTION update_updated_at_column()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.updated_at = NOW();
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER update_users_updated_at 
+    BEFORE UPDATE ON users 
+    FOR EACH ROW 
+    EXECUTE FUNCTION update_updated_at_column();

@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import "./ActionButtons.css";
 import { FaThumbsUp, FaComment, FaBan } from "react-icons/fa";
 
