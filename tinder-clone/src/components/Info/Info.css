@@ -6,6 +6,14 @@ body {
 
 .stack {
   position: relative;
+#content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+.tinder-card {
   width: 450px;
   height: 700px;
   margin: 50px auto;
@@ -38,6 +46,39 @@ body {
   z-index: 5;
   transform: scale(0.95) translateY(12px);
   filter: brightness(0.6);
+  background: black;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.swipe-badge {
+  position: absolute;
+  top: 22px;
+  z-index: 3;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  font-size: 20px;
+  border: 3px solid;
+  background: rgba(0, 0, 0, 0.35);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  user-select: none;
+  pointer-events: none;
+}
+
+.swipe-badge-like {
+  left: 22px;
+  color: #2ecc71;
+  border-color: #2ecc71;
+  transform: rotate(-12deg);
+}
+
+.swipe-badge-nope {
+  right: 22px;
+  color: #ff4d4f;
+  border-color: #ff4d4f;
+  transform: rotate(12deg);
 }
 
 .card-inner {
@@ -62,6 +103,13 @@ body {
 }
 
 .card-ui {
+@media (max-height: 820px), (max-width: 520px) {
+  .tinder-card {
+    width: min(92vw, 420px);
+    height: min(74vh, 660px);
+  }
+}
+#text {
   position: absolute;
   inset: 0;
   z-index: 2;

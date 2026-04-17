@@ -5,6 +5,7 @@
 ---
 
 ## Spis treści
+
 - [Szybki start](#szybki-start)
 - [Przydatne skróty VS Code](#przydatne-skróty-vs-code)
 - [Co robi dana komenda](#co-robi-dana-komenda)
@@ -33,12 +34,12 @@ git push
 
 ## Przydatne skróty VS Code
 
-| Skrót | Działanie |
-|:------|:----------|
-| `Ctrl + Shift + V` | Otwiera podgląd Markdown |
+| Skrót              | Działanie                          |
+| :----------------- | :--------------------------------- |
+| `Ctrl + Shift + V` | Otwiera podgląd Markdown           |
 | `Ctrl + Shift + G` | Otwiera panel Git (Source Control) |
-| `Ctrl + J` | Otwiera terminal |
-| `Ctrl + Shift + P` | Paleta komend |
+| `Ctrl + J`         | Otwiera terminal                   |
+| `Ctrl + Shift + P` | Paleta komend                      |
 
 ---
 
@@ -75,6 +76,7 @@ git commit -m "krótki, opisowy komunikat zmian"
 ```
 
 Zapisuje przygotowane zmiany lokalnie jako punkt w historii projektu. Komunikat powinien opisywać **co** zostało zrobione, np.:
+
 - `"dodaj formularz logowania"`
 - `"napraw błąd w kalkulacji VAT"`
 

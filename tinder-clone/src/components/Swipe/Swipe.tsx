@@ -2,35 +2,40 @@ import { GoHeartFill } from "react-icons/go";
 import { BiSolidRewindCircle } from "react-icons/bi";
 import { MdClose } from "react-icons/md";
 import "./Swipe.css";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 
 export function Swipe({
   onIncrement,
   onDecrement,
+  onRewind,
+  canRewind = true,
 }: {
   onIncrement: () => void;
   onDecrement: () => void;
+  onRewind: () => void;
+  canRewind?: boolean;
 }) {
   return (
     <div className="swipe">
       <motion.button
         whileTap={{
-          scale: 2,
+          scale: 1.18,
           transition: { duration: 0.2 },
         }}
-        onClick={onDecrement}
+        onClick={onRewind}
         className="rewind"
         title="Rewind"
+        disabled={!canRewind}
       >
         {" "}
         <BiSolidRewindCircle />{" "}
       </motion.button>
       <motion.button
         whileTap={{
-          scale: 2,
+          scale: 1.18,
           transition: { duration: 0.2 },
         }}
-        onClick={onIncrement}
+        onClick={onDecrement}
         className="nope"
         title="Nope"
       >
@@ -38,7 +43,7 @@ export function Swipe({
       </motion.button>
       <motion.button
         whileTap={{
-          scale: 2,
+          scale: 1.18,
           transition: { duration: 0.2 },
         }}
         onClick={onIncrement}

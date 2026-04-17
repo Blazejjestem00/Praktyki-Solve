@@ -5,14 +5,33 @@ import Bio from "../Bio/Bio";
 import HomeButton from "../HomeButton/HomeButton";
 import ActionButtons from "../ActionButtons/ActionButtons";
 import TinderLogo from "../../assets/Tinder_full_logo.png";
-import { persons } from "../MainView/MainView";
 import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { api } from "../../services/api";
+import type { User } from "../../services/api";
+
 function ProfileView() {
   const { id } = useParams();
+  const [person, setPerson] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  const person = persons.find((p) => p.id === Number(id));
+  useEffect(() => {
+    async function loadUser() {
+      try {
+        const users = await api.fetchUsers();
+        const found = users.find((p) => p.id === Number(id));
+        setPerson(found || null);
+      } catch (error) {
+        console.error("Failed to load user profile:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadUser();
+  }, [id]);
 
-  if (!person) return <div>Nie znaleziono profilu</div>;
+  if (loading) return <div style={{ color: "white", textAlign: "center", marginTop: "50px" }}>Loading profile...</div>;
+  if (!person) return <div style={{ color: "white", textAlign: "center", marginTop: "50px" }}>Nie znaleziono profilu</div>;
 
   return (
     <div>

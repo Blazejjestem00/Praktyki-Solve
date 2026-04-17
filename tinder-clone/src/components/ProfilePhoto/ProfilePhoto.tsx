@@ -1,3 +1,4 @@
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import "./ProfilePhoto.css";
 
@@ -24,4 +25,5 @@ function ProfilePhoto({ person }: any) {
   );
 }
 
+export default ProfilePhoto;
 export default ProfilePhoto;

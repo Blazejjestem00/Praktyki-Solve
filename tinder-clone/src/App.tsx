@@ -13,7 +13,7 @@ function App() {
         <Route path="/profile/:id" element={<ProfileView />} />
 
         <Route path="/profile" element={<ProfileView />} />
-        <Route path='/match' element={<MatchView />} />
+        <Route path="/match" element={<MatchView />} />
       </Routes>
     </BrowserRouter>
   );
