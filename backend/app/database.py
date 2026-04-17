@@ -33,9 +33,9 @@ def init_db():
     try:
         with engine.connect() as conn:
             conn.execute(text("SELECT 1"))
-        print(f"✅ Połączono z bazą: {DB_NAME} | Host: {DB_HOST}")
+        print(f"Połączono z bazą: {DB_NAME} | Host: {DB_HOST}")
     except Exception as e:
-        print(f"❌ Nie udało się połączyć z bazą: {e}")
+        print(f"Nie udało się połączyć z bazą: {e}")
         raise
 
 
@@ -43,6 +43,6 @@ def create_db_and_tables():
     """Tworzy tabele jeśli nie istnieją (dla kompatybilności z main.py)"""
     try:
         SQLModel.metadata.create_all(bind=engine, checkfirst=True)
-        print("✅ Tabele sprawdzone / utworzone (checkfirst=True)")
+        print("Tabele sprawdzone / utworzone (checkfirst=True)")
     except Exception as e:
-        print(f"⚠️ Błąd przy create_all: {e}")
+        print(f"Błąd przy create_all: {e}")
