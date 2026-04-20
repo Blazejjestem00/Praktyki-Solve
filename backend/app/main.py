@@ -2,6 +2,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+
 from .database import init_db, create_db_and_tables, get_session
 from . import models
 from .routers import users, swipes
@@ -13,12 +14,14 @@ async def lifespan(app: FastAPI):
     print("Backend wystartował – baza PostgreSQL połączona")
     yield
 
+
 app = FastAPI(
     title="Solve / Tinder Clone - Backend",
     description="API dla aplikacji typu Tinder",
     version="0.1.0",
     lifespan=lifespan
 )
+
 
 app.add_middleware(
     CORSMiddleware,
