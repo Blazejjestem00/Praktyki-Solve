@@ -1,3 +1,4 @@
+
 import "./Info.css";
 import { FaInstagram } from "react-icons/fa";
 import { motion, useMotionValue, useTransform } from "framer-motion";
