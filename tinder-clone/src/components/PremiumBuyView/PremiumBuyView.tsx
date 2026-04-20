@@ -17,7 +17,7 @@ function PremiumBuyView() {
     },
     {
       id: 2,
-      name: "Platinum",
+      name: "Premium",
       price: "$19.99 / month",
       features: [
         "See who liked you",
@@ -40,7 +40,7 @@ function PremiumBuyView() {
         "Message before matching",
         "Profile highlighted in search",
       ],
-      color: "#FFD700",
+      color: " #D4AF37",
     },
   ];
 
@@ -51,8 +51,9 @@ function PremiumBuyView() {
 
       <div className="plans">
         {plans.map((plan) => (
-          <div key={plan.id} className="card">
+          <div key={plan.id} className="card1">
             <h2 style={{ color: plan.color }}>{plan.name}</h2>
+
             <p className="price">{plan.price}</p>
 
             <ul>
@@ -60,13 +61,12 @@ function PremiumBuyView() {
                 <li key={index}>{feature}</li>
               ))}
             </ul>
+
             <motion.button
               className="button"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
               onClick={() => alert(`You chose the ${plan.name} plan!`)}
             >
-              Choose{plan.name}
+              Choose {plan.name}
             </motion.button>
           </div>
         ))}
