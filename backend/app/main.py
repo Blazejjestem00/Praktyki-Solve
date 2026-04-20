@@ -1,7 +1,7 @@
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.openapi.utils import get_openapi
+
 
 from .database import init_db, create_db_and_tables, get_session
 from . import models
@@ -14,25 +14,14 @@ async def lifespan(app: FastAPI):
     print("Backend wystartował – baza PostgreSQL połączona")
     yield
 
-app = FastAPI()
 
-def custom_openapi():
-    if app.openapi_schema:
-        return app.openapi_schema
-    openapi_schema = get_openapi(
-        title="Solve / Tinder Clone - Backend",
-        version="0.1.0",
-        summary="This is a very custom OpenAPI schema",
-        description="API dla aplikacji typu Tinder",
-        routes=app.routes,
-    )
-    openapi_schema["info"]["x-logo"] = {
-        "url": "https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png"
-    }
-    app.openapi_schema = openapi_schema
-    return app.openapi_schema
+app = FastAPI(
+    title="Solve / Tinder Clone - Backend",
+    description="API dla aplikacji typu Tinder",
+    version="0.1.0",
+    lifespan=lifespan
+)
 
-app.openapi = custom_openapi
 
 app.add_middleware(
     CORSMiddleware,
