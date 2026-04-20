@@ -1,6 +1,8 @@
 import Info from "../Info/Info";
 import Swipe from "../Swipe/Swipe";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { api } from "../../services/api";
+import type { User } from "../../services/api";
 
 const persons = [
   {
@@ -178,6 +180,23 @@ const persons = [
       "https://randomuser.me/api/portraits/men/9.jpg",
       "https://randomuser.me/api/portraits/men/26.jpg",
       "https://randomuser.me/api/portraits/men/81.jpg",
+    ],
+  },
+  {
+    id: 10,
+    name: "Natalia",
+    surname: "Zielińska",
+    age: 26,
+    email: "natalia.z@test.pl",
+    interests: ["design", "UX", "sztuka"],
+    instagram: "natalia.designs",
+    caption:
+      "Hej, jestem Natalia 🎨 Projektuję UI/UX i interesuję się sztuką. Szukam kreatywnych osób do wymiany pomysłów.",
+    password: "123456",
+    photoUrl: [
+      "https://randomuser.me/api/portraits/women/10.jpg",
+      "https://randomuser.me/api/portraits/women/36.jpg",
+      "https://randomuser.me/api/portraits/women/68.jpg",
       "https://randomuser.me/api/portraits/men/16.jpg",
       "https://randomuser.me/api/portraits/men/60.jpg",
       "https://randomuser.me/api/portraits/men/97.jpg",
@@ -188,34 +207,18 @@ const persons = [
 export { persons };
 
 function MainView() {
-  const [index, setIndex] = useState(0);
-
-  const nextPerson = () => {
-    setIndex((prev) => {
-      if (prev + 1 >= persons.length) return 0;
-      return prev + 1;
-    });
-  };
-
-  const prevPerson = () => {
-    setIndex((prev) => {
-      if (prev - 1 < 0) return persons.length - 1;
-      return prev - 1;
-    });
-  };
-
-  const handleSwipe = (direction: "left" | "right") => {
-    console.log(direction);
-    nextPerson();
-  };
-import { useState, useEffect } from "react";
-import { api } from "../../services/api";
-import type { User } from "../../services/api";
-
-function MainView() {
   const [users, setUsers] = useState<User[]>([]);
   const [history, setHistory] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
+
+  setTimeout(() => {
+    console.log("jestesmy w set timeout");
+  }, 0);
+  for (let i = 0; i < 10; i++) {
+    console.log(i);
+    
+  }
+  console.log("po forze");
 
   useEffect(() => {
     async function loadUsers() {
@@ -304,17 +307,6 @@ function MainView() {
       style={{
         display: "flex",
         flexDirection: "column",
-        gap: "20px",
-        alignItems: "center",
-      }}
-    >
-      <Info
-        person={persons[index]}
-        nextPerson={persons[index + 1]}
-        onSwipe={handleSwipe}
-      />
-
-      <Swipe onIncrement={nextPerson} onDecrement={prevPerson} />
         alignItems: "center",
         justifyContent: "center",
         height: "100vh",

@@ -26,4 +26,3 @@ function ProfilePhoto({ person }: any) {
 }
 
 export default ProfilePhoto;
-export default ProfilePhoto;
