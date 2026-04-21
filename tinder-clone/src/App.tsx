@@ -18,7 +18,7 @@ function App() {
   const isLogged = isAuthenticated || isLocalLogged;
 
   if (isLoading) return <div>Loading...</div>;
-
+  
   return (
     <BrowserRouter>
       {!isLogged ? (

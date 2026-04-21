@@ -16,7 +16,7 @@ export const Login = ({ setIsLocalLogged }) => {
     if (login && password) {
       localStorage.setItem("isLogged", "true");
 
-      // 🔥 KLUCZOWE: update React state
+      //  KLUCZOWE: update React state
       setIsLocalLogged(true);
 
       navigate("/");
