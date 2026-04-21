@@ -9,7 +9,7 @@ function MatchView() {
   const [active, setActive] = useState("pairs");
 
   return (
-    <div id="matchview-container">
+    <div className="matchview-container">
       <Baner />
       <MatchButtons active={active} setActive={setActive} />
 

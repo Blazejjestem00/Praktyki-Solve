@@ -18,11 +18,12 @@
   font-size: 24px;
   font-weight: bold;
 }
-h1{
-    color: #ff6b81;
+.Logo{
+  color: #ff6b81;
+  line-height: 60px;
 }
-.card1{
-    border: 1px solid white;
+.card1 {
+  border: 1px solid white;
   padding: 20px;
   border-radius: 10px;
   flex: 1;
