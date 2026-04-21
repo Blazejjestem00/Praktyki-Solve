@@ -1,41 +1,44 @@
-import { APIProvider, Map, AdvancedMarker, Pin, InfoWindow } from '@vis.gl/react-google-maps';
-import { useState, useMemo } from 'react';
-import type { User } from '../../services/api';
+import { useState, useEffect, useMemo } from "react";
+import {
+  APIProvider,
+  Map,
+  AdvancedMarker,
+  Pin,
+  InfoWindow,
+} from "@vis.gl/react-google-maps";
+import { api, type User } from "../../services/api";
 
-interface MapViewProps {
-  users?: User[];
-}
-
-export default function MapView({ users = [] }: MapViewProps) {
-  const defaultCenter = { lat: 52.2297, lng: 21.0122 }; // Warszawa
-
+export default function MapView() {
+  const [users, setUsers] = useState<User[]>([]);
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
 
-  const usersWithPosition = useMemo(() => {
-    return users.map((user) => {
-      if (user.position) return user;
+  useEffect(() => {
+    api.fetchUsers().then(setUsers);
+  }, []);
 
-      return {
-        ...user,
-        position: {
-          lat: defaultCenter.lat + (Math.random() - 0.5) * 0.08,
-          lng: defaultCenter.lng + (Math.random() - 0.5) * 0.12,
-        },
-      };
-    });
+  const usersWithPosition = useMemo(() => {
+    return users.filter((user) => user.position);
   }, [users]);
 
   return (
     <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
-      <div style={{ width: '100vw', height: '100vh' }}>
+      <div style={{ width: "100vw", height: "100vh" }}>
         <Map
-          defaultCenter={defaultCenter}
-          defaultZoom={13}
-          style={{ width: '100%', height: '100%' }}
+          defaultCenter={{ lat: 52.2297, lng: 21.0122 }}
+          defaultZoom={12.8}
+          style={{ width: "100%", height: "100%" }}
           gestureHandling="greedy"
-          mapId="your-map-id"
+          mapId="DEMO_MAP_ID" // otherwise error
+          mapTypeControl={true}
+          mapTypeControlOptions={{
+            position: 3,
+            mapTypeIds: ["roadmap", "satellite"],
+          }}
+          zoomControl={false}
+          fullscreenControl={false}
+          streetViewControl={false}
+          onClick={() => setSelectedUser(null)}
         >
-          {/* Markery użytkowników */}
           {usersWithPosition.map((user) => (
             <AdvancedMarker
               key={user.id}
@@ -44,48 +47,46 @@ export default function MapView({ users = [] }: MapViewProps) {
             >
               <Pin
                 background="#EA4335"
-                glyphColor="#fff"
-                borderColor="#fff"
-                scale={1.2}
+                glyphColor="#ffffff"
+                borderColor="#ffffff"
+                scale={1.25}
               />
             </AdvancedMarker>
           ))}
 
-          {/* InfoWindow */}
           {selectedUser && selectedUser.position && (
             <InfoWindow
               position={selectedUser.position}
               onCloseClick={() => setSelectedUser(null)}
+              maxWidth={280}
             >
-              <div style={{ padding: '12px', minWidth: '240px' }}>
-                <h3 style={{ margin: '0 0 8px 0' }}>
-                  {selectedUser.name} {selectedUser.surname && ` ${selectedUser.surname}`}, {selectedUser.age}
+              <div
+                style={{ padding: "8px", fontFamily: "system-ui, sans-serif" }}
+              >
+                <h3 style={{ margin: "0 0 4px 0", fontSize: "17px" }}>
+                  {selectedUser.name} {selectedUser.surname}
+                  <span
+                    style={{
+                      fontWeight: 400,
+                      color: "#666",
+                      marginLeft: "8px",
+                    }}
+                  >
+                    {selectedUser.age} lat
+                  </span>
                 </h3>
-
                 {selectedUser.caption && (
-                  <p style={{ margin: '0 0 12px 0', fontSize: '14px', lineHeight: '1.4' }}>
+                  <p
+                    style={{
+                      margin: 0,
+                      fontSize: "14px",
+                      lineHeight: "1.5",
+                      color: "#333",
+                    }}
+                  >
                     {selectedUser.caption}
                   </p>
                 )}
-
-                <button
-                  onClick={() => {
-                    alert(`Polubiłeś ${selectedUser.name}! ❤️`);
-                    setSelectedUser(null);
-                  }}
-                  style={{
-                    padding: '10px 20px',
-                    backgroundColor: '#34a853',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: '6px',
-                    cursor: 'pointer',
-                    fontSize: '15px',
-                    fontWeight: 600,
-                  }}
-                >
-                  Polub ❤️
-                </button>
               </div>
             </InfoWindow>
           )}
