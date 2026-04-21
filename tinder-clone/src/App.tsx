@@ -6,13 +6,12 @@ import PremiumBuyView from "./components/PremiumBuyView/PremiumBuyView";
 import FaqView from "./components/FaqView/FaqView";
 function App() {
   return (
-    
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainView />} />
         <Route path="/match" element={<MatchView />} />
         <Route path="/premium" element={<PremiumBuyView />} />
-        <Route path="/faq" element={<FaqView/>}/>
+        <Route path="/faq" element={<FaqView />} />
       </Routes>
     </BrowserRouter>
   );
