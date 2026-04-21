@@ -1,6 +1,5 @@
 import "./App.css";
 import MainView from "./components/MainView/MainView";
-import ProfileView from "./components/ProfileView/ProfileView";
 import MatchView from "./components/MatchView/MatchView";
 import Login from "./components/Login/Login";
 import LogOut from "./components/LogOut/LogOut";
@@ -37,14 +36,13 @@ function App() {
         <>
           <Routes>
             <Route path="/" element={<MainView />} />
-            <Route path="/profile/:id" element={<ProfileView />} />
-            <Route path="/profile" element={<ProfileView />} />
             <Route path="/match" element={<MatchView />} />
           </Routes>
 
           <LogOut />
         </>
       )}
+
     </BrowserRouter>
   );
 }

@@ -4,10 +4,14 @@ import { useState, useEffect } from "react";
 import { api } from "../../services/api";
 import type { User } from "../../services/api";
 
+
+
 function MainView() {
   const [users, setUsers] = useState<User[]>([]);
   const [history, setHistory] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
+
+
 
   useEffect(() => {
     async function loadUsers() {

@@ -1,22 +1,23 @@
 import { useState } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const Login = () => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
-
   const { loginWithRedirect } = useAuth0();
 
- const handleSubmit = (e) => {
-  e.preventDefault();
+  const navigate = useNavigate();
 
-  if (login && password) {
-    localStorage.setItem("isLogged", "true");
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-    window.dispatchEvent(new Event("storage"));
-  }
-};
+    if (login && password) {
+      localStorage.setItem("isLogged", "true");
+      navigate("/");
+    }
+  };
 
   return (
     <div className="login-wrapper">
@@ -56,4 +57,4 @@ export const Login = () => {
   );
 };
 
-export default Login;
+export default Login
