@@ -1,7 +1,7 @@
 import "./Info.css";
 import { FaInstagram } from "react-icons/fa";
 import { motion, useMotionValue, useTransform } from "motion/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { User } from "../../services/api";
 
 type Person = User & { photoUrl?: string[] };
@@ -21,36 +21,40 @@ function seededPhotoUrls(userId: number, count = 3) {
 function Info({ person, onSwipe }: InfoProps) {
   const [photoIndex, setPhotoIndex] = useState(0);
 
+  // reset zdjęć przy zmianie usera
+  useEffect(() => {
+    setPhotoIndex(0);
+  }, [person.id]);
+
   const x = useMotionValue(0);
   const rotate = useTransform(x, [-200, 0, 200], [-25, 0, 25]);
   const opacity = useTransform(x, [-200, -150, 0, 150, 200], [0, 1, 1, 1, 0]);
   const likeOpacity = useTransform(x, [20, 140], [0, 1]);
   const nopeOpacity = useTransform(x, [-140, -20], [1, 0]);
 
-  const handleDragEnd = (_event: any, info: any) => {
-    if (info.offset.x > 150) {
-      onSwipe("right");
-    } else if (info.offset.x < -150) {
-      onSwipe("left");
-    }
+  const handleDragEnd = (_: any, info: any) => {
+    if (info.offset.x > 150) onSwipe("right");
+    else if (info.offset.x < -150) onSwipe("left");
   };
 
   const fallbackPhotos = seededPhotoUrls(person.id);
   const photos = person.photoUrl?.length ? person.photoUrl : fallbackPhotos;
 
-  const handlePhotoClick = (e: React.MouseEvent) => {
-    const { clientX, currentTarget } = e;
-    const width = currentTarget.clientWidth;
+  if (!photos.length) return null;
 
-    if (clientX < width / 2) {
-      setPhotoIndex((prev) => (prev - 1 + photos.length) % photos.length);
-    } else {
-      setPhotoIndex((prev) => (prev + 1) % photos.length);
-    }
+  const handlePhotoClick = (e: React.MouseEvent) => {
+    const width = e.currentTarget.clientWidth;
+    const isLeft = e.clientX < width / 2;
+
+    setPhotoIndex((prev) =>
+      isLeft
+        ? (prev - 1 + photos.length) % photos.length
+        : (prev + 1) % photos.length
+    );
   };
 
   return (
-    <div id="content">
+    <div className="content">
       <motion.div
         className="tinder-card"
         style={{ x, rotate, opacity }}
@@ -58,21 +62,19 @@ function Info({ person, onSwipe }: InfoProps) {
         dragConstraints={{ left: 0, right: 0 }}
         onDragEnd={handleDragEnd}
       >
-        <motion.div
-          className="swipe-badge swipe-badge-like"
-          style={{ opacity: likeOpacity }}
-        >
+        {/* badges */}
+        <motion.div className="swipe-badge swipe-badge-like" style={{ opacity: likeOpacity }}>
           LIKE
         </motion.div>
-        <motion.div
-          className="swipe-badge swipe-badge-nope"
-          style={{ opacity: nopeOpacity }}
-        >
+
+        <motion.div className="swipe-badge swipe-badge-nope" style={{ opacity: nopeOpacity }}>
           NOPE
         </motion.div>
 
-        <div id="photo2" onClick={handlePhotoClick}>
-          {/* progress bar */}
+        {/* SINGLE PHOTO SYSTEM */}
+        <div className="photo2" onClick={handlePhotoClick}>
+          
+          {/* progress */}
           <div className="photo-progress">
             {photos.map((_, i) => (
               <div
@@ -82,25 +84,29 @@ function Info({ person, onSwipe }: InfoProps) {
             ))}
           </div>
 
+          {/* image */}
           <img src={photos[photoIndex]} alt={person.name} />
         </div>
 
-        <div id="text">
+        {/* TEXT */}
+        <div className="text">
           <div className="name-row">
-            <span id="name">{person.name}</span>
-            <span id="surname"> {person.surname || ""} </span>
-            <span id="age"> {person.age}</span>
+            <span className="name">{person.name}</span>
+            <span className="surname">{person.surname || ""}</span>
+            <span className="age">{person.age}</span>
           </div>
 
-          <span id="caption">{person.caption || "No caption provided"}</span>
+          <span className="caption">
+            {person.caption || "No caption provided"}
+          </span>
 
           <ul>
-            {person.interests?.map((interest: string, index: number) => (
-              <li key={index}>{interest}</li>
+            {person.interests?.map((i, idx) => (
+              <li key={idx}>{i}</li>
             ))}
           </ul>
 
-          <span id="instagram">
+          <span className="instagram">
             <FaInstagram /> @{person.instagram || "unknown"}
           </span>
         </div>

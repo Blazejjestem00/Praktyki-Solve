@@ -6,7 +6,7 @@ import "./FaQ.css";
 function FaqCard() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   return (
-    <div className="Faq-Container">
+    <div className="faq-container">
       <div className="faq">
         <h1>Frequently Asked Questions</h1>
 

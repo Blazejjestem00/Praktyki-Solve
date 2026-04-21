@@ -1,58 +1,61 @@
 const faqs = [
   {
-    category: "Account",
-    question: "How do I create an account?",
+    category: "Konto",
+    question: "Jak utworzyć konto?",
     answer:
-      "You can sign up using your email, phone number, or social accounts like Google or Facebook.",
+      "Możesz zarejestrować się za pomocą e-maila, numeru telefonu lub kont społecznościowych, takich jak Google lub Facebook.",
   },
   {
-    category: "Account",
-    question: "How do I delete my account?",
+    category: "Konto",
+    question: "Jak usunąć konto?",
     answer:
-      "Go to Settings → Account → Delete Account. This action is permanent.",
+      "Przejdź do Ustawienia → Konto → Usuń konto. Ta operacja jest nieodwracalna.",
   },
   {
-    category: "Matching",
-    question: "How does matching work?",
+    category: "Dopasowania",
+    question: "Jak działa dopasowanie?",
     answer:
-      "You match with someone when both of you swipe right on each other.",
+      "Dopasowanie następuje, gdy obie osoby przesuną w prawo na siebie nawzajem.",
   },
   {
-    category: "Matching",
-    question: "Why am I not getting matches?",
+    category: "Dopasowania",
+    question: "Dlaczego nie mam dopasowań?",
     answer:
-      "Improve your profile with better photos, bio, and stay active. The algorithm favors active users.",
+      "Ulepsz swój profil – dodaj lepsze zdjęcia, opis i bądź aktywny. Algorytm promuje aktywnych użytkowników.",
   },
   {
-    category: "Messaging",
-    question: "Can I message someone without matching?",
-    answer: "This feature is only available in premium plans.",
+    category: "Wiadomości",
+    question: "Czy mogę napisać do kogoś bez dopasowania?",
+    answer: "Ta funkcja jest dostępna tylko w planach premium.",
   },
   {
     category: "Premium",
-    question: "What do I get with premium?",
+    question: "Co daje konto premium?",
     answer:
-      "Premium gives you more visibility, advanced filters, and access to exclusive features.",
+      "Premium zapewnia większą widoczność, zaawansowane filtry oraz dostęp do ekskluzywnych funkcji.",
   },
   {
     category: "Premium",
-    question: "Can I cancel my subscription?",
-    answer: "Yes, you can cancel anytime in your account settings.",
+    question: "Czy mogę anulować subskrypcję?",
+    answer: "Tak, możesz ją anulować w dowolnym momencie w ustawieniach konta.",
   },
   {
-    category: "Payments",
-    question: "Will I be charged automatically?",
-    answer: "Yes, subscriptions renew automatically unless canceled.",
+    category: "Płatności",
+    question: "Czy opłata będzie pobierana automatycznie?",
+    answer:
+      "Tak, subskrypcje odnawiają się automatycznie, chyba że zostaną anulowane.",
   },
   {
-    category: "Safety",
-    question: "How do I report a user?",
-    answer: "Open the profile, tap the menu, and select 'Report'.",
+    category: "Bezpieczeństwo",
+    question: "Jak zgłosić użytkownika?",
+    answer: "Otwórz profil, kliknij menu i wybierz opcję „Zgłoś”.",
   },
   {
-    category: "Safety",
-    question: "Is my data safe?",
-    answer: "We use industry-standard security to protect your data.",
+    category: "Bezpieczeństwo",
+    question: "Czy moje dane są bezpieczne?",
+    answer:
+      "Stosujemy standardowe zabezpieczenia branżowe, aby chronić Twoje dane.",
   },
 ];
+
 export { faqs };

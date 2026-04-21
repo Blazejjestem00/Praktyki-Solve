@@ -53,11 +53,7 @@ function Pairs() {
   return (
     <div className="grid">
       {persons.map((person) => (
-        <Matches
-          key={person.id}
-          name={person.name}
-          photoUrl={person.photo}
-        />
+        <Matches key={person.id} name={person.name} photoUrl={person.photo} />
       ))}
     </div>
   );
