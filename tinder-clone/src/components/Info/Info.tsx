@@ -1,6 +1,7 @@
 import "./Info.css";
 import { FaInstagram } from "react-icons/fa";
 import { motion, useMotionValue, useTransform } from "motion/react";
+import { useState } from "react";
 import type { User } from "../../services/api";
 
 type Person = User & { photoUrl?: string[] };
@@ -11,15 +12,15 @@ interface InfoProps {
 }
 
 function seededPhotoUrls(userId: number, count = 3) {
-  // Deterministic per-user photos without needing local assets.
   return Array.from({ length: count }, (_, i) => {
     const seed = `${userId}-${i}`;
-
     return `https://picsum.photos/seed/${encodeURIComponent(seed)}/400/600`;
   });
 }
 
 function Info({ person, onSwipe }: InfoProps) {
+  const [photoIndex, setPhotoIndex] = useState(0);
+
   const x = useMotionValue(0);
   const rotate = useTransform(x, [-200, 0, 200], [-25, 0, 25]);
   const opacity = useTransform(x, [-200, -150, 0, 150, 200], [0, 1, 1, 1, 0]);
@@ -35,7 +36,18 @@ function Info({ person, onSwipe }: InfoProps) {
   };
 
   const fallbackPhotos = seededPhotoUrls(person.id);
-  const primaryPhoto = person.photoUrl?.[0] ?? fallbackPhotos[0];
+  const photos = person.photoUrl?.length ? person.photoUrl : fallbackPhotos;
+
+  const handlePhotoClick = (e: React.MouseEvent) => {
+    const { clientX, currentTarget } = e;
+    const width = currentTarget.clientWidth;
+
+    if (clientX < width / 2) {
+      setPhotoIndex((prev) => (prev - 1 + photos.length) % photos.length);
+    } else {
+      setPhotoIndex((prev) => (prev + 1) % photos.length);
+    }
+  };
 
   return (
     <div id="content">
@@ -58,21 +70,36 @@ function Info({ person, onSwipe }: InfoProps) {
         >
           NOPE
         </motion.div>
-        <div id="photo2">
-          <img src={primaryPhoto} alt={person.name} />
+
+        <div id="photo2" onClick={handlePhotoClick}>
+          {/* progress bar */}
+          <div className="photo-progress">
+            {photos.map((_, i) => (
+              <div
+                key={i}
+                className={`progress-bar ${i <= photoIndex ? "active" : ""}`}
+              />
+            ))}
+          </div>
+
+          <img src={photos[photoIndex]} alt={person.name} />
         </div>
+
         <div id="text">
           <div className="name-row">
             <span id="name">{person.name}</span>
             <span id="surname"> {person.surname || ""} </span>
             <span id="age"> {person.age}</span>
           </div>
+
           <span id="caption">{person.caption || "No caption provided"}</span>
+
           <ul>
             {person.interests?.map((interest: string, index: number) => (
               <li key={index}>{interest}</li>
             ))}
           </ul>
+
           <span id="instagram">
             <FaInstagram /> @{person.instagram || "unknown"}
           </span>
