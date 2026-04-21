@@ -15,7 +15,6 @@ export const LogOut = () => {
         },
       });
     } else {
-      // tylko lokalny logout → wymuszenie rerenderu
       window.location.reload();
     }
   };

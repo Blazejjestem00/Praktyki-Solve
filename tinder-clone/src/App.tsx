@@ -6,7 +6,7 @@ import LogOut from "./components/LogOut/LogOut";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function App() {
   const { isAuthenticated, isLoading } = useAuth0();
@@ -15,15 +15,6 @@ function App() {
     localStorage.getItem("isLogged") === "true"
   );
 
-  useEffect(() => {
-    const handler = () => {
-      setIsLocalLogged(localStorage.getItem("isLogged") === "true");
-    };
-
-    window.addEventListener("storage", handler);
-    return () => window.removeEventListener("storage", handler);
-  }, []);
-
   const isLogged = isAuthenticated || isLocalLogged;
 
   if (isLoading) return <div>Loading...</div>;
@@ -31,7 +22,7 @@ function App() {
   return (
     <BrowserRouter>
       {!isLogged ? (
-        <Login />
+        <Login setIsLocalLogged={setIsLocalLogged} />
       ) : (
         <>
           <Routes>
@@ -39,10 +30,9 @@ function App() {
             <Route path="/match" element={<MatchView />} />
           </Routes>
 
-          <LogOut />
+          <LogOut setIsLocalLogged={setIsLocalLogged} />
         </>
       )}
-
     </BrowserRouter>
   );
 }

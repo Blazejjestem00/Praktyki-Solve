@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import { useAuth0 } from "@auth0/auth0-react";
 
-export const Login = () => {
+export const Login = ({ setIsLocalLogged }) => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const { loginWithRedirect } = useAuth0();
@@ -15,6 +15,10 @@ export const Login = () => {
 
     if (login && password) {
       localStorage.setItem("isLogged", "true");
+
+      // 🔥 KLUCZOWE: update React state
+      setIsLocalLogged(true);
+
       navigate("/");
     }
   };
@@ -57,4 +61,4 @@ export const Login = () => {
   );
 };
 
-export default Login
+export default Login;

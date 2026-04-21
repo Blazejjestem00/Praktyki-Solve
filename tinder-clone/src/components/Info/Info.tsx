@@ -1,6 +1,6 @@
 import "./Info.css";
 import { FaInstagram } from "react-icons/fa";
-import { motion, useMotionValue, useTransform } from "motion/react";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 import { useState } from "react";
 import type { User } from "../../services/api";
 
