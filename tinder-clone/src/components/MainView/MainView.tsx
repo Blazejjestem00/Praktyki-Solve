@@ -211,15 +211,6 @@ function MainView() {
   const [history, setHistory] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
 
-  setTimeout(() => {
-    console.log("jestesmy w set timeout");
-  }, 0);
-  for (let i = 0; i < 10; i++) {
-    console.log(i);
-    
-  }
-  console.log("po forze");
-
   useEffect(() => {
     async function loadUsers() {
       try {

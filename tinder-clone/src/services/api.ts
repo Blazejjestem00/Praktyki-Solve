@@ -11,6 +11,10 @@ export interface User {
   caption: string | null;
   created_at: string;
   photoUrl?: string[];
+  position?: {
+    lat: number;
+    lng: number;
+  };
 }
 
 export interface SwipeRequest {
@@ -28,14 +32,17 @@ const persons: User[] = [
     email: "jan.kowalski@test.pl",
     interests: ["siłownia", "kolarstwo", "bieganie"],
     instagram: "jan_fit25",
-    caption:
-      "Hej, jestem Jan 🙂 Lubię sport, szczególnie siłownię i jazdę na rowerze. Szukam aktywnych osób do wspólnych treningów i wyjazdów.",
-    password: "123456",
+    caption: "Hej, jestem Jan 🙂 Lubię sport, szczególnie siłownię i jazdę na rowerze. Szukam aktywnych osób do wspólnych treningów i wyjazdów.",
+    created_at: "2024-06-01T12:00:00Z",
     photoUrl: [
       "https://randomuser.me/api/portraits/men/1.jpg",
       "https://randomuser.me/api/portraits/men/32.jpg",
       "https://randomuser.me/api/portraits/men/76.jpg",
     ],
+    position: {
+      lat: 52.2297,
+      lng: 21.0122,
+    },
   },
   {
     id: 2,
@@ -45,14 +52,17 @@ const persons: User[] = [
     email: "anna.nowak@test.pl",
     interests: ["frontend", "design", "podróże"],
     instagram: "ania.codes",
-    caption:
-      "Hej, jestem Ania 👋 Na co dzień programuję frontend, a po godzinach lubię podróżować i poznawać nowe miejsca. Szukam kreatywnych ludzi z pasją.",
-    password: "123456",
+    caption: "Hej, jestem Ania 👋 Na co dzień programuję frontend, a po godzinach lubię podróżować i poznawać nowe miejsca. Szukam kreatywnych ludzi z pasją.",
+    created_at: "2024-06-01T12:00:00Z",
     photoUrl: [
       "https://randomuser.me/api/portraits/women/2.jpg",
       "https://randomuser.me/api/portraits/women/21.jpg",
       "https://randomuser.me/api/portraits/women/45.jpg",
     ],
+    position: {
+      lat: 52.2297,
+      lng: 21.0122,
+    },
   },
   {
     id: 3,
@@ -62,14 +72,17 @@ const persons: User[] = [
     email: "piotr.w@test.pl",
     interests: ["podróże", "fotografia", "trekking"],
     instagram: "piotr_travels",
-    caption:
-      "Cześć, jestem Piotr 🌍 Uwielbiam podróże i odkrywanie nowych kultur. Często chodzę po górach. Szukam osób do wspólnych wypraw.",
-    password: "123456",
+    caption: "Cześć, jestem Piotr 🌍 Uwielbiam podróże i odkrywanie nowych kultur. Często chodzę po górach. Szukam osób do wspólnych wypraw.",
+    created_at: "2024-06-01T12:00:00Z",
     photoUrl: [
       "https://randomuser.me/api/portraits/men/3.jpg",
       "https://randomuser.me/api/portraits/men/33.jpg",
       "https://randomuser.me/api/portraits/men/58.jpg",
     ],
+    position: {
+      lat: 52.2297,
+      lng: 21.0122,
+    },
   },
   {
     id: 4,
@@ -79,14 +92,17 @@ const persons: User[] = [
     email: "kasia.w@test.pl",
     interests: ["fotografia", "instagram", "moda"],
     instagram: "kasia_shots",
-    caption:
-      "Hej, jestem Kasia 📸 Studiuję i zajmuję się fotografią. Lubię łapać chwile i tworzyć coś kreatywnego. Szukam inspirujących osób.",
-    password: "123456",
+    caption: "Hej, jestem Kasia 📸 Studiuję i zajmuję się fotografią. Lubię łapać chwile i tworzyć coś kreatywnego. Szukam inspirujących osób.",
+    created_at: "2024-06-01T12:00:00Z",
     photoUrl: [
       "https://randomuser.me/api/portraits/women/4.jpg",
       "https://randomuser.me/api/portraits/women/28.jpg",
       "https://randomuser.me/api/portraits/women/62.jpg",
     ],
+    position: {
+      lat: 52.2297,
+      lng: 21.0122,
+    },
   },
   {
     id: 5,
@@ -96,14 +112,17 @@ const persons: User[] = [
     email: "tomasz.k@test.pl",
     interests: ["gotowanie", "wino", "podróże kulinarne"],
     instagram: "tomek_cooks",
-    caption:
-      "Cześć, jestem Tomek 🍝 Uwielbiam gotować i odkrywać nowe smaki. Chętnie poznam osoby, które też kochają kuchnię i wspólne gotowanie.",
-    password: "123456",
+    caption: "Cześć, jestem Tomek 🍝 Uwielbiam gotować i odkrywać nowe smaki. Chętnie poznam osoby, które też kochają kuchnię i wspólne gotowanie.",
+    created_at: "2024-06-01T12:00:00Z",
     photoUrl: [
       "https://randomuser.me/api/portraits/men/5.jpg",
       "https://randomuser.me/api/portraits/men/40.jpg",
       "https://randomuser.me/api/portraits/men/71.jpg",
     ],
+    position: {
+      lat: 52.2297,
+      lng: 21.0122,
+    },
   },
   {
     id: 6,
@@ -113,14 +132,17 @@ const persons: User[] = [
     email: "magda.m@test.pl",
     interests: ["książki", "kawiarnie", "psychologia"],
     instagram: "magda_reads",
-    caption:
-      "Hej, jestem Magda 📚 Kocham książki i spokojne wieczory przy kawie. Interesuję się psychologią. Szukam osób do ciekawych rozmów.",
-    password: "123456",
+    caption: "Hej, jestem Magda 📚 Kocham książki i spokojne wieczory przy kawie. Interesuję się psychologią. Szukam osób do ciekawych rozmów.",
+    created_at: "2024-06-01T12:00:00Z",
     photoUrl: [
       "https://randomuser.me/api/portraits/women/6.jpg",
       "https://randomuser.me/api/portraits/women/19.jpg",
       "https://randomuser.me/api/portraits/women/73.jpg",
     ],
+    position: {
+      lat: 52.2297,
+      lng: 21.0122,
+    },
   },
   {
     id: 7,
@@ -130,14 +152,17 @@ const persons: User[] = [
     email: "pawel.k@test.pl",
     interests: ["gry", "streaming", "technologia"],
     instagram: "pawel_gamer29",
-    caption:
-      "Siema, jestem Paweł 🎮 Gram, streamuję i interesuję się technologią. Szukam ludzi do wspólnego grania i luźnych rozmów.",
-    password: "123456",
+    caption: "Siema, jestem Paweł 🎮 Gram, streamuję i interesuję się technologią. Szukam ludzi do wspólnego grania i luźnych rozmów.",
+    created_at: "2024-06-01T12:00:00Z",
     photoUrl: [
       "https://randomuser.me/api/portraits/men/7.jpg",
       "https://randomuser.me/api/portraits/men/22.jpg",
       "https://randomuser.me/api/portraits/men/64.jpg",
     ],
+    position: {
+      lat: 52.2297,
+      lng: 21.0122,
+    },
   },
   {
     id: 8,
@@ -147,14 +172,17 @@ const persons: User[] = [
     email: "ola.p@test.pl",
     interests: ["zwierzęta", "spacery", "wolontariat"],
     instagram: "ola_paws",
-    caption:
-      "Hej, jestem Ola 🐶 Uwielbiam zwierzęta i długie spacery. Działam też w wolontariacie. Szukam empatycznych i pozytywnych osób.",
-    password: "123456",
+    caption: "Hej, jestem Ola 🐶 Uwielbiam zwierzęta i długie spacery. Działam też w wolontariacie. Szukam empatycznych i pozytywnych osób.",
+    created_at: "2024-06-01T12:00:00Z",
     photoUrl: [
       "https://randomuser.me/api/portraits/women/8.jpg",
       "https://randomuser.me/api/portraits/women/30.jpg",
       "https://randomuser.me/api/portraits/women/55.jpg",
     ],
+    position: {
+      lat: 52.2297,
+      lng: 21.0122,
+    },
   },
   {
     id: 9,
@@ -164,14 +192,17 @@ const persons: User[] = [
     email: "michal.g@test.pl",
     interests: ["bieganie", "maratony", "fitness"],
     instagram: "michal_runs",
-    caption:
-      "Cześć, jestem Michał 🏃‍♂️ Biegam maratony i dbam o formę. Szukam osób do wspólnych treningów i motywacji.",
-    password: "123456",
+    caption: "Cześć, jestem Michał 🏃‍♂️ Biegam maratony i dbam o formę. Szukam osób do wspólnych treningów i motywacji.",
+    created_at: "2024-06-01T12:00:00Z",
     photoUrl: [
       "https://randomuser.me/api/portraits/men/9.jpg",
       "https://randomuser.me/api/portraits/men/26.jpg",
       "https://randomuser.me/api/portraits/men/81.jpg",
     ],
+    position: {
+      lat: 52.2297,
+      lng: 21.0122,
+    },
   },
   {
     id: 10,
@@ -181,14 +212,17 @@ const persons: User[] = [
     email: "natalia.z@test.pl",
     interests: ["design", "UX", "sztuka"],
     instagram: "natalia.designs",
-    caption:
-      "Hej, jestem Natalia 🎨 Projektuję UI/UX i interesuję się sztuką. Szukam kreatywnych osób do wymiany pomysłów.",
-    password: "123456",
+    caption: "Hej, jestem Natalia 🎨 Projektuję UI/UX i interesuję się sztuką. Szukam kreatywnych osób do wymiany pomysłów.",
+    created_at: "2024-06-01T12:00:00Z",
     photoUrl: [
       "https://randomuser.me/api/portraits/women/10.jpg",
       "https://randomuser.me/api/portraits/women/36.jpg",
       "https://randomuser.me/api/portraits/women/68.jpg",
     ],
+    position: {
+      lat: 52.2297,
+      lng: 21.0122,
+    },
   },
 ];
 
@@ -201,10 +235,6 @@ export const api = {
    resolve(persons);
   }, 1000);
  });
-
-
-
-
 
     const response = await fetch(`${API_BASE_URL}/users/all`);
     if (!response.ok) throw new Error("Failed to fetch users");
