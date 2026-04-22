@@ -4,6 +4,7 @@ import MatchButtons from "../MatchButtons/MatchButtons";
 import Pairs from "../Pairs/Pairs";
 import Chats from "../Chats/Chats";
 import "./MatchView.css";
+import NavLinks from "../NavLinks/NavLinks";
 
 function MatchView() {
   const [active, setActive] = useState("pairs");
@@ -19,6 +20,9 @@ function MatchView() {
 
       <div style={{ display: active === "chat" ? "block" : "none" }}>
         <Chats />
+      </div>
+      <div className="nav-wrapper nav-right">
+        <NavLinks />
       </div>
     </div>
   );

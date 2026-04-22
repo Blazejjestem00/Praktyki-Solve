@@ -1,0 +1,98 @@
+/* wrapper LEWY GÓRNY RÓG */
+/* wrapper – wspólne */
+.nav-wrapper {
+  position: fixed;
+  top: 20px;
+  z-index: 9999;
+}
+
+/* LEWO */
+.nav-left {
+  left: 20px;
+}
+
+/* PRAWO */
+.nav-right {
+  right: 20px;
+}
+
+/* hamburger button */
+.hamburger {
+  width: 42px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hamburger span {
+  height: 4px;
+  width: 100%;
+  background: white;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+/* animacja X */
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translateY(10px);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-10px);
+}
+
+/* MENU */
+.menu {
+  margin-top: 8px;
+  display: flex;
+  gap: 6px;
+
+  background: #111;
+  padding: 6px 8px;
+  border-radius: 10px;
+
+  width: fit-content; /* <-- klucz */
+
+  /* ukryte domyślnie */
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: 0.25s ease;
+}
+
+/* pokaz */
+.menu.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* linki */
+.menu a {
+  color: white;
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.menu a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* mobile */
+@media (max-width: 600px) {
+  .nav-wrapper {
+    top: 12px;
+    left: 12px;
+  }
+}
