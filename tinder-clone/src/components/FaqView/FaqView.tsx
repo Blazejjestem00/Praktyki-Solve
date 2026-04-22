@@ -1,11 +1,7 @@
-import FaqCard from "./FaqCard"
+import FaqCard from "./FaqCard";
 
 function FaqView() {
-  
-  return (
-    <FaqCard />
-      
-  );
+  return <FaqCard />;
 }
 
 export default FaqView;

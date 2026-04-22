@@ -11,8 +11,8 @@ interface plans {
 function Card() {
   return (
     <div className="container">
-      <h1>Upgrade to Tinder Premium</h1>
-      <p>Unlock exclusive features and find your perfect match faster!</p>
+      <h1 className="Logo">Przejdź na Tinder Premium</h1>
+<p>Odblokuj ekskluzywne funkcje i znajdź swoją idealną parę szybciej!</p>
 
       <div className="plans">
         {plans.map((plan) => (
@@ -29,9 +29,9 @@ function Card() {
 
             <motion.button
               className="button"
-              onClick={() => alert(`You chose the ${plan.name} plan!`)}
+              onClick={() => alert(`Wybrałeś ${plan.name} plan!`)}
             >
-              Choose {plan.name}
+              Wybierz {plan.name}
             </motion.button>
           </div>
         ))}

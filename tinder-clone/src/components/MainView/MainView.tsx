@@ -4,14 +4,10 @@ import { useState, useEffect } from "react";
 import { api } from "../../services/api";
 import type { User } from "../../services/api";
 
-
-
 function MainView() {
   const [users, setUsers] = useState<User[]>([]);
   const [history, setHistory] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
-
-
 
   useEffect(() => {
     async function loadUsers() {
@@ -121,16 +117,15 @@ function MainView() {
         }}
       >
         {stackUsers.map((user, index) => {
-          const isTop = index === topIndex;
-          const depthFromTop = topIndex - index;
+          const isTop = index === 0;
+          const depthFromTop = index;
 
           return (
             <div
               key={user.id}
               style={{
                 position: "absolute",
-                zIndex: index,
-                transform: `translateY(${depthFromTop * 10}px) scale(${1 - depthFromTop * 0.05})`,
+                zIndex: stackUsers.length - index,
                 opacity: depthFromTop === 0 ? 1 : 0.75,
                 pointerEvents: isTop ? "auto" : "none",
                 filter: depthFromTop === 0 ? "none" : "saturate(0.9)",
