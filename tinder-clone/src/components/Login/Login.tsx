@@ -1,0 +1,64 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Login.css";
+import { useAuth0 } from "@auth0/auth0-react";
+
+export const Login = ({ setIsLocalLogged }) => {
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
+  const { loginWithRedirect } = useAuth0();
+
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (login && password) {
+      localStorage.setItem("isLogged", "true");
+
+      //  KLUCZOWE: update React state
+      setIsLocalLogged(true);
+
+      navigate("/");
+    }
+  };
+
+  return (
+    <div className="login-wrapper">
+      <form className="login-card" onSubmit={handleSubmit}>
+        <h2>Logowanie</h2>
+
+        <div className="field">
+          <label>Login</label>
+          <input
+            value={login}
+            onChange={(e) => setLogin(e.target.value)}
+          />
+        </div>
+
+        <div className="field">
+          <label>Hasło</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+
+        <button type="submit">Zaloguj się</button>
+
+        <h2>Lub</h2>
+
+        <button
+          type="button"
+          className="loginByAuth0"
+          onClick={() => loginWithRedirect()}
+        >
+          Zaloguj się przez Auth0
+        </button>
+      </form>
+    </div>
+  );
+};
+
+export default Login;

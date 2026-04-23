@@ -2,7 +2,7 @@ import { GoHeartFill } from "react-icons/go";
 import { BiSolidRewindCircle } from "react-icons/bi";
 import { MdClose } from "react-icons/md";
 import "./Swipe.css";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 
 export function Swipe({
   onIncrement,
