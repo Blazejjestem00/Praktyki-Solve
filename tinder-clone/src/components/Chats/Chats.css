@@ -1,7 +1,7 @@
 /* ── Layout ───────────────────────────────────────────── */
 .chats-layout {
   display: flex;
-  height: calc(100vh - 160px);
+  height: calc(100vh - 160px); /* leave room for Baner + MatchButtons */
   background: #0d0d0d;
   overflow: hidden;
 }
@@ -27,18 +27,14 @@
   border-radius: 4px;
 }
 
-/* Item */
 .chat-list-item {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 0 16px;
-  height: 72px;
+  padding: 14px 16px;
   cursor: pointer;
   border-bottom: 1px solid #1a1a1a;
   transition: background 0.15s;
-  background: none;
-  border-left: 3px solid transparent;
 }
 
 .chat-list-item:hover {
@@ -50,24 +46,24 @@
   border-left: 3px solid #e1306c;
 }
 
-/* Avatar */
 .chat-list-avatar {
-  width: 40px;
-  height: 40px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
   border: 2px solid #2a2a2a;
 }
 
-/* Info */
 .chat-list-info {
   flex: 1;
   min-width: 0;
-  overflow: hidden;
 }
-
-/* Name */
+.chat-list-preview {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .chat-list-name {
   font-size: 14px;
   font-weight: 700;
@@ -76,29 +72,42 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
-/* Preview */
+.chat-list-item {
+  height: 72px;
+  display: flex;
+  align-items: center;
+}
+.chat-list-info {
+  flex: 1;
+  overflow: hidden;
+}
+.chat-list-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.chat-list-preview {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 .chat-list-preview {
   font-size: 12px;
   color: #666;
-  margin-top: 2px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  margin-top: 2px;
 }
 
-/* Time */
 .chat-list-time {
   font-size: 11px;
   color: #444;
   flex-shrink: 0;
   align-self: flex-start;
-  margin-top: 4px;
-}
-
-/* Focus (a11y) */
-.chat-list-item:focus {
-  outline: 2px solid #e1306c;
+  margin-top: 2px;
 }
 
 /* ── Main area ────────────────────────────────────────── */
@@ -152,7 +161,7 @@
   color: #f0f0f0;
 }
 
-/* Messages */
+/* Messages scroll area */
 .chat-window-messages {
   flex: 1;
   overflow-y: auto;
@@ -275,7 +284,7 @@
   transform: scale(0.96);
 }
 
-/* ── Responsive ─────────────────────────────────────── */
+/* ── Responsive (narrow screens) ─────────────────────── */
 @media (max-width: 640px) {
   .chat-list {
     width: 70px;
