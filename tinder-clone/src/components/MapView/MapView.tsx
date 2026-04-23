@@ -21,14 +21,15 @@ export default function MapView() {
   }, [users]);
 
   return (
-    <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
+    <APIProvider apiKey="AIzaSyDDWfRGBC8RZbce8kW78lbcjoqaFuf4kOo">
+      {/*<APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}> --tak powinno być*/}
       <div style={{ width: "100vw", height: "100vh" }}>
         <Map
           defaultCenter={{ lat: 52.2297, lng: 21.0122 }}
           defaultZoom={12.8}
           style={{ width: "100%", height: "100%" }}
           gestureHandling="greedy"
-          mapId="DEMO_MAP_ID" // otherwise error
+          mapId="DEMO_MAP_ID"
           mapTypeControl={true}
           mapTypeControlOptions={{
             position: 3,
@@ -45,12 +46,33 @@ export default function MapView() {
               position={user.position!}
               onClick={() => setSelectedUser(user)}
             >
-              <Pin
+              {/* Opcja 1: Standardowy Google Pin */}
+              {/* <Pin
                 background="#EA4335"
                 glyphColor="#ffffff"
                 borderColor="#ffffff"
                 scale={1.25}
-              />
+              /> */}
+
+              {/* Opcja 2: Zdjęcie profilowe */}
+              <div
+                style={{
+                  width: "44px",
+                  height: "44px",
+                  borderRadius: "50%",
+                  overflow: "hidden",
+                  border: "3px solid #EA4335",
+                  boxShadow: "0 2px 6px rgba(0,0,0,0.4)",
+                  cursor: "pointer",
+                  backgroundColor: "#ccc",
+                }}
+              >
+                <img
+                  src={user.photoUrl?.[0]}
+                  alt={`${user.name} ${user.surname}`}
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                />
+              </div>
             </AdvancedMarker>
           ))}
 
