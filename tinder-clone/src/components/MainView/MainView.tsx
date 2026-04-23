@@ -3,6 +3,7 @@ import Swipe from "../Swipe/Swipe";
 import { useState, useEffect } from "react";
 import { api } from "../../services/api";
 import type { User } from "../../services/api";
+import NavLinks from "../NavLinks/NavLinks";
 
 function MainView() {
   const [users, setUsers] = useState<User[]>([]);
@@ -136,7 +137,9 @@ function MainView() {
           );
         })}
       </div>
-
+      <div>
+        <NavLinks />
+      </div>
       <div style={{ zIndex: 20 }}>
         <Swipe
           onIncrement={increment}
