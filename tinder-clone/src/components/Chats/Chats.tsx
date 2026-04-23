@@ -1,35 +1,45 @@
 import { useState } from "react";
-import { conversations as initialConversations, type Conversation } from "./chatData";
+import {
+  conversations as initialConversations,
+  type Conversation,
+} from "./chatData";
 import ChatList from "./ChatList";
 import ChatWindow from "./ChatWindow";
 import "./Chats.css";
 
 function Chats() {
-  const [convs, setConvs] = useState<Conversation[]>(initialConversations);
+  const [conversations, setConversations] =
+    useState<Conversation[]>(initialConversations);
   const [activeChatId, setActiveChatId] = useState<number | null>(null);
 
-  const activeConv = convs.find((c) => c.id === activeChatId) ?? null;
+  const activeConv = conversations.find((c) => c.id === activeChatId) ?? null;
 
   const handleSend = (text: string) => {
-    if (!activeChatId) return;
-    setConvs((prev) =>
-      prev.map((c) => {
-        if (c.id !== activeChatId) return c;
-        const newMsg = {
-          id: c.messages.length + 1,
-          from: "me" as const,
-          text,
-          timestamp: Date.now(),
-        };
-        return { ...c, messages: [...c.messages, newMsg] };
-      })
+    if (activeChatId === null) return;
+
+    const newMsg = {
+      id: Date.now(),
+      from: "me" as const,
+      text,
+      timestamp: Date.now(),
+    };
+
+    setConversations((prev) =>
+      prev.map((c) =>
+        c.id === activeChatId
+          ? {
+              ...c,
+              messages: [...c.messages, newMsg],
+            }
+          : c,
+      ),
     );
   };
 
   return (
     <div className="chats-layout">
       <ChatList
-        conversations={convs}
+        conversations={conversations}
         activeChatId={activeChatId}
         setActiveChatId={setActiveChatId}
       />

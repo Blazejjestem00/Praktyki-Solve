@@ -13,7 +13,7 @@ export interface Conversation {
   messages: Message[];
 }
 
-export const CURRENT_USER_ID = 1;
+//export const CURRENT_USER_ID = 1;
 
 export const conversations: Conversation[] = [
   {
@@ -105,6 +105,12 @@ export const conversations: Conversation[] = [
         from: "them",
         text: "Heej 🐶",
         timestamp: Date.now() - 1000 * 60 * 10,
+      },
+      {
+        id: 2,
+        from: "me",
+        text: "Cześć! Ale słodki piesek na Twoim zdjęciu!",
+        timestamp: Date.now() - 1000 * 60 * 5,
       },
     ],
   },

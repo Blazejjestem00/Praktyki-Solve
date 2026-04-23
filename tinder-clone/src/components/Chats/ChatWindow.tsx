@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import type { Conversation, Message } from "./chatData";
 import MessageBubble from "./MessageBubble";
 import MessageInput from "./MessageInput";
-import "./Chats.css";
+
 
 interface ChatWindowProps {
   conversation: Conversation;
@@ -13,12 +13,12 @@ function ChatWindow({ conversation, onSend }: ChatWindowProps) {
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    bottomRef.current?.scrollIntoView({ behavior: "auto" });
   }, [conversation.messages]);
 
   return (
     <div className="chat-window">
-      {/* Header */}
+    
       <div className="chat-window-header">
         <img
           src={conversation.photoUrl}
@@ -28,7 +28,7 @@ function ChatWindow({ conversation, onSend }: ChatWindowProps) {
         <span className="chat-window-name">{conversation.name}</span>
       </div>
 
-      {/* Messages */}
+   
       <div className="chat-window-messages">
         {conversation.messages.map((msg: Message) => (
           <MessageBubble key={msg.id} message={msg} />
@@ -36,7 +36,7 @@ function ChatWindow({ conversation, onSend }: ChatWindowProps) {
         <div ref={bottomRef} />
       </div>
 
-      {/* Input */}
+  
       <MessageInput onSend={onSend} />
     </div>
   );

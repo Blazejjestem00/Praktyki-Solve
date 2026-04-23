@@ -1,5 +1,4 @@
 import type { Conversation } from "./chatData";
-import "./Chats.css";
 
 function formatPreviewTime(ts: number) {
   const now = Date.now();
@@ -30,7 +29,7 @@ function ChatList({
         const lastMsg = conv.messages[conv.messages.length - 1];
         const isActive = conv.id === activeChatId;
         return (
-          <div
+          <button
             key={conv.id}
             className={`chat-list-item ${isActive ? "chat-list-item--active" : ""}`}
             onClick={() => setActiveChatId(conv.id)}
@@ -43,14 +42,21 @@ function ChatList({
             <div className="chat-list-info">
               <div className="chat-list-name">{conv.name}</div>
               <div className="chat-list-preview">
-                {lastMsg.from === "me" ? "Ty: " : ""}
-                {lastMsg.text}
+                {lastMsg ? (
+                  <>
+                    {lastMsg.from === "me" ? "Ty: " : ""}
+                    {lastMsg.text}
+                  </>
+                ) : (
+                  "Brak wiadomości"
+                )}
+              </div>
+
+              <div className="chat-list-time">
+                {lastMsg ? formatPreviewTime(lastMsg.timestamp) : ""}
               </div>
             </div>
-            <div className="chat-list-time">
-              {formatPreviewTime(lastMsg.timestamp)}
-            </div>
-          </div>
+          </button>
         );
       })}
     </div>

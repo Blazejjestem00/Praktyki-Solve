@@ -1,5 +1,4 @@
 import type { Message } from "./chatData";
-import "./Chats.css";
 
 function formatTime(ts: number) {
   const d = new Date(ts);
