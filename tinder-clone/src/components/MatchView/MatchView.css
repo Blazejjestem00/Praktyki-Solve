@@ -4,3 +4,27 @@
 div {
   width: 100%;
 }
+.matchview-container.light {
+  background: radial-gradient(circle at top, #ffffff, #eef2ff);
+  color: #0f172a;
+}
+.matchview-container.dark {
+  background: radial-gradient(circle at top, #0b1020, #020617);
+  color: #e5e7eb;
+}
+.pairs.dark {
+  background: radial-gradient(circle at top, #0b1020, #020617);
+  color: #e5e7eb;
+}
+.pairs.light {
+  background: radial-gradient(circle at top, #ffffff, #eef2ff);
+  color: #0f172a;
+}
+.chat.dark {
+  background: radial-gradient(circle at top, #0b1020, #020617);
+  color: #e5e7eb;
+}
+.chat.light {
+  background: radial-gradient(circle at top, #ffffff, #eef2ff);
+  color: #0f172a;
+}

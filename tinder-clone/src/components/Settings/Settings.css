@@ -1,0 +1,140 @@
+.settings-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 50px 16px;
+  font-family: system-ui, Arial, sans-serif;
+  transition: 0.3s ease;
+}
+
+.settings-page.light {
+  background: radial-gradient(circle at top, #ffffff, #eef2ff);
+  color: #0f172a;
+}
+
+.settings-page.dark {
+  background: radial-gradient(circle at top, #0b1020, #020617);
+  color: #e5e7eb;
+}
+
+.settings-container {
+  width: 100%;
+  max-width: 640px;
+}
+
+h1 {
+  margin-bottom: 28px;
+  font-size: 30px;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.card2 {
+  padding: 22px;
+  border-radius: 24px;
+  margin-bottom: 18px;
+  transition: 0.25s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.settings-page.light .card2 {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+}
+
+.settings-page.dark .card2 {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.card2 h2 {
+  margin-bottom: 14px;
+  font-size: 13px;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+  font-weight: 700;
+  opacity: 0.9;
+
+  background: linear-gradient(135deg, #ff5864, #ff2e63);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.buttons-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+button.primary,
+button.secondary,
+button.toggle-btn,
+button.faq-button {
+  padding: 10px 14px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s ease;
+  font-weight: 600;
+}
+
+button.primary {
+  background: linear-gradient(135deg, #ff5864, #ff2e63);
+  color: white;
+  box-shadow: 0 8px 20px rgba(255, 46, 99, 0.25);
+}
+
+button.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(255, 46, 99, 0.35);
+}
+
+button.secondary {
+  background: #94a3b8;
+  color: white;
+}
+
+button.secondary:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+
+button.ghost {
+  background: transparent;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  color: inherit;
+}
+
+button.ghost:hover {
+  background: rgba(148, 163, 184, 0.1);
+}
+
+.theme-select {
+  display: flex;
+  gap: 10px;
+}
+
+button.toggle-btn {
+  flex: 1;
+  background: transparent;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  color: inherit;
+  border-radius: 999px;
+  padding: 10px;
+}
+
+.toggle-btn.active {
+  background: linear-gradient(135deg, #ff5864, #ff2e63);
+  color: white;
+  border: none;
+  box-shadow: 0 6px 15px rgba(255, 46, 99, 0.25);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+.card2:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.15);
+}

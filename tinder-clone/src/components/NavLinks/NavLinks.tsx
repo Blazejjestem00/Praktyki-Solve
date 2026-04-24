@@ -8,7 +8,6 @@ function NavLinks() {
   return (
     <div className="nav-wrapper nav-left">
       {" "}
-      {/* hamburger */}
       <button
         className={`hamburger ${open ? "open" : ""}`}
         onClick={() => setOpen((p) => !p)}
@@ -17,7 +16,6 @@ function NavLinks() {
         <span />
         <span />
       </button>
-      {/* menu */}
       <div className={`menu ${open ? "show" : ""}`}>
         <Link to="/" onClick={() => setOpen(false)}>
           Home

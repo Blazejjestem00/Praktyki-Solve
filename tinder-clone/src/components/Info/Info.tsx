@@ -43,13 +43,15 @@ function Info({ person, onSwipe }: InfoProps) {
   if (!photos.length) return null;
 
   const handlePhotoClick = (e: React.MouseEvent) => {
-    const width = e.currentTarget.clientWidth;
-    const isLeft = e.clientX < width / 2;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+
+    const isLeft = clickX < rect.width / 2;
 
     setPhotoIndex((prev) =>
       isLeft
         ? (prev - 1 + photos.length) % photos.length
-        : (prev + 1) % photos.length
+        : (prev + 1) % photos.length,
     );
   };
 
@@ -63,17 +65,22 @@ function Info({ person, onSwipe }: InfoProps) {
         onDragEnd={handleDragEnd}
       >
         {/* badges */}
-        <motion.div className="swipe-badge swipe-badge-like" style={{ opacity: likeOpacity }}>
+        <motion.div
+          className="swipe-badge swipe-badge-like"
+          style={{ opacity: likeOpacity }}
+        >
           LIKE
         </motion.div>
 
-        <motion.div className="swipe-badge swipe-badge-nope" style={{ opacity: nopeOpacity }}>
+        <motion.div
+          className="swipe-badge swipe-badge-nope"
+          style={{ opacity: nopeOpacity }}
+        >
           NOPE
         </motion.div>
 
         {/* SINGLE PHOTO SYSTEM */}
         <div className="photo2" onClick={handlePhotoClick}>
-          
           {/* progress */}
           <div className="photo-progress">
             {photos.map((_, i) => (

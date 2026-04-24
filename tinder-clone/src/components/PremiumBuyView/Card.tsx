@@ -10,9 +10,9 @@ interface plans {
 }
 function Card() {
   return (
-    <div className="container">
+    <div className="container2">
       <h1 className="Logo">Przejdź na Tinder Premium</h1>
-<p>Odblokuj ekskluzywne funkcje i znajdź swoją idealną parę szybciej!</p>
+      <p>Odblokuj ekskluzywne funkcje i znajdź swoją idealną parę szybciej!</p>
 
       <div className="plans">
         {plans.map((plan) => (

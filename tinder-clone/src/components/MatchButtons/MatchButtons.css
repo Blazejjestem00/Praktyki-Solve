@@ -1,5 +1,5 @@
-.Pairs,
-.Chat {
+.pairs,
+.chat {
   width: 20%;
   float: left;
   height: 50px;
@@ -11,15 +11,15 @@
   position: relative;
   color: white;
 }
-.Chat {
+.chat {
   width: 25%;
 }
 button:hover {
   font-size: 30px;
   cursor: pointer;
 }
-.Pairs::after,
-.Chat::after {
+.pairs::after,
+.chat::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -31,7 +31,15 @@ button:hover {
   transform: scaleX(0);
   transition: transform 0.3s ease;
 }
-.Pairs[data-active="true"]::after,
-.Chat[data-active="true"]::after {
+.pairs[data-active="true"]::after,
+.chat[data-active="true"]::after {
   transform: scaleX(1);
+}
+.match-buttons-container.light {
+  background: radial-gradient(circle at top, #ffffff, #eef2ff);
+  color: #0f172a;
+}
+.match-buttons-container.dark {
+  background: radial-gradient(circle at top, #0b1020, #020617);
+  color: #e5e7eb;
 }

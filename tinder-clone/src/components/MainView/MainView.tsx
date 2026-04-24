@@ -4,132 +4,110 @@ import { useState, useEffect } from "react";
 import { api } from "../../services/api";
 import type { User } from "../../services/api";
 import NavLinks from "../NavLinks/NavLinks";
+import "./MainView.css";
 
 function MainView() {
   const [users, setUsers] = useState<User[]>([]);
   const [history, setHistory] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
 
+  const [theme, setTheme] = useState("dark");
+
+  const [dragX, setDragX] = useState(0);
+
   useEffect(() => {
-    async function loadUsers() {
+    setTheme(localStorage.getItem("theme") || "dark");
+  }, []);
+
+  useEffect(() => {
+    async function load() {
       try {
         const data = await api.fetchUsers();
         setUsers(data);
-      } catch (error) {
-        console.error("Failed to load users:", error);
       } finally {
         setLoading(false);
       }
     }
-    loadUsers();
+    load();
   }, []);
 
-  const handleSwipe = async (direction: "left" | "right") => {
-    if (users.length === 0) return;
+  const handleSwipe = async (dir: "left" | "right") => {
+    if (!users.length) return;
 
-    const currentUser = users[0];
+    const current = users[0];
 
-    // Save to history for rewind
-    setHistory((prev) => [...prev, currentUser]);
-    // Remove from current stack
-    setUsers((prev) => prev.slice(1));
+    setHistory((h) => [...h, current]);
+    setUsers((u) => u.slice(1));
+    setDragX(0);
 
-    try {
-      await api.sendSwipe({
-        swiper_id: 1,
-        swiped_id: currentUser.id,
-        action: direction === "right" ? "like" : "pass",
-      });
-    } catch (error) {
-      console.error("Failed to send swipe:", error);
-    }
+    await api.sendSwipe({
+      swiper_id: 1,
+      swiped_id: current.id,
+      action: dir === "right" ? "like" : "pass",
+    });
   };
 
   const rewind = () => {
-    if (history.length === 0) return;
-    const lastUser = history[history.length - 1];
-    setUsers((prev) => [lastUser, ...prev]);
-    setHistory((prev) => prev.slice(0, -1));
+    if (!history.length) return;
+
+    const last = history[history.length - 1];
+    setUsers((u) => [last, ...u]);
+    setHistory((h) => h.slice(0, -1));
   };
 
-  const increment = () => handleSwipe("right");
-  const decrement = () => handleSwipe("left");
+  if (loading) return <div className="loading">Loading...</div>;
+  if (!users.length)
+    return <div className={`empty ${theme}`}>No more users 💔</div>;
 
-  if (loading) {
-    return (
-      <div
-        style={{
-          color: "white",
-          fontSize: "24px",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-        }}
-      >
-        Loading users...
-      </div>
-    );
-  }
-
-  if (users.length === 0) {
-    return (
-      <div
-        style={{
-          color: "white",
-          fontSize: "24px",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-        }}
-      >
-        No more people in your area! 💔
-      </div>
-    );
-  }
-
-  const stackUsers = users.slice(0, 3);
-  const topIndex = stackUsers.length - 1;
+  const stack = users.slice(0, 3);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        height: "100vh",
-        gap: "20px",
-        position: "relative",
-        backgroundColor: "#0b0c10",
-        backgroundImage:
-          "radial-gradient(900px 600px at 50% 20%, rgba(255, 0, 128, 0.12), transparent 60%), radial-gradient(700px 500px at 20% 80%, rgba(46, 204, 113, 0.10), transparent 60%)",
-      }}
-    >
-      <div
-        style={{
-          position: "relative",
-          width: "450px",
-          height: "700px",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        {stackUsers.map((user, index) => {
+    <div className={`main-container ${theme}`}>
+      <div className="card-wrapper">
+        {stack.map((user, index) => {
           const isTop = index === 0;
-          const depthFromTop = index;
 
           return (
             <div
               key={user.id}
+              className={`card3 ${theme}`}
               style={{
-                position: "absolute",
-                zIndex: stackUsers.length - index,
-                opacity: depthFromTop === 0 ? 1 : 0.75,
+                zIndex: stack.length - index,
+
+                transform: isTop
+                  ? `translateX(${dragX}px) rotate(${dragX * 0.04}deg)`
+                  : `translateY(${index * 16}px) scale(${1 - index * 0.04})`,
+
                 pointerEvents: isTop ? "auto" : "none",
-                filter: depthFromTop === 0 ? "none" : "saturate(0.9)",
+              }}
+              onMouseDown={(e) => {
+                if (!isTop) return;
+
+                const startX = e.clientX;
+
+                const move = (ev: MouseEvent) => {
+                  setDragX(ev.clientX - startX);
+                };
+
+                const up = () => {
+                  const threshold = 180;
+
+                  if (Math.abs(dragX) < 20) {
+                    setDragX(0);
+                  } else if (dragX > threshold) {
+                    handleSwipe("right");
+                  } else if (dragX < -threshold) {
+                    handleSwipe("left");
+                  } else {
+                    setDragX(0);
+                  }
+
+                  window.removeEventListener("mousemove", move);
+                  window.removeEventListener("mouseup", up);
+                };
+
+                window.addEventListener("mousemove", move);
+                window.addEventListener("mouseup", up);
               }}
             >
               <Info person={user} onSwipe={handleSwipe} />
@@ -137,13 +115,13 @@ function MainView() {
           );
         })}
       </div>
-      <div>
-        <NavLinks />
-      </div>
-      <div style={{ zIndex: 20 }}>
+
+      <NavLinks />
+
+      <div className={`controls ${theme}`}>
         <Swipe
-          onIncrement={increment}
-          onDecrement={decrement}
+          onIncrement={() => handleSwipe("right")}
+          onDecrement={() => handleSwipe("left")}
           onRewind={rewind}
           canRewind={history.length > 0}
         />

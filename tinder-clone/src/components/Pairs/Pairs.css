@@ -1,0 +1,13 @@
+.pairs-container {
+  color: white;
+  text-align: center;
+  margin-top: 20px;
+}
+.pairs-container.light {
+  background: radial-gradient(circle at top, #ffffff, #eef2ff);
+  color: #0f172a;
+}
+.pairs-container.dark {
+  background: radial-gradient(circle at top, #0b1020, #020617);
+  color: #e5e7eb;
+}

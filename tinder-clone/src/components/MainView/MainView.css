@@ -1,0 +1,53 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  height: 100vh;
+  overflow: hidden;
+}
+
+.card-wrapper {
+  position: relative;
+  width: 450px;
+  height: 700px;
+
+  isolation: isolate;
+  overflow: visible;
+  perspective: 1000px;
+}
+
+.card3 {
+  position: absolute;
+  inset: 0;
+
+  border-radius: 20px;
+
+  transform-origin: center;
+  will-change: transform;
+
+  backface-visibility: hidden;
+
+  background-clip: padding-box;
+}
+
+.card3:not(:first-child) {
+  transform: scale(0.96) translateY(18px);
+  opacity: 0.85;
+}
+
+.card3 {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0);
+}
+
+.main-container.dark {
+  background: #020617;
+}
+
+.main-container.light {
+  background: #f8fafc;
+}
+.controls {
+  margin-top: 45px;
+}
