@@ -31,6 +31,10 @@ function NavLinks() {
           Matches
         </Link>
 
+        <Link to="/maps" onClick={() => setOpen(false)}>
+          Maps
+        </Link>
+
         <Link to="/settings" onClick={() => setOpen(false)}>
           Settings
         </Link>
