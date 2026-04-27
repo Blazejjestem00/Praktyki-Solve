@@ -20,11 +20,9 @@ const currentUser: User = {
   created_at: "",
   photoUrl: ["https://randomuser.me/api/portraits/men/1.jpg"],
 };
-
+const savedTheme = localStorage.getItem("theme") || "dark";
+document.body.setAttribute("data-theme", savedTheme);
 function App() {
-  const savedTheme = localStorage.getItem("theme") || "dark";
-  document.body.setAttribute("data-theme", savedTheme);
-
   return (
     <BrowserRouter>
       <Routes>

@@ -6,6 +6,7 @@ import { FaHeart } from "react-icons/fa";
 import { FaMap } from "react-icons/fa";
 import { FaCog } from "react-icons/fa";
 import { FaCrown } from "react-icons/fa";
+import { SiTinder } from "react-icons/si";
 
 
 function NavLinks() {
@@ -19,12 +20,13 @@ function NavLinks() {
         className={`hamburger ${open ? "open" : ""}`}
         onClick={() => setOpen((p) => !p)}
       >
-        <span />
-        <span />
-        <span />
+        <span className="line"/>
+        <span className="line"/>
+        <span className="line"/>
       </button>
       {/* menu */}
       <div className={`menu ${open ? "show" : ""}`}>
+        <SiTinder />
         <Link to="/" onClick={() => setOpen(false)}>
           <FaHome /> Home
         </Link>

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { api } from "../../services/api";
 import type { User } from "../../services/api";
 import NavLinks from "../NavLinks/NavLinks";
+import "./Mainview.css";
 
 function MainView() {
   const [users, setUsers] = useState<User[]>([]);
@@ -26,14 +27,9 @@ function MainView() {
 
   const handleSwipe = async (direction: "left" | "right") => {
     if (users.length === 0) return;
-
     const currentUser = users[0];
-
-    // Save to history for rewind
     setHistory((prev) => [...prev, currentUser]);
-    // Remove from current stack
     setUsers((prev) => prev.slice(1));
-
     try {
       await api.sendSwipe({
         swiper_id: 1,
@@ -56,75 +52,26 @@ function MainView() {
   const decrement = () => handleSwipe("left");
 
   if (loading) {
-    return (
-      <div
-        style={{
-          color: "white",
-          fontSize: "24px",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-        }}
-      >
-        Loading users...
-      </div>
-    );
+    return <div className="main-status">Loading users...</div>;
   }
 
   if (users.length === 0) {
-    return (
-      <div
-        style={{
-          color: "white",
-          fontSize: "24px",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-        }}
-      >
-        No more people in your area! 💔
-      </div>
-    );
+    return <div className="main-status">No more people in your area! 💔</div>;
   }
 
   const stackUsers = users.slice(0, 3);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        height: "100vh",
-        gap: "20px",
-        position: "relative",
-        backgroundColor: "#0b0c10",
-        backgroundImage:
-          "radial-gradient(900px 600px at 50% 20%, rgba(255, 0, 128, 0.12), transparent 60%), radial-gradient(700px 500px at 20% 80%, rgba(46, 204, 113, 0.10), transparent 60%)",
-      }}
-    >
-      <div
-        style={{
-          position: "relative",
-          width: "450px",
-          height: "700px",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+    <div className="main-view">
+      <div className="main-stack">
         {stackUsers.map((user, index) => {
           const isTop = index === 0;
           const depthFromTop = index;
-
           return (
             <div
               key={user.id}
+              className="main-card-wrapper"
               style={{
-                position: "absolute",
                 zIndex: stackUsers.length - index,
                 opacity: depthFromTop === 0 ? 1 : 0.75,
                 pointerEvents: isTop ? "auto" : "none",
@@ -136,10 +83,10 @@ function MainView() {
           );
         })}
       </div>
-      <div>
-        <NavLinks />
-      </div>
-      <div style={{ zIndex: 20 }}>
+
+      <NavLinks />
+
+      <div className="main-swipe">
         <Swipe
           onIncrement={increment}
           onDecrement={decrement}

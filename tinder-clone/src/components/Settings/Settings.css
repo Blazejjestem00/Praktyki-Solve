@@ -143,3 +143,55 @@ button:active {
   transform: translateY(-3px);
   box-shadow: 0 14px 35px rgba(0, 0, 0, 0.15);
 }
+.settings-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.settings-profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.settings-profile-name {
+  font-size: 20px;
+  font-weight: 700;
+}
+.settings-profile-caption {
+  font-size: 16px;
+  font-weight: 400;
+}
+.settings-profile-email {
+  font-size: 14px;
+  font-weight: 400;
+}
+.settings-sliders {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.settings-sliders label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.settings-sliders input[type="range"] {
+  width: 100%;
+}
+.settings-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+body[data-theme="dark"] .settings-profile-name,
+body[data-theme="dark"] .settings-profile-caption,
+body[data-theme="dark"] .settings-profile-email {
+  color: #e5e7eb;
+}
+
+body[data-theme="light"] .settings-profile-name,
+body[data-theme="light"] .settings-profile-caption,
+body[data-theme="light"] .settings-profile-email {
+  color: #0f172a;
+}

@@ -3,6 +3,7 @@ import { FaInstagram } from "react-icons/fa";
 import { motion, useMotionValue, useTransform } from "motion/react";
 import { useState } from "react";
 import type { User } from "../../services/api";
+import { TbBrandTinderFilled } from "react-icons/tb";
 
 type Person = User & { photoUrl?: string[] };
 
@@ -38,13 +39,15 @@ function Info({ person, onSwipe }: InfoProps) {
   if (!photos.length) return null;
 
   const handlePhotoClick = (e: React.MouseEvent) => {
-    const width = e.currentTarget.clientWidth;
-    const isLeft = e.clientX < width / 2;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+
+    const isLeft = clickX < rect.width / 2;
 
     setPhotoIndex((prev) =>
       isLeft
         ? (prev - 1 + photos.length) % photos.length
-        : (prev + 1) % photos.length
+        : (prev + 1) % photos.length,
     );
   };
 
@@ -58,17 +61,22 @@ function Info({ person, onSwipe }: InfoProps) {
         onDragEnd={handleDragEnd}
       >
         {/* badges */}
-        <motion.div className="swipe-badge swipe-badge-like" style={{ opacity: likeOpacity }}>
-          LIKE
+        <motion.div
+          className="swipe-badge swipe-badge-like"
+          style={{ opacity: likeOpacity }}
+        >
+          <TbBrandTinderFilled /> LIKE
         </motion.div>
 
-        <motion.div className="swipe-badge swipe-badge-nope" style={{ opacity: nopeOpacity }}>
-          NOPE
+        <motion.div
+          className="swipe-badge swipe-badge-nope"
+          style={{ opacity: nopeOpacity }}
+        >
+          <TbBrandTinderFilled /> NOPE
         </motion.div>
 
         {/* SINGLE PHOTO SYSTEM */}
         <div className="photo2" onClick={handlePhotoClick}>
-          
           {/* progress */}
           <div className="photo-progress">
             {photos.map((_, i) => (

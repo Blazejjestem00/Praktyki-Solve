@@ -1,0 +1,57 @@
+.main-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 20px;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+body[data-theme="dark"] .main-view {
+  background-color: #0b0c10;
+  background-image:
+    radial-gradient(900px 600px at 50% 20%, rgba(255, 0, 128, 0.12), transparent 60%),
+    radial-gradient(700px 500px at 20% 80%, rgba(46, 204, 113, 0.10), transparent 60%);
+}
+
+body[data-theme="light"] .main-view {
+  background-color: #f1f5f9;
+  background-image:
+    radial-gradient(900px 600px at 50% 20%, rgba(255, 0, 128, 0.06), transparent 60%),
+    radial-gradient(700px 500px at 20% 80%, rgba(46, 204, 113, 0.05), transparent 60%);
+}
+
+.main-stack {
+  position: relative;
+  width: 450px;
+  height: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-card-wrapper {
+  position: absolute;
+}
+
+.main-swipe {
+  z-index: 20;
+}
+
+.main-status {
+  color: white;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+@media (max-width: 520px) {
+  .main-stack {
+    width: min(92vw, 420px);
+    height: min(74vh, 660px);
+  }
+}

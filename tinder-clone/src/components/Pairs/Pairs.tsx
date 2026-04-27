@@ -16,7 +16,7 @@ function Pairs() {
     async function loadMatches() {
       try {
         // Using userId 1 as default current user
-        const data = await api.fetchMatches(1);
+        const data = await api.fetchMatches(0);
         setUsers(data);
       } catch (error) {
         console.error("Failed to load matches:", error);

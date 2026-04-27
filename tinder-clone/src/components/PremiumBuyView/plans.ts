@@ -10,6 +10,7 @@ const plans = [
       "Brak reklam",
     ],
     color: "#964B00",
+    image: "bronze.png",
   },
   {
     id: 2,
@@ -23,6 +24,7 @@ const plans = [
       "Priorytetowe polubienia (Twój profil wyświetlany jako pierwszy)",
     ],
     color: "#E5E4E2",
+    image: "silver.png",
   },
   {
     id: 3,
@@ -37,6 +39,7 @@ const plans = [
       "Wyróżniony profil w wyszukiwarce",
     ],
     color: "#D4AF37",
+    image: "gold.png",
   },
 ];
 
