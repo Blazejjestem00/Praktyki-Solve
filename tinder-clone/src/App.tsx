@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MatchView from "./components/MatchView/MatchView";
 import PremiumBuyView from "./components/PremiumBuyView/PremiumBuyView";
 import FaqView from "./components/FaqView/FaqView";
-import SettingsView from "./components/Setings/SettingsView";
+import SettingsView from "./components/Settings/SettingsView";
 import type { User } from "./services/api";
 import MapView from "./components/MapView/MapView";
 // tymczasowo — pierwszy user = zalogowany

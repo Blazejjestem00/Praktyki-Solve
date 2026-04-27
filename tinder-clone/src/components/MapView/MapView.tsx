@@ -7,6 +7,7 @@ import {
   InfoWindow,
 } from "@vis.gl/react-google-maps";
 import { api, type User } from "../../services/api";
+import NavLinks from "../NavLinks/NavLinks";
 
 export default function MapView() {
   const [users, setUsers] = useState<User[]>([]);
@@ -113,6 +114,7 @@ export default function MapView() {
             </InfoWindow>
           )}
         </Map>
+        <NavLinks />
       </div>
     </APIProvider>
   );

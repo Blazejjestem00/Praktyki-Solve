@@ -1,7 +1,7 @@
 import "./Info.css";
 import { FaInstagram } from "react-icons/fa";
 import { motion, useMotionValue, useTransform } from "motion/react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import type { User } from "../../services/api";
 
 type Person = User & { photoUrl?: string[] };
@@ -21,18 +21,13 @@ function seededPhotoUrls(userId: number, count = 3) {
 function Info({ person, onSwipe }: InfoProps) {
   const [photoIndex, setPhotoIndex] = useState(0);
 
-  // reset zdjęć przy zmianie usera
-  useEffect(() => {
-    setPhotoIndex(0);
-  }, [person.id]);
-
   const x = useMotionValue(0);
   const rotate = useTransform(x, [-200, 0, 200], [-25, 0, 25]);
   const opacity = useTransform(x, [-200, -150, 0, 150, 200], [0, 1, 1, 1, 0]);
   const likeOpacity = useTransform(x, [20, 140], [0, 1]);
   const nopeOpacity = useTransform(x, [-140, -20], [1, 0]);
 
-  const handleDragEnd = (_: any, info: any) => {
+  const handleDragEnd = (_: unknown, info: { offset: { x: number } }) => {
     if (info.offset.x > 150) onSwipe("right");
     else if (info.offset.x < -150) onSwipe("left");
   };

@@ -90,7 +90,6 @@ function MainView() {
   }
 
   const stackUsers = users.slice(0, 3);
-  const topIndex = stackUsers.length - 1;
 
   return (
     <div

@@ -1,7 +1,8 @@
 import "./UserContact.css";
 import { FaInstagram, FaEnvelope } from "react-icons/fa";
+import type { User } from "../../services/api";
 
-function UserContact({ person }: any) {
+function UserContact({ person }: { person: User }) {
   return (
     <div key={person.id} className="UserContainer">
       <div className="user-contact">

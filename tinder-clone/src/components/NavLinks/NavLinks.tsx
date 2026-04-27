@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./NavLinks.css";
+import { FaHome } from "react-icons/fa"; 
+import { FaHeart } from "react-icons/fa";
+import { FaMap } from "react-icons/fa";
+import { FaCog } from "react-icons/fa";
+import { FaCrown } from "react-icons/fa";
+
 
 function NavLinks() {
   const [open, setOpen] = useState(false);
@@ -20,23 +26,23 @@ function NavLinks() {
       {/* menu */}
       <div className={`menu ${open ? "show" : ""}`}>
         <Link to="/" onClick={() => setOpen(false)}>
-          Home
+          <FaHome /> Home
         </Link>
 
         <Link to="/premium" onClick={() => setOpen(false)}>
-          Buy Premium
+          <FaCrown /> Buy Premium
         </Link>
 
         <Link to="/match" onClick={() => setOpen(false)}>
-          Matches
+          <FaHeart /> Matches
         </Link>
 
         <Link to="/maps" onClick={() => setOpen(false)}>
-          Maps
+          <FaMap /> Maps
         </Link>
 
         <Link to="/settings" onClick={() => setOpen(false)}>
-          Settings
+          <FaCog /> Settings
         </Link>
       </div>
     </div>

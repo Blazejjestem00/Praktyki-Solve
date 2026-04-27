@@ -1,4 +1,3 @@
-/* wrapper LEWY GÓRNY RÓG */
 /* wrapper – wspólne */
 .nav-wrapper {
   position: fixed;
@@ -24,7 +23,6 @@
   background: transparent;
   border: none;
   cursor: pointer;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -38,32 +36,23 @@
   transition: 0.3s;
 }
 
-/* animacja X */
-.hamburger.open span:nth-child(1) {
-  transform: rotate(45deg) translateY(10px);
-}
 
-.hamburger.open span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger.open span:nth-child(3) {
-  transform: rotate(-45deg) translateY(-10px);
-}
 
 /* MENU */
 .menu {
+  position: absolute;
+  top: 25px;
+  left: 0;
   margin-top: 8px;
   display: flex;
+  flex-direction: column;
+  
   gap: 6px;
-
   background: #111;
   padding: 6px 8px;
   border-radius: 10px;
+  width: fit-content;
 
-  width: fit-content; /* <-- klucz */
-  flex-direction: column;
-  display: inline;
   /* ukryte domyślnie */
   opacity: 0;
   transform: translateY(-10px);

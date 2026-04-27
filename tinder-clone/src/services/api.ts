@@ -1,5 +1,3 @@
-const API_BASE_URL = "http://127.0.0.1:8000";
-
 export interface User {
   id: number;
   name: string;
@@ -206,31 +204,87 @@ const persons: User[] = [
   },
 ];
 
+type SwipeAction = SwipeRequest["action"];
+
+const swipesBySwiper = new Map<number, Map<number, SwipeAction>>();
+
+// Hardcoded "mutual likes" to have some matches out of the box.
+// Meaning: if user A likes user B and B is in this set for A, it becomes a match.
+const mutualLikeSeeds = new Map<number, Set<number>>([
+  [1, new Set([2, 4, 6])],
+  [2, new Set([1])],
+  [4, new Set([1])],
+  [6, new Set([1])],
+]);
+
+const matchesByUser = new Map<number, Set<number>>([
+  // Pre-seed one match to make "Pairs" not empty on first load.
+  [1, new Set([2])],
+  [2, new Set([1])],
+]);
+
+function delay(ms: number) {
+  return new Promise<void>((resolve) => setTimeout(resolve, ms));
+}
+
+function getUserById(userId: number) {
+  return persons.find((p) => p.id === userId) ?? null;
+}
+
+function ensureSwipeMap(swiperId: number) {
+  let m = swipesBySwiper.get(swiperId);
+  if (!m) {
+    m = new Map<number, SwipeAction>();
+    swipesBySwiper.set(swiperId, m);
+  }
+  return m;
+}
+
+function addMatch(a: number, b: number) {
+  const ensure = (id: number) => {
+    let s = matchesByUser.get(id);
+    if (!s) {
+      s = new Set<number>();
+      matchesByUser.set(id, s);
+    }
+    return s;
+  };
+  ensure(a).add(b);
+  ensure(b).add(a);
+}
+
 export const api = {
   async fetchUsers(): Promise<User[]> {
-    return await new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(persons);
-      }, 1000);
-    });
-
-    const response = await fetch(`${API_BASE_URL}/users/all`);
-    if (!response.ok) throw new Error("Failed to fetch users");
-    return response.json();
+    await delay(250);
+    // Temporary: current user is assumed to be id=1 across the app.
+    return persons.filter((p) => p.id !== 1);
   },
 
   async sendSwipe(swipeData: SwipeRequest): Promise<void> {
-    const response = await fetch(`${API_BASE_URL}/`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(swipeData),
-    });
-    if (!response.ok) throw new Error("Failed to send swipe");
+    await delay(120);
+    const { swiper_id, swiped_id, action } = swipeData;
+
+    // Ignore invalid data quietly (keeps UI smooth when rewinding, etc.)
+    if (!getUserById(swiper_id) || !getUserById(swiped_id)) return;
+    if (swiper_id === swiped_id) return;
+
+    const m = ensureSwipeMap(swiper_id);
+    m.set(swiped_id, action);
+
+    if (action !== "like") return;
+
+    const seed = mutualLikeSeeds.get(swiped_id);
+    if (seed?.has(swiper_id)) {
+      addMatch(swiper_id, swiped_id);
+    }
   },
 
   async fetchMatches(userId: number): Promise<User[]> {
-    const response = await fetch(`${API_BASE_URL}/matches/${userId}`);
-    if (!response.ok) throw new Error("Failed to fetch matches");
-    return response.json();
+    await delay(200);
+    const matchIds = matchesByUser.get(userId);
+    if (!matchIds) return [];
+    return [...matchIds]
+      .map((id) => getUserById(id))
+      .filter((u): u is User => u !== null);
   },
 };
