@@ -14,7 +14,6 @@
   box-shadow: 0 15px 80px rgba(0, 0, 0, 0.5);
   background: black;
   border: 1px solid rgba(255, 255, 255, 0.06);
-  
 }
 
 .swipe-badge {
@@ -32,11 +31,11 @@
 
 .swipe-badge-like {
   left: 122px;
-    color: #2ecc71;
-    transform: rotate(-12deg);
-    font-size: 30px;
-    user-select: none;
-    pointer-events: none;
+  color: #2ecc71;
+  transform: rotate(-12deg);
+  font-size: 30px;
+  user-select: none;
+  pointer-events: none;
 }
 
 .swipe-badge-nope {
@@ -47,7 +46,6 @@
   user-select: none;
   pointer-events: none;
 }
-
 
 .photo2 img {
   width: 100%;
@@ -64,7 +62,7 @@
     height: min(74vh, 660px);
   }
 }
-.text {
+.text-card {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -82,6 +80,7 @@
     transparent 100%
   );
 }
+
 .name-row {
   display: flex;
   align-items: baseline;
@@ -126,7 +125,6 @@ li {
   font-weight: 300;
   font-size: 25px;
 }
-
 
 /* progress bar */
 .photo-progress {
