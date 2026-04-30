@@ -42,7 +42,11 @@ const persons: User[] = [
     blockedUsers: ["Paweł", "Mariusz"],
     caption: "Hej, jestem Jan 🙂 Lubię sport, szczególnie siłownię.",
     created_at: "2024-06-01T12:00:00Z",
-    photoUrl: ["https://randomuser.me"],
+    photoUrl: [
+      "https://randomuser.me/api/portraits/men/1.jpg",
+      "https://randomuser.me/api/portraits/men/32.jpg",
+      "https://randomuser.me/api/portraits/men/76.jpg",
+    ],
     position: { lat: 52.185948, lng: 21.102004 },
   },
   {
@@ -60,7 +64,11 @@ const persons: User[] = [
     blockedUsers: ["Krzysiek", "Darek"],
     caption: "Hej, jestem Ania 👋 Na co dzień programuję frontend.",
     created_at: "2024-06-01T12:00:00Z",
-    photoUrl: ["https://randomuser.me"],
+    photoUrl: [
+      "https://randomuser.me/api/portraits/women/2.jpg",
+      "https://randomuser.me/api/portraits/women/21.jpg",
+      "https://randomuser.me/api/portraits/women/45.jpg",
+    ],
     position: { lat: 52.130508, lng: 21.045202 },
   },
   {
@@ -78,7 +86,11 @@ const persons: User[] = [
     blockedUsers: ["Natalia", "Tomasz", "Beata"],
     caption: "Cześć, jestem Piotr 🌍 Uwielbiam podróże.",
     created_at: "2024-06-01T12:00:00Z",
-    photoUrl: ["https://randomuser.me"],
+    photoUrl: [
+      "https://randomuser.me/api/portraits/men/3.jpg",
+      "https://randomuser.me/api/portraits/men/33.jpg",
+      "https://randomuser.me/api/portraits/men/58.jpg",
+    ],
     position: { lat: 52.273166, lng: 20.914348 },
   },
   {
@@ -96,7 +108,11 @@ const persons: User[] = [
     blockedUsers: ["Damian"],
     caption: "Hej, jestem Kasia 📸 Studiuję i fotografuję.",
     created_at: "2024-06-01T12:00:00Z",
-    photoUrl: ["https://randomuser.me"],
+    photoUrl: [
+      "https://randomuser.me/api/portraits/women/4.jpg",
+      "https://randomuser.me/api/portraits/women/28.jpg",
+      "https://randomuser.me/api/portraits/women/62.jpg",
+    ],
     position: { lat: 52.264848, lng: 21.162536 },
   },
   {
@@ -114,7 +130,11 @@ const persons: User[] = [
     blockedUsers: ["Jan", "Anna", "Zygmunt"],
     caption: "Cześć, jestem Tomek 🍝 Uwielbiam gotować.",
     created_at: "2024-06-01T12:00:00Z",
-    photoUrl: ["https://randomuser.me"],
+    photoUrl: [
+      "https://randomuser.me/api/portraits/men/5.jpg",
+      "https://randomuser.me/api/portraits/men/40.jpg",
+      "https://randomuser.me/api/portraits/men/71.jpg",
+    ],
     position: { lat: 52.32576, lng: 21.013658 },
   },
   {
@@ -132,7 +152,11 @@ const persons: User[] = [
     blockedUsers: ["Karol", "Patryk"],
     caption: "Hej, jestem Magda 📚 Kocham książki.",
     created_at: "2024-06-01T12:00:00Z",
-    photoUrl: ["https://randomuser.me"],
+    photoUrl: [
+      "https://randomuser.me/api/portraits/women/6.jpg",
+      "https://randomuser.me/api/portraits/women/19.jpg",
+      "https://randomuser.me/api/portraits/women/73.jpg",
+    ],
     position: { lat: 52.320881, lng: 21.086375 },
   },
   {
@@ -150,7 +174,11 @@ const persons: User[] = [
     blockedUsers: ["Piotr", "Łukasz"],
     caption: "Siema, jestem Paweł 🎮 Gram i streamuję.",
     created_at: "2024-06-01T12:00:00Z",
-    photoUrl: ["https://randomuser.me"],
+    photoUrl: [
+      "https://randomuser.me/api/portraits/men/7.jpg",
+      "https://randomuser.me/api/portraits/men/22.jpg",
+      "https://randomuser.me/api/portraits/men/64.jpg",
+    ],
     position: { lat: 52.288731, lng: 20.902941 },
   },
   {
@@ -168,7 +196,11 @@ const persons: User[] = [
     blockedUsers: ["Sebastian", "Marek"],
     caption: "Hej, jestem Ola 🐶 Uwielbiam zwierzęta.",
     created_at: "2024-06-01T12:00:00Z",
-    photoUrl: ["https://randomuser.me"],
+    photoUrl: [
+      "https://randomuser.me/api/portraits/men/7.jpg",
+      "https://randomuser.me/api/portraits/men/22.jpg",
+      "https://randomuser.me/api/portraits/men/64.jpg",
+    ],
     position: { lat: 52.163029, lng: 20.909208 },
   },
   {
@@ -186,7 +218,11 @@ const persons: User[] = [
     blockedUsers: ["Rafał"],
     caption: "Cześć, jestem Michał 🏃‍♂️ Biegam maratony.",
     created_at: "2024-06-01T12:00:00Z",
-    photoUrl: ["https://randomuser.me"],
+    photoUrl: [
+      "https://randomuser.me/api/portraits/men/9.jpg",
+      "https://randomuser.me/api/portraits/men/26.jpg",
+      "https://randomuser.me/api/portraits/men/81.jpg",
+    ],
     position: { lat: 52.149393, lng: 21.053974 },
   },
   {
@@ -204,7 +240,11 @@ const persons: User[] = [
     blockedUsers: ["Michał", "Olek", "Kuba"],
     caption: "Hej, jestem Natalia 🎨 Projektuję UI/UX.",
     created_at: "2024-06-01T12:00:00Z",
-    photoUrl: ["https://randomuser.me"],
+    photoUrl: [
+      "https://randomuser.me/api/portraits/women/10.jpg",
+      "https://randomuser.me/api/portraits/women/36.jpg",
+      "https://randomuser.me/api/portraits/women/68.jpg",
+    ],
     position: { lat: 52.306184, lng: 21.094419 },
   },
 ];
@@ -212,8 +252,6 @@ type SwipeAction = SwipeRequest["action"];
 
 const swipesBySwiper = new Map<number, Map<number, SwipeAction>>();
 
-// Hardcoded "mutual likes" to have some matches out of the box.
-// Meaning: if user A likes user B and B is in this set for A, it becomes a match.
 const mutualLikeSeeds = new Map<number, Set<number>>([
   [1, new Set([2, 4, 6])],
   [2, new Set([1])],
