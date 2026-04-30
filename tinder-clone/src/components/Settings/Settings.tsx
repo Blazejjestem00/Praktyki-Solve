@@ -3,7 +3,6 @@ import "./Settings.css";
 import { useNavigate } from "react-router-dom";
 import type { User } from "../../services/api";
 import { HiAdjustments } from "react-icons/hi";
-
 import { MdDarkMode } from "react-icons/md";
 import { MdLightMode } from "react-icons/md";
 
@@ -123,6 +122,7 @@ function Settings({ person }: SettingsProps) {
           </button>
         </div>
       </div>
+
     </div>
   );
 }

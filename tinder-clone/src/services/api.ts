@@ -6,8 +6,13 @@ export interface User {
   email: string;
   interests: string[] | null;
   instagram: string | null;
+  package: string;
   caption: string | null;
   created_at: string;
+  city: string;
+  country: string;
+  isVisible: boolean; // Dodane: widoczność profilu
+  blockedUsers: string[]; // Dodane: lista ID zablokowanych osób
   photoUrl?: string[];
   position?: {
     lat: number;
@@ -30,14 +35,14 @@ const persons: User[] = [
     email: "jan.kowalski@test.pl",
     interests: ["siłownia", "kolarstwo", "bieganie"],
     instagram: "jan_fit25",
-    caption:
-      "Hej, jestem Jan 🙂 Lubię sport, szczególnie siłownię i jazdę na rowerze. Szukam aktywnych osób do wspólnych treningów i wyjazdów.",
+    package: "gold",
+    city: "Warszawa",
+    country: "Polska",
+    isVisible: true,
+    blockedUsers: ["Paweł", "Mariusz"],
+    caption: "Hej, jestem Jan 🙂 Lubię sport, szczególnie siłownię.",
     created_at: "2024-06-01T12:00:00Z",
-    photoUrl: [
-      "https://randomuser.me/api/portraits/men/1.jpg",
-      "https://randomuser.me/api/portraits/men/32.jpg",
-      "https://randomuser.me/api/portraits/men/76.jpg",
-    ],
+    photoUrl: ["https://randomuser.me"],
     position: { lat: 52.185948, lng: 21.102004 },
   },
   {
@@ -48,14 +53,14 @@ const persons: User[] = [
     email: "anna.nowak@test.pl",
     interests: ["frontend", "design", "podróże"],
     instagram: "ania.codes",
-    caption:
-      "Hej, jestem Ania 👋 Na co dzień programuję frontend, a po godzinach lubię podróżować i poznawać nowe miejsca. Szukam kreatywnych ludzi z pasją.",
+    package: "platinum",
+    city: "Berlin",
+    country: "Niemcy",
+    isVisible: true,
+    blockedUsers: ["Krzysiek", "Darek"],
+    caption: "Hej, jestem Ania 👋 Na co dzień programuję frontend.",
     created_at: "2024-06-01T12:00:00Z",
-    photoUrl: [
-      "https://randomuser.me/api/portraits/women/2.jpg",
-      "https://randomuser.me/api/portraits/women/21.jpg",
-      "https://randomuser.me/api/portraits/women/45.jpg",
-    ],
+    photoUrl: ["https://randomuser.me"],
     position: { lat: 52.130508, lng: 21.045202 },
   },
   {
@@ -66,14 +71,14 @@ const persons: User[] = [
     email: "piotr.w@test.pl",
     interests: ["podróże", "fotografia", "trekking"],
     instagram: "piotr_travels",
-    caption:
-      "Cześć, jestem Piotr 🌍 Uwielbiam podróże i odkrywanie nowych kultur. Często chodzę po górach. Szukam osób do wspólnych wypraw.",
+    package: "bronze",
+    city: "Praga",
+    country: "Czechy",
+    isVisible: false,
+    blockedUsers: ["Natalia", "Tomasz", "Beata"],
+    caption: "Cześć, jestem Piotr 🌍 Uwielbiam podróże.",
     created_at: "2024-06-01T12:00:00Z",
-    photoUrl: [
-      "https://randomuser.me/api/portraits/men/3.jpg",
-      "https://randomuser.me/api/portraits/men/33.jpg",
-      "https://randomuser.me/api/portraits/men/58.jpg",
-    ],
+    photoUrl: ["https://randomuser.me"],
     position: { lat: 52.273166, lng: 20.914348 },
   },
   {
@@ -84,14 +89,14 @@ const persons: User[] = [
     email: "kasia.w@test.pl",
     interests: ["fotografia", "instagram", "moda"],
     instagram: "kasia_shots",
-    caption:
-      "Hej, jestem Kasia 📸 Studiuję i zajmuję się fotografią. Lubię łapać chwile i tworzyć coś kreatywnego. Szukam inspirujących osób.",
+    package: "gold",
+    city: "Paryż",
+    country: "Francja",
+    isVisible: true,
+    blockedUsers: ["Damian"],
+    caption: "Hej, jestem Kasia 📸 Studiuję i fotografuję.",
     created_at: "2024-06-01T12:00:00Z",
-    photoUrl: [
-      "https://randomuser.me/api/portraits/women/4.jpg",
-      "https://randomuser.me/api/portraits/women/28.jpg",
-      "https://randomuser.me/api/portraits/women/62.jpg",
-    ],
+    photoUrl: ["https://randomuser.me"],
     position: { lat: 52.264848, lng: 21.162536 },
   },
   {
@@ -102,14 +107,14 @@ const persons: User[] = [
     email: "tomasz.k@test.pl",
     interests: ["gotowanie", "wino", "podróże kulinarne"],
     instagram: "tomek_cooks",
-    caption:
-      "Cześć, jestem Tomek 🍝 Uwielbiam gotować i odkrywać nowe smaki. Chętnie poznam osoby, które też kochają kuchnię i wspólne gotowanie.",
+    package: "platinum",
+    city: "Rzym",
+    country: "Włochy",
+    isVisible: true,
+    blockedUsers: ["Jan", "Anna", "Zygmunt"],
+    caption: "Cześć, jestem Tomek 🍝 Uwielbiam gotować.",
     created_at: "2024-06-01T12:00:00Z",
-    photoUrl: [
-      "https://randomuser.me/api/portraits/men/5.jpg",
-      "https://randomuser.me/api/portraits/men/40.jpg",
-      "https://randomuser.me/api/portraits/men/71.jpg",
-    ],
+    photoUrl: ["https://randomuser.me"],
     position: { lat: 52.32576, lng: 21.013658 },
   },
   {
@@ -120,14 +125,14 @@ const persons: User[] = [
     email: "magda.m@test.pl",
     interests: ["książki", "kawiarnie", "psychologia"],
     instagram: "magda_reads",
-    caption:
-      "Hej, jestem Magda 📚 Kocham książki i spokojne wieczory przy kawie. Interesuję się psychologią. Szukam osób do ciekawych rozmów.",
+    package: "bronze",
+    city: "Wiedeń",
+    country: "Austria",
+    isVisible: true,
+    blockedUsers: ["Karol", "Patryk"],
+    caption: "Hej, jestem Magda 📚 Kocham książki.",
     created_at: "2024-06-01T12:00:00Z",
-    photoUrl: [
-      "https://randomuser.me/api/portraits/women/6.jpg",
-      "https://randomuser.me/api/portraits/women/19.jpg",
-      "https://randomuser.me/api/portraits/women/73.jpg",
-    ],
+    photoUrl: ["https://randomuser.me"],
     position: { lat: 52.320881, lng: 21.086375 },
   },
   {
@@ -138,14 +143,14 @@ const persons: User[] = [
     email: "pawel.k@test.pl",
     interests: ["gry", "streaming", "technologia"],
     instagram: "pawel_gamer29",
-    caption:
-      "Siema, jestem Paweł 🎮 Gram, streamuję i interesuję się technologią. Szukam ludzi do wspólnego grania i luźnych rozmów.",
+    package: "gold",
+    city: "Madryt",
+    country: "Hiszpania",
+    isVisible: true,
+    blockedUsers: ["Piotr", "Łukasz"],
+    caption: "Siema, jestem Paweł 🎮 Gram i streamuję.",
     created_at: "2024-06-01T12:00:00Z",
-    photoUrl: [
-      "https://randomuser.me/api/portraits/men/7.jpg",
-      "https://randomuser.me/api/portraits/men/22.jpg",
-      "https://randomuser.me/api/portraits/men/64.jpg",
-    ],
+    photoUrl: ["https://randomuser.me"],
     position: { lat: 52.288731, lng: 20.902941 },
   },
   {
@@ -156,14 +161,14 @@ const persons: User[] = [
     email: "ola.p@test.pl",
     interests: ["zwierzęta", "spacery", "wolontariat"],
     instagram: "ola_paws",
-    caption:
-      "Hej, jestem Ola 🐶 Uwielbiam zwierzęta i długie spacery. Działam też w wolontariacie. Szukam empatycznych i pozytywnych osób.",
+    package: "bronze",
+    city: "Sztokholm",
+    country: "Szwecja",
+    isVisible: false,
+    blockedUsers: ["Sebastian", "Marek"],
+    caption: "Hej, jestem Ola 🐶 Uwielbiam zwierzęta.",
     created_at: "2024-06-01T12:00:00Z",
-    photoUrl: [
-      "https://randomuser.me/api/portraits/women/8.jpg",
-      "https://randomuser.me/api/portraits/women/30.jpg",
-      "https://randomuser.me/api/portraits/women/55.jpg",
-    ],
+    photoUrl: ["https://randomuser.me"],
     position: { lat: 52.163029, lng: 20.909208 },
   },
   {
@@ -174,14 +179,14 @@ const persons: User[] = [
     email: "michal.g@test.pl",
     interests: ["bieganie", "maratony", "fitness"],
     instagram: "michal_runs",
-    caption:
-      "Cześć, jestem Michał 🏃‍♂️ Biegam maratony i dbam o formę. Szukam osób do wspólnych treningów i motywacji.",
+    package: "platinum",
+    city: "Lizbona",
+    country: "Portugalia",
+    isVisible: true,
+    blockedUsers: ["Rafał"],
+    caption: "Cześć, jestem Michał 🏃‍♂️ Biegam maratony.",
     created_at: "2024-06-01T12:00:00Z",
-    photoUrl: [
-      "https://randomuser.me/api/portraits/men/9.jpg",
-      "https://randomuser.me/api/portraits/men/26.jpg",
-      "https://randomuser.me/api/portraits/men/81.jpg",
-    ],
+    photoUrl: ["https://randomuser.me"],
     position: { lat: 52.149393, lng: 21.053974 },
   },
   {
@@ -192,18 +197,17 @@ const persons: User[] = [
     email: "natalia.z@test.pl",
     interests: ["design", "UX", "sztuka"],
     instagram: "natalia.designs",
-    caption:
-      "Hej, jestem Natalia 🎨 Projektuję UI/UX i interesuję się sztuką. Szukam kreatywnych osób do wymiany pomysłów.",
+    package: "gold",
+    city: "Amsterdam",
+    country: "Holandia",
+    isVisible: true,
+    blockedUsers: ["Michał", "Olek", "Kuba"],
+    caption: "Hej, jestem Natalia 🎨 Projektuję UI/UX.",
     created_at: "2024-06-01T12:00:00Z",
-    photoUrl: [
-      "https://randomuser.me/api/portraits/women/10.jpg",
-      "https://randomuser.me/api/portraits/women/36.jpg",
-      "https://randomuser.me/api/portraits/women/68.jpg",
-    ],
+    photoUrl: ["https://randomuser.me"],
     position: { lat: 52.306184, lng: 21.094419 },
   },
 ];
-
 type SwipeAction = SwipeRequest["action"];
 
 const swipesBySwiper = new Map<number, Map<number, SwipeAction>>();

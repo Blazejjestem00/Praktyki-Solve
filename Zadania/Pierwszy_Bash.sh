@@ -37,3 +37,7 @@ Dlugosc_Najdluzszej_Lini=$(git log --format="%s" | awk '{ print length }' | sort
 Najdlusza_Linia=$(git log --format="%s" | awk '{ print length, $0 }' | sort -nr | head -n 1 | sed 's/^[0-9]* //')
 
 echo "Najdłuższy opis ma $Dlugosc_Najdluzszej_Lini znaków i brzmi: $Najdlusza_Linia"
+
+MiejsceNaDysku=$(df -h | grep '/$' | awk '{print $4}')
+
+echo "$MiejsceNaDysku"

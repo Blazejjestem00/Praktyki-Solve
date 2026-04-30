@@ -4,6 +4,7 @@ import { motion, useMotionValue, useTransform } from "motion/react";
 import { useState } from "react";
 import type { User } from "../../services/api";
 import { TbBrandTinderFilled } from "react-icons/tb";
+import { ImCross } from "react-icons/im";
 import { MdOutlineVerified } from "react-icons/md";
 
 type Person = User & { photoUrl?: string[] };
@@ -73,7 +74,7 @@ function Info({ person, onSwipe }: InfoProps) {
           className="swipe-badge swipe-badge-nope"
           style={{ opacity: nopeOpacity }}
         >
-          <TbBrandTinderFilled /> NOPE
+          <ImCross /> NOPE
         </motion.div>
 
         {/* SINGLE PHOTO SYSTEM */}

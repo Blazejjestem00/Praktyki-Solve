@@ -31,6 +31,13 @@ body[data-theme="dark"] .card2 {
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+body[data-theme="light"] .card2:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.647);
+}
+
+body[data-theme="dark"] .card2:hover {
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.647);
+}
 /* ── Reszta bez zmian ── */
 .settings-container {
   width: 100%;
