@@ -138,6 +138,7 @@ p {
 }
 .package {
   background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728);
+  background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   font-family: sans-serif;
