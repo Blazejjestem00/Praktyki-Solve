@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import "./Settings.css";
 import { useNavigate } from "react-router-dom";
 import type { User } from "../../services/api";
@@ -12,13 +13,52 @@ interface SettingsProps {
   person: Person;
 }
 
+interface ConfirmModalProps {
+  onConfirm: () => void;
+  onCancel: () => void;
+}
+
+function ConfirmModal({ onConfirm, onCancel }: ConfirmModalProps) {
+  return createPortal(
+    <div className="modal-overlay">
+      <div className="modal-box">
+        <h3>Zapisać preferencje?</h3>
+        <p>Czy na pewno chcesz zapisać nowe ustawienia preferencji?</p>
+        <div className="modal-buttons">
+          <button className="primary" onClick={onConfirm}>
+            Tak, zapisz
+          </button>
+          <button className="secondary" onClick={onCancel}>
+            Anuluj
+          </button>
+        </div>
+      </div>
+    </div>,
+    document.body,
+  );
+}
+
 function Settings({ person }: SettingsProps) {
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem("theme") || "dark";
   });
-  const [distance, setDistance] = useState(25);
-  const [ageMin, setAgeMin] = useState(18);
-  const [ageMax, setAgeMax] = useState(35);
+
+  const [distance, setDistance] = useState(() => {
+    return Number(localStorage.getItem("distance")) || 25;
+  });
+
+  const [ageMin, setAgeMin] = useState(() => {
+    return Number(localStorage.getItem("ageMin")) || 18;
+  });
+
+  const [ageMax, setAgeMax] = useState(() => {
+    return Number(localStorage.getItem("ageMax")) || 35;
+  });
+
+  const [pendingDistance, setPendingDistance] = useState(distance);
+  const [pendingAgeMin, setPendingAgeMin] = useState(ageMin);
+  const [pendingAgeMax, setPendingAgeMax] = useState(ageMax);
+  const [showModal, setShowModal] = useState(false);
 
   const navigate = useNavigate();
 
@@ -28,8 +68,29 @@ function Settings({ person }: SettingsProps) {
     document.body.setAttribute("data-theme", newTheme);
   };
 
+  const handleConfirm = () => {
+    localStorage.setItem("distance", String(pendingDistance));
+    localStorage.setItem("ageMin", String(pendingAgeMin));
+    localStorage.setItem("ageMax", String(pendingAgeMax));
+    setDistance(pendingDistance);
+    setAgeMin(pendingAgeMin);
+    setAgeMax(pendingAgeMax);
+    setShowModal(false);
+  };
+
+  const handleCancel = () => {
+    setPendingDistance(distance);
+    setPendingAgeMin(ageMin);
+    setPendingAgeMax(ageMax);
+    setShowModal(false);
+  };
+
   return (
     <div className="settings-page">
+      {showModal && (
+        <ConfirmModal onConfirm={handleConfirm} onCancel={handleCancel} />
+      )}
+
       <div className="settings-container">
         <h1>Ustawienia</h1>
 
@@ -62,38 +123,42 @@ function Settings({ person }: SettingsProps) {
         <div className="card2">
           <h2>Preferencje</h2>
           <HiAdjustments className="Adjustments" />
-
           <div className="settings-sliders">
             <label>
-              Odległość: {distance} km
+              Odległość: {pendingDistance} km
               <input
                 type="range"
                 min={1}
                 max={100}
-                value={distance}
-                onChange={(e) => setDistance(Number(e.target.value))}
+                value={pendingDistance}
+                onChange={(e) => setPendingDistance(Number(e.target.value))}
               />
             </label>
             <label>
-              Minimalny wiek: {ageMin} lat
+              Minimalny wiek: {pendingAgeMin} lat
               <input
                 type="range"
                 min={18}
-                max={ageMax - 1}
-                value={ageMin}
-                onChange={(e) => setAgeMin(Number(e.target.value))}
+                max={pendingAgeMax - 1}
+                value={pendingAgeMin}
+                onChange={(e) => setPendingAgeMin(Number(e.target.value))}
               />
             </label>
             <label>
-              Maksymalny wiek: {ageMax} lat
+              Maksymalny wiek: {pendingAgeMax} lat
               <input
                 type="range"
-                min={ageMin + 1}
+                min={pendingAgeMin + 1}
                 max={80}
-                value={ageMax}
-                onChange={(e) => setAgeMax(Number(e.target.value))}
+                value={pendingAgeMax}
+                onChange={(e) => setPendingAgeMax(Number(e.target.value))}
               />
             </label>
+            <div className="buttons-row" style={{ marginTop: "1rem" }}>
+              <button className="primary" onClick={() => setShowModal(true)}>
+                Zapisz preferencje
+              </button>
+            </div>
           </div>
         </div>
 
@@ -122,7 +187,6 @@ function Settings({ person }: SettingsProps) {
           </button>
         </div>
       </div>
-
     </div>
   );
 }

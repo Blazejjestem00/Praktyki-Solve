@@ -8,10 +8,15 @@ import type { User } from "../../services/api";
 
 interface SettingsViewProps {
   person: User;
+  isExpanded: boolean;
+  setIsExpanded: (value: boolean) => void;
 }
 
-function ExtentSettings({ person }: SettingsViewProps) {
-  const [isExpanded, setIsExpanded] = useState(false);
+function ExtentSettings({
+  person,
+  isExpanded,
+  setIsExpanded,
+}: SettingsViewProps) {
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
   const [isLocationOpen, setIsLocationOpen] = useState(false);
   const [isSubscriptionsOpen, setIsSubscriptionsOpen] = useState(false);
@@ -29,7 +34,7 @@ function ExtentSettings({ person }: SettingsViewProps) {
     <div className="extent-settings">
       <button
         className={`extent-button ${isExpanded ? "isExpanded" : ""}`}
-        onClick={() => setIsExpanded((p) => !p)}
+        onClick={() => setIsExpanded(!isExpanded)}
       >
         <span className="bar"></span>
         <span className="bar"></span>
