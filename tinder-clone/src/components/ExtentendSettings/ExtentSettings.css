@@ -1,0 +1,179 @@
+.extent-settings {
+  position: fixed;
+  top: 20px;
+  right: 20px; /* ← tu był błąd */
+  z-index: 9999;
+  display: flex;
+  flex-direction: column; /* ← dodaj, żeby menu rozwijało się w dół */
+  align-items: flex-end; /* ← wyrównaj do prawej */
+  width: fit-content; /* ← tylko tyle miejsca ile potrzeba */
+  height: fit-content;
+}
+.extent-button {
+  width: 42px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0;
+}
+.bar {
+  height: 4px;
+  width: 100%;
+  transition: 0.3s;
+  border-radius: 4px;
+  display: block;
+}
+body[data-theme="dark"] .bar {
+  background: #f0f0f0;
+}
+body[data-theme="light"] .bar {
+  background: #0f172a;
+}
+.SettingsMenu {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 6px 8px;
+  border-radius: 12px;
+  width: fit-content;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: 0.25s ease;
+  display: inline-block;
+}
+
+body[data-theme="dark"] .SettingsMenu {
+  background: #0f0f17;
+  border: 1px solid #1f1f2e;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+body[data-theme="light"] .SettingsMenu {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.SettingsMenu.expanded {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+body[data-theme="dark"] .SettingsMenu.privacy {
+  color: #e2e8f0;
+}
+body[data-theme="light"] .SettingsMenu.privacy {
+  color: #0f172a;
+}
+body[data-theme="dark"] .SettingsMenu.location {
+  color: #e2e8f0;
+}
+body[data-theme="light"] .SettingsMenu.location {
+  color: #0f172a;
+}
+body[data-theme="dark"] .SettingsMenu.Subscriptions {
+  color: #e2e8f0;
+}
+body[data-theme="light"] .SettingsMenu.Subscriptions {
+  color: #0f172a;
+}
+
+body[data-theme="dark"] .menu a:hover {
+  background: #1a1a28;
+}
+body[data-theme="light"] .menu a:hover {
+  background: #f1f5f9;
+}
+.menu-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+p {
+  user-select: none;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+.blocked-accounts {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.blocked-list {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    max-height 4s ease,
+    opacity 0.2s ease;
+}
+
+.blocked-list.open {
+  max-height: 5000px;
+  opacity: 1;
+}
+
+.blocked-user {
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+.package {
+  background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-family: sans-serif;
+}
+.submenu-side {
+  max-width: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    max-width 1s ease,
+    opacity 0.3s ease;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0;
+}
+
+.submenu-side.open {
+  width: fit-content;
+  max-width: 600px;
+  opacity: 1;
+  padding-left: 12px;
+}
+
+.submenu-side p {
+  margin: 0;
+  padding: 40px 80px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+@media (max-width: 600px) {
+  .extent-settings {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+  }
+}

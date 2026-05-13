@@ -3,10 +3,10 @@ import type { Conversation, Message } from "./chatData";
 import MessageBubble from "./MessageBubble";
 import MessageInput from "./MessageInput";
 
-
 interface ChatWindowProps {
   conversation: Conversation;
   onSend: (text: string) => void;
+  isLoading: boolean;
 }
 
 function ChatWindow({ conversation, onSend }: ChatWindowProps) {
@@ -18,7 +18,6 @@ function ChatWindow({ conversation, onSend }: ChatWindowProps) {
 
   return (
     <div className="chat-window">
-    
       <div className="chat-window-header">
         <img
           src={conversation.photoUrl}
@@ -28,7 +27,6 @@ function ChatWindow({ conversation, onSend }: ChatWindowProps) {
         <span className="chat-window-name">{conversation.name}</span>
       </div>
 
-   
       <div className="chat-window-messages">
         {conversation.messages.map((msg: Message) => (
           <MessageBubble key={msg.id} message={msg} />
@@ -36,7 +34,6 @@ function ChatWindow({ conversation, onSend }: ChatWindowProps) {
         <div ref={bottomRef} />
       </div>
 
-  
       <MessageInput onSend={onSend} />
     </div>
   );

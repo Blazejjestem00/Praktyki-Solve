@@ -4,6 +4,8 @@ import { motion, useMotionValue, useTransform } from "motion/react";
 import { useState } from "react";
 import type { User } from "../../services/api";
 import { TbBrandTinderFilled } from "react-icons/tb";
+import { ImCross } from "react-icons/im";
+import { MdOutlineVerified } from "react-icons/md";
 
 type Person = User & { photoUrl?: string[] };
 
@@ -72,7 +74,7 @@ function Info({ person, onSwipe }: InfoProps) {
           className="swipe-badge swipe-badge-nope"
           style={{ opacity: nopeOpacity }}
         >
-          <TbBrandTinderFilled /> NOPE
+          <ImCross /> NOPE
         </motion.div>
 
         {/* SINGLE PHOTO SYSTEM */}
@@ -92,11 +94,14 @@ function Info({ person, onSwipe }: InfoProps) {
         </div>
 
         {/* TEXT */}
-        <div className="text">
+        <div className="text-card">
           <div className="name-row">
             <span className="name">{person.name}</span>
             <span className="surname">{person.surname || ""}</span>
-            <span className="age">{person.age}</span>
+            <span className="age">
+              {person.age}
+              <MdOutlineVerified color="rgb(22, 156, 245)" size={20} />
+            </span>
           </div>
 
           <span className="caption">

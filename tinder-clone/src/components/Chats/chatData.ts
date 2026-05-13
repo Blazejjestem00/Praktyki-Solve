@@ -1,6 +1,6 @@
 export interface Message {
   id: number;
-  from: "me" | "them";
+  from: "me" | "bot";
   text: string;
   timestamp: number;
 }
@@ -24,7 +24,7 @@ export const conversations: Conversation[] = [
     messages: [
       {
         id: 1,
-        from: "them",
+        from: "bot",
         text: "Hej! Widzę, że też lubisz podróże 🌍",
         timestamp: Date.now() - 1000 * 60 * 60 * 24 * 2,
       },
@@ -36,7 +36,7 @@ export const conversations: Conversation[] = [
       },
       {
         id: 3,
-        from: "them",
+        from: "bot",
         text: "Łoo, zazdroszczę! Gdzie konkretnie byłeś?",
         timestamp: Date.now() - 1000 * 60 * 60 * 24 * 2 + 1000 * 60 * 10,
       },
@@ -56,7 +56,7 @@ export const conversations: Conversation[] = [
     messages: [
       {
         id: 1,
-        from: "them",
+        from: "bot",
         text: "Hej, fajne zdjęcia masz na profilu 📸",
         timestamp: Date.now() - 1000 * 60 * 60 * 5,
       },
@@ -68,7 +68,7 @@ export const conversations: Conversation[] = [
       },
       {
         id: 3,
-        from: "them",
+        from: "bot",
         text: "Może wybierzemy się kiedyś na sesję w plenerze?",
         timestamp: Date.now() - 1000 * 60 * 30,
       },
@@ -88,7 +88,7 @@ export const conversations: Conversation[] = [
       },
       {
         id: 2,
-        from: "them",
+        from: "bot",
         text: "Hej! Akurat skończyłam 'Lekcje chemii'. Mocno polecam.",
         timestamp: Date.now() - 1000 * 60 * 60 * 24 * 3 + 1000 * 60 * 60,
       },
@@ -102,7 +102,7 @@ export const conversations: Conversation[] = [
     messages: [
       {
         id: 1,
-        from: "them",
+        from: "bot",
         text: "Heej 🐶",
         timestamp: Date.now() - 1000 * 60 * 10,
       },
@@ -122,7 +122,7 @@ export const conversations: Conversation[] = [
     messages: [
       {
         id: 1,
-        from: "them",
+        from: "bot",
         text: "Cześć! Widzę, że też siedzisz w designie?",
         timestamp: Date.now() - 1000 * 60 * 60 * 48,
       },
@@ -134,7 +134,7 @@ export const conversations: Conversation[] = [
       },
       {
         id: 3,
-        from: "them",
+        from: "bot",
         text: "Dokładnie. Pracuję teraz nad apką fitness.",
         timestamp: Date.now() - 1000 * 60 * 60 * 46,
       },
@@ -146,7 +146,7 @@ export const conversations: Conversation[] = [
       },
       {
         id: 5,
-        from: "them",
+        from: "bot",
         text: "Jasne, podeślę Ci na dniach link do Figmy.",
         timestamp: Date.now() - 1000 * 60 * 15,
       },

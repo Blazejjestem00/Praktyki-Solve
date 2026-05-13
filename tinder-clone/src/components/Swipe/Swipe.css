@@ -5,6 +5,12 @@
   margin-top: -50px;
   padding: 20px 0;
 }
+
+body[data-theme="light"] .nope,
+body[data-theme="light"] .heart,
+body[data-theme="light"] .rewind {
+  background: #f0f0f0;
+}
 .swipe .rewind,
 .swipe .nope,
 .swipe .heart {
